@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Power Greens Recipe Book – by Nida Kashif</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:    #1E3A1F;
+    --sage:      #4A7C59;
+    --mint:      #8BBF9F;
+    --cream:     #F8F2E4;
+    --parchment: #EDE3C8;
+    --gold:      #C19A3F;
+    --rust:      #8B4513;
+    --charcoal:  #2C2C2C;
+    --white:     #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Crimson Pro', serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ─── SCREEN NAV ─── */
+  .screen-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: var(--forest);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  .screen-nav span { color: var(--mint); font-family: 'Josefin Sans', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+  .screen-nav button {
+    background: var(--gold); color: var(--forest);
+    border: none; padding: 8px 20px; border-radius: 2px;
+    font-family: 'Josefin Sans', sans-serif; font-size: 12px;
+    letter-spacing: 1px; font-weight: 700; cursor: pointer; text-transform: uppercase;
+  }
+  .screen-nav button:hover { background: var(--mint); }
+
+  /* ─── PAGE WRAPPER ─── */
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    margin: 80px auto 0;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    margin-bottom: 24px;
+    page-break-after: always;
+  }
+
+  /* ─── COVER PAGE ─── */
+  #cover {
+    background: var(--forest);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+    min-height: 1123px;
+  }
+  .cover-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(74,124,89,0.4) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 70%, rgba(139,191,159,0.2) 0%, transparent 50%),
+      linear-gradient(160deg, #0D2610 0%, #1E3A1F 40%, #2D5216 100%);
+  }
+  .cover-border {
+    position: absolute; inset: 28px;
+    border: 1px solid rgba(193,154,63,0.35);
+    pointer-events: none;
+  }
+  .cover-border::before {
+    content: '';
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(193,154,63,0.2);
+  }
+  .cover-leaf {
+    position: absolute;
+    font-size: 260px;
+    opacity: 0.04;
+    top: -40px; right: -30px;
+    transform: rotate(25deg);
+    user-select: none;
+  }
+  .cover-leaf2 {
+    position: absolute;
+    font-size: 180px;
+    opacity: 0.04;
+    bottom: 60px; left: -20px;
+    transform: rotate(-15deg);
+    user-select: none;
+  }
+  .cover-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 60px 80px;
+  }
+  .cover-tag {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 5px; text-transform: uppercase;
+    color: var(--gold);
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    display: inline-block;
+    padding: 6px 20px;
+    margin-bottom: 40px;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px; font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 12px;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+  }
+  .cover-title em {
+    font-style: italic;
+    color: var(--mint);
+    display: block;
+  }
+  .cover-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 20px; font-style: italic;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 50px;
+    line-height: 1.5;
+  }
+  .cover-divider {
+    width: 80px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 50px;
+  }
+  .cover-image-frame {
+    width: 420px; height: 280px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0 auto 50px;
+    border: 3px solid rgba(193,154,63,0.4);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .cover-image-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .cover-stats {
+    display: flex; gap: 40px;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+  .stat-item {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 2px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+  }
+  .cover-author {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px; letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .cover-author strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ─── TOC PAGE ─── */
+  #toc {
+    padding: 80px 70px;
+    background: var(--cream);
+  }
+  .toc-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid var(--parchment);
+    position: relative;
+  }
+  .toc-header::after {
+    content: '';
+    position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 2px; background: var(--gold);
+  }
+  .toc-eyebrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 12px;
+  }
+  .toc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px; font-weight: 700;
+    color: var(--forest);
+  }
+  .toc-intro {
+    font-size: 16px; font-style: italic;
+    color: #666; margin-top: 16px;
+    line-height: 1.8;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .toc-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--parchment);
+    gap: 16px;
+    cursor: default;
+  }
+  .toc-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 700;
+    color: var(--parchment);
+    min-width: 40px;
+    line-height: 1;
+  }
+  .toc-info { flex: 1; }
+  .toc-recipe-name {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--forest);
+    text-transform: uppercase;
+  }
+  .toc-recipe-sub {
+    font-size: 13px; color: #888; font-style: italic;
+  }
+  .toc-badge {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 1px;
+    background: var(--forest);
+    color: var(--mint);
+    padding: 3px 8px; border-radius: 2px;
+    white-space: nowrap;
+  }
+  .toc-badge.high { background: var(--rust); color: #FFD6B0; }
+
+  /* ─── INTRO PAGE ─── */
+  #intro {
+    padding: 80px 70px;
+    background: var(--white);
+  }
+  .intro-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+  }
+  .intro-image {
+    width: 100%; height: 360px;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .intro-image img { width: 100%; height: 100%; object-fit: cover; }
+  .intro-image-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: var(--mint); padding: 20px 16px 12px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .section-eyebrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--forest); line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .section-body p {
+    font-size: 15px; color: #555; margin-bottom: 14px; line-height: 1.8;
+  }
+  .tip-box {
+    background: var(--forest);
+    color: var(--cream);
+    padding: 20px 24px;
+    border-radius: 2px;
+    margin-top: 24px;
+  }
+  .tip-box-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px;
+  }
+  .tip-box p { font-size: 14px; color: rgba(255,255,255,0.75); margin-bottom: 8px; }
+  .tip-box p:last-child { margin-bottom: 0; }
+
+  /* ─── RECIPE PAGES ─── */
+  .recipe-page {
+    background: var(--white);
+    min-height: 1123px;
+    display: flex;
+    flex-direction: column;
+  }
+  .recipe-hero {
+    position: relative;
+    height: 380px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .recipe-hero img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .recipe-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.75) 100%);
+  }
+  .recipe-hero-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 30px 50px;
+  }
+  .recipe-number {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .recipe-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px; font-weight: 900; font-style: italic;
+    color: var(--white); line-height: 1.1;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  }
+  .recipe-tagline {
+    color: rgba(255,255,255,0.75);
+    font-size: 15px; font-style: italic;
+    margin-top: 6px;
+  }
+  .recipe-badges {
+    display: flex; gap: 10px;
+    margin-top: 12px;
+  }
+  .badge {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 2px;
+  }
+  .badge-green { background: rgba(74,124,89,0.85); color: #CFFFD8; }
+  .badge-gold  { background: rgba(193,154,63,0.85); color: #FFF8E1; }
+  .badge-rust  { background: rgba(139,69,19,0.85); color: #FFE8D0; }
+
+  .recipe-body {
+    padding: 36px 50px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 40px;
+    flex: 1;
+  }
+
+  /* Nutrition Panel */
+  .nutrition-panel {
+    background: var(--cream);
+    border-left: 4px solid var(--sage);
+    padding: 20px;
+    border-radius: 0 2px 2px 0;
+    height: fit-content;
+  }
+  .nutrition-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--parchment);
+  }
+  .nut-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 6px 0; border-bottom: 1px solid var(--parchment);
+  }
+  .nut-row:last-child { border-bottom: none; }
+  .nut-label { font-size: 13px; color: #666; }
+  .nut-value { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--forest); }
+  .nut-value.highlight { color: var(--sage); }
+
+  .meta-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin-top: 16px;
+  }
+  .meta-item {
+    background: var(--white);
+    border: 1px solid var(--parchment);
+    border-radius: 2px; padding: 10px;
+    text-align: center;
+  }
+  .meta-icon { font-size: 18px; }
+  .meta-val {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px; font-weight: 700; color: var(--forest);
+    display: block; margin-top: 4px;
+  }
+  .meta-key {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px; letter-spacing: 1px; text-transform: uppercase;
+    color: #aaa; display: block;
+  }
+
+  /* Ingredients & Method */
+  .recipe-right h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 12px;
+  }
+  .ingredients-list {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+  .ingredients-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 5px 0; border-bottom: 1px dashed var(--parchment);
+    font-size: 14px; color: #444;
+  }
+  .ingredients-list li::before {
+    content: '—';
+    color: var(--gold); flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .method-steps {
+    counter-reset: step;
+    list-style: none;
+  }
+  .method-steps li {
+    counter-increment: step;
+    display: flex; gap: 14px;
+    padding: 9px 0; border-bottom: 1px solid var(--parchment);
+    font-size: 14px; color: #444; line-height: 1.6;
+  }
+  .method-steps li::before {
+    content: counter(step);
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--parchment);
+    flex-shrink: 0; line-height: 1; min-width: 22px;
+    margin-top: 2px;
+  }
+  .pro-tip {
+    background: linear-gradient(135deg, var(--forest), var(--sage));
+    color: var(--white);
+    border-radius: 2px; padding: 14px 18px;
+    margin-top: 18px;
+    font-size: 13px; line-height: 1.7;
+  }
+  .pro-tip strong {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 6px;
+  }
+
+  /* ─── BACK COVER ─── */
+  #backcover {
+    background: var(--forest);
+    min-height: 1123px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative;
+    text-align: center;
+    padding: 80px;
+  }
+  .bc-border { position: absolute; inset: 28px; border: 1px solid rgba(193,154,63,0.3); pointer-events: none; }
+  .bc-logo { font-size: 70px; margin-bottom: 30px; opacity: 0.8; }
+  .bc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-style: italic;
+    color: var(--white); margin-bottom: 16px;
+  }
+  .bc-body { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 500px; line-height: 1.8; margin-bottom: 40px; }
+  .bc-divider { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 40px; }
+  .bc-author {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .bc-author-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 6px; }
+  .bc-disclaimer {
+    position: absolute; bottom: 50px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px; letter-spacing: 1px;
+    color: rgba(255,255,255,0.25);
+    text-align: center; max-width: 480px;
+  }
+
+  /* ─── PRINT STYLES ─── */
+  @media print {
+    body { background: white; }
+    .screen-nav { display: none; }
+    .page {
+      margin: 0; box-shadow: none;
+      page-break-after: always;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV BAR (screen only) -->
+<nav class="screen-nav">
+  <span>🌿 Power Greens Recipe Book</span>
+  <button onclick="window.print()">🖨️ Print / Save as PDF</button>
+</nav>
+
+<!-- ════════════════════════════════════════ -->
+<!-- COVER PAGE -->
+<!-- ════════════════════════════════════════ -->
+<div class="page" id="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-border"></div>
+  <div class="cover-leaf">🌿</div>
+  <div class="cover-leaf2">🥗</div>
+
+  <div class="cover-content">
+    <div class="cover-tag">High-Protein · Weight Loss · Muscle Building</div>
+    <h1 class="cover-title">
+      Power<br>
+      <em>Greens</em>
+    </h1>
+    <p class="cover-subtitle">
+      10 Authentic High-Protein Salad Recipes<br>
+      for Fat Loss & Lean Muscle Gain
+    </p>
+    <div class="cover-divider"></div>
+
+    <div class="cover-image-frame">
+      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80" alt="Fresh salad bowl">
+    </div>
+
+    <div class="cover-stats">
+      <div class="stat-item">
+        <span class="stat-num">10</span>
+        <span class="stat-label">Recipes</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">30g+</span>
+        <span class="stat-label">Avg. Protein</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Whole Foods</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">Easy</span>
+        <span class="stat-label">To Make</span>
+      </div>
+    </div>
+
+    <p class="cover-author">Crafted &amp; Curated by <strong>Nida Kashif</strong></p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- TABLE OF CONTENTS -->
+<!-- ════════════════════════════════════════ -->
+<div class="page" id="toc">
+  <div class="toc-header">
+    <p class="toc-eyebrow">Inside This Book</p>
+    <h2 class="toc-title">Table of Contents</h2>
+    <p class="toc-intro">All recipes use easily available ingredients, require minimal prep time,<br>and are optimized for fat loss while preserving lean muscle.</p>
+  </div>
+
+  <div class="toc-grid">
+    <div class="toc-item">
+      <span class="toc-num">01</span>
+      <div class="toc-info">
+        <div class="toc-recipe-name">Grilled Chicken Caesar</div>
+        <div class="toc-recipe-sub">Classic with a protein boost</div>
+      </div>
+      <span class="toc-badge">38g protein</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-num">02</span>
+      <div class="toc-info">
+        <div class="toc-recipe-name">Tuna Niçoise Power Bowl</div>
+        <div class="toc-recipe-sub">Mediterranean lean classic</div>
+      </div>
+      <span class="toc-badge">36g protein</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-num">03</span>
+      <div class="toc-info">
+        <div class="toc-recipe-name">Salmon & Quinoa Bowl</div>
+        <div class="toc-recipe-sub">Omega-3 + complete protein</div>
+      </div>
+      <span class="toc-badge high">42g protein</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-num">04</span>
+      <div class="toc-info">
+        <div class="toc-recipe-name">Turkey Avocado Power</div>
+        <div class="toc-recipe-sub">Healthy fats & lean turkey</div>
+      </div>
+      <span class="toc-badge">35g protein</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-num">05</span>
+      <div class="toc-info">
+        <div class="toc-recipe-name">Shrimp & Edamame Asian</div>
+        <div class="toc-recipe-sub">Light yet protein-dense</div>
+      </div>
+      <span class="toc-badge high">40g protein</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-num">06</span>
+      <div class="toc-info">
+        <div class="toc-recipe-name">Egg White Spinach Salad</div>
+        <div class="toc-recipe-sub">Iron-rich fat-burner</div>
+      </div>
+      <span class="toc-badge">28g protein</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-num">07</span>
+      <div class="toc-info">
+        <div class="toc-recipe-name">Chickpea & Feta Greek</div>
+        <div class="toc-recipe-sub">Vegetarian muscle food</div>
+      </div>
+      <span class="toc-badge">26g protein</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-num">08</span>
+      <div class="toc-info">
+        <div class="toc-recipe-name">Lentil Roasted Veggie</div>
+        <div class="toc-recipe-sub">Plant-based powerhouse</div>
+      </div>
+      <span class="toc-badge">30g protein</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-num">09</span>
+      <div class="toc-info">
+        <div class="toc-recipe-name">Buffalo Chicken Ranch</div>
+        <div class="toc-recipe-sub">Spicy fat-burning delight</div>
+      </div>
+      <span class="toc-badge high">44g protein</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-num">10</span>
+      <div class="toc-info">
+        <div class="toc-recipe-name">Cottage Cheese Berry</div>
+        <div class="toc-recipe-sub">Sweet antioxidant salad</div>
+      </div>
+      <span class="toc-badge">32g protein</span>
+    </div>
+  </div>
+
+  <div style="margin-top:48px; background:var(--forest); border-radius:2px; padding:28px 36px; color:var(--cream); display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px;">
+    <div>
+      <div style="font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Why High Protein?</div>
+      <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;">Protein keeps you full longer, boosts metabolism, and preserves lean muscle during calorie deficit.</p>
+    </div>
+    <div>
+      <div style="font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Muscle & Fat Loss</div>
+      <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;">Each recipe is designed for body recomposition — lose fat while building or maintaining lean muscle mass.</p>
+    </div>
+    <div>
+      <div style="font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Easy Ingredients</div>
+      <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;">All ingredients are available at your local supermarket or grocery store. No special health-food shops needed.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- INTRO PAGE -->
+<!-- ════════════════════════════════════════ -->
+<div class="page" id="intro">
+  <div style="padding:80px 70px;">
+    <div class="intro-split">
+      <div>
+        <div class="intro-image">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80" alt="Healthy salads">
+          <div class="intro-image-caption">Eat clean · Train hard · Stay consistent</div>
+        </div>
+      </div>
+      <div>
+        <p class="section-eyebrow">A Note from the Author</p>
+        <h2 class="section-title">Food that<br>Fuels Your Goals</h2>
+        <div class="section-body">
+          <p>These recipes were created with one goal: to make healthy eating simple, delicious, and sustainable. Every salad in this book is packed with high-quality protein to support both fat loss and muscle building.</p>
+          <p>You don't need expensive supplements or complicated meal plans. Real, whole foods — prepared the right way — are the most powerful tools for body transformation.</p>
+          <p>Whether you want to shed extra weight, build lean muscle, or simply eat better, these recipes will become your go-to meals.</p>
+        </div>
+        <div class="tip-box">
+          <div class="tip-box-title">⚡ How to Use This Book</div>
+          <p>• Aim for 2–3 of these salads per day as main meals.</p>
+          <p>• Pair with 2–3 litres of water daily.</p>
+          <p>• Rotate recipes to keep meals exciting and balanced.</p>
+          <p>• Add extra protein (chicken/eggs) to any recipe if needed.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px; display:grid; grid-template-columns:repeat(4,1fr); gap:16px;">
+      <div style="text-align:center;padding:20px;background:var(--cream);border-radius:2px;">
+        <div style="font-size:28px;margin-bottom:8px;">🔥</div>
+        <div style="font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:700;color:var(--forest);letter-spacing:1px;text-transform:uppercase;">Fat Burning</div>
+        <div style="font-size:13px;color:#888;margin-top:6px;">Low-calorie density with high satiety</div>
+      </div>
+      <div style="text-align:center;padding:20px;background:var(--cream);border-radius:2px;">
+        <div style="font-size:28px;margin-bottom:8px;">💪</div>
+        <div style="font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:700;color:var(--forest);letter-spacing:1px;text-transform:uppercase;">Muscle Gain</div>
+        <div style="font-size:13px;color:#888;margin-top:6px;">25–44g protein per serving</div>
+      </div>
+      <div style="text-align:center;padding:20px;background:var(--cream);border-radius:2px;">
+        <div style="font-size:28px;margin-bottom:8px;">⏱️</div>
+        <div style="font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:700;color:var(--forest);letter-spacing:1px;text-transform:uppercase;">Quick Prep</div>
+        <div style="font-size:13px;color:#888;margin-top:6px;">Under 20 minutes most recipes</div>
+      </div>
+      <div style="text-align:center;padding:20px;background:var(--cream);border-radius:2px;">
+        <div style="font-size:28px;margin-bottom:8px;">🛒</div>
+        <div style="font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:700;color:var(--forest);letter-spacing:1px;text-transform:uppercase;">Easy to Find</div>
+        <div style="font-size:13px;color:#888;margin-top:6px;">All ingredients widely available</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- RECIPE 01 -->
+<!-- ════════════════════════════════════════ -->
+<div class="page recipe-page">
+  <div class="recipe-hero">
+    <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=900&q=80" alt="Grilled Chicken Caesar Salad">
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-number">Recipe 01 / 10</div>
+      <h2 class="recipe-title">Grilled Chicken<br>Caesar Salad</h2>
+      <p class="recipe-tagline">The ultimate high-protein classic, reimagined for weight loss</p>
+      <div class="recipe-badges">
+        <span class="badge badge-green">38g Protein</span>
+        <span class="badge badge-gold">420 cal</span>
+        <span class="badge badge-rust">15 min prep</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-body">
+    <div>
+      <div class="nutrition-panel">
+        <div class="nutrition-title">📊 Nutrition Per Serving</div>
+        <div class="nut-row"><span class="nut-label">Calories</span><span class="nut-value">420 kcal</span></div>
+        <div class="nut-row"><span class="nut-label">Protein</span><span class="nut-value highlight">38 g</span></div>
+        <div class="nut-row"><span class="nut-label">Carbs</span><span class="nut-value">18 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fat</span><span class="nut-value">20 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fiber</span><span class="nut-value">4 g</span></div>
+        <div class="nut-row"><span class="nut-label">Sodium</span><span class="nut-value">580 mg</span></div>
+      </div>
+      <div class="meta-grid" style="margin-top:14px;">
+        <div class="meta-item"><span class="meta-icon">⏱️</span><span class="meta-val">15 min</span><span class="meta-key">Prep</span></div>
+        <div class="meta-item"><span class="meta-icon">🍽️</span><span class="meta-val">1 serving</span><span class="meta-key">Yield</span></div>
+        <div class="meta-item"><span class="meta-icon">🌡️</span><span class="meta-val">Warm</span><span class="meta-key">Serve</span></div>
+        <div class="meta-item"><span class="meta-icon">⭐</span><span class="meta-val">Easy</span><span class="meta-key">Level</span></div>
+      </div>
+    </div>
+
+    <div class="recipe-right">
+      <h3>Ingredients</h3>
+      <ul class="ingredients-list">
+        <li>200g boneless chicken breast, grilled &amp; sliced</li>
+        <li>2 cups romaine lettuce, chopped</li>
+        <li>2 tbsp light Caesar dressing (store-bought or homemade)</li>
+        <li>2 tbsp grated Parmesan cheese</li>
+        <li>1 boiled egg, halved</li>
+        <li>½ cup cherry tomatoes</li>
+        <li>Lemon juice, black pepper to taste</li>
+      </ul>
+
+      <h3>Method</h3>
+      <ol class="method-steps">
+        <li>Season chicken breast with salt, pepper, garlic powder. Grill on medium-high heat 6–7 min per side until cooked through. Rest 3 min, then slice.</li>
+        <li>Wash and chop romaine lettuce into large pieces. Place in a wide salad bowl.</li>
+        <li>Add cherry tomatoes, halved boiled egg, and Parmesan cheese over the lettuce.</li>
+        <li>Drizzle Caesar dressing and a squeeze of lemon juice. Toss gently to coat.</li>
+        <li>Top with warm sliced grilled chicken. Season with black pepper. Serve immediately.</li>
+      </ol>
+
+      <div class="pro-tip">
+        <strong>💡 Pro Tip</strong>
+        Swap Parmesan for nutritional yeast to save calories while keeping the cheesy flavour. For extra crunch, add 1 tbsp toasted pumpkin seeds.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- RECIPE 02 -->
+<!-- ════════════════════════════════════════ -->
+<div class="page recipe-page">
+  <div class="recipe-hero">
+    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=900&q=80" alt="Tuna Nicoise Salad">
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-number">Recipe 02 / 10</div>
+      <h2 class="recipe-title">Tuna Niçoise<br>Power Bowl</h2>
+      <p class="recipe-tagline">A French-inspired lean protein masterpiece</p>
+      <div class="recipe-badges">
+        <span class="badge badge-green">36g Protein</span>
+        <span class="badge badge-gold">390 cal</span>
+        <span class="badge badge-rust">10 min prep</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-body">
+    <div>
+      <div class="nutrition-panel">
+        <div class="nutrition-title">📊 Nutrition Per Serving</div>
+        <div class="nut-row"><span class="nut-label">Calories</span><span class="nut-value">390 kcal</span></div>
+        <div class="nut-row"><span class="nut-label">Protein</span><span class="nut-value highlight">36 g</span></div>
+        <div class="nut-row"><span class="nut-label">Carbs</span><span class="nut-value">22 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fat</span><span class="nut-value">14 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fiber</span><span class="nut-value">5 g</span></div>
+        <div class="nut-row"><span class="nut-label">Omega-3</span><span class="nut-value">1.8 g</span></div>
+      </div>
+      <div class="meta-grid" style="margin-top:14px;">
+        <div class="meta-item"><span class="meta-icon">⏱️</span><span class="meta-val">10 min</span><span class="meta-key">Prep</span></div>
+        <div class="meta-item"><span class="meta-icon">🍽️</span><span class="meta-val">1 serving</span><span class="meta-key">Yield</span></div>
+        <div class="meta-item"><span class="meta-icon">🌡️</span><span class="meta-val">Room temp</span><span class="meta-key">Serve</span></div>
+        <div class="meta-item"><span class="meta-icon">⭐</span><span class="meta-val">Easy</span><span class="meta-key">Level</span></div>
+      </div>
+    </div>
+
+    <div class="recipe-right">
+      <h3>Ingredients</h3>
+      <ul class="ingredients-list">
+        <li>1 can (160g) tuna in water, drained</li>
+        <li>2 boiled eggs, halved</li>
+        <li>1 cup green beans, blanched</li>
+        <li>8–10 black olives</li>
+        <li>½ cup cherry tomatoes, halved</li>
+        <li>2 cups mixed greens or romaine</li>
+        <li>1 tsp Dijon mustard, 1 tbsp olive oil, lemon juice, salt, pepper (dressing)</li>
+      </ul>
+
+      <h3>Method</h3>
+      <ol class="method-steps">
+        <li>Boil green beans for 3–4 minutes until tender-crisp. Drain and rinse under cold water. Set aside.</li>
+        <li>Whisk together Dijon mustard, olive oil, lemon juice, salt, and pepper to make the dressing.</li>
+        <li>Arrange mixed greens as a base in a large bowl or plate.</li>
+        <li>Artfully place tuna, halved eggs, green beans, tomatoes, and olives over the greens.</li>
+        <li>Drizzle dressing generously over the salad. Season and serve fresh.</li>
+      </ol>
+
+      <div class="pro-tip">
+        <strong>💡 Pro Tip</strong>
+        Use tuna in water (not oil) to reduce calories. Add a small boiled potato for extra sustaining energy if you're having this post-workout.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- RECIPE 03 -->
+<!-- ════════════════════════════════════════ -->
+<div class="page recipe-page">
+  <div class="recipe-hero">
+    <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=900&q=80" alt="Salmon Quinoa Bowl">
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-number">Recipe 03 / 10</div>
+      <h2 class="recipe-title">Salmon &amp;<br>Quinoa Bowl</h2>
+      <p class="recipe-tagline">Omega-3 rich + complete amino acid protein powerhouse</p>
+      <div class="recipe-badges">
+        <span class="badge badge-green">42g Protein</span>
+        <span class="badge badge-gold">490 cal</span>
+        <span class="badge badge-rust">20 min prep</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-body">
+    <div>
+      <div class="nutrition-panel">
+        <div class="nutrition-title">📊 Nutrition Per Serving</div>
+        <div class="nut-row"><span class="nut-label">Calories</span><span class="nut-value">490 kcal</span></div>
+        <div class="nut-row"><span class="nut-label">Protein</span><span class="nut-value highlight">42 g</span></div>
+        <div class="nut-row"><span class="nut-label">Carbs</span><span class="nut-value">32 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fat</span><span class="nut-value">18 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fiber</span><span class="nut-value">6 g</span></div>
+        <div class="nut-row"><span class="nut-label">Omega-3</span><span class="nut-value">2.5 g</span></div>
+      </div>
+      <div class="meta-grid" style="margin-top:14px;">
+        <div class="meta-item"><span class="meta-icon">⏱️</span><span class="meta-val">20 min</span><span class="meta-key">Prep</span></div>
+        <div class="meta-item"><span class="meta-icon">🍽️</span><span class="meta-val">1 serving</span><span class="meta-key">Yield</span></div>
+        <div class="meta-item"><span class="meta-icon">🌡️</span><span class="meta-val">Warm</span><span class="meta-key">Serve</span></div>
+        <div class="meta-item"><span class="meta-icon">⭐</span><span class="meta-val">Medium</span><span class="meta-key">Level</span></div>
+      </div>
+    </div>
+
+    <div class="recipe-right">
+      <h3>Ingredients</h3>
+      <ul class="ingredients-list">
+        <li>150g salmon fillet, pan-seared or baked</li>
+        <li>½ cup cooked quinoa</li>
+        <li>2 cups arugula or baby spinach</li>
+        <li>½ avocado, sliced</li>
+        <li>½ cucumber, diced</li>
+        <li>2 tbsp lemon-tahini dressing (1 tbsp tahini + lemon + water + garlic)</li>
+        <li>Salt, pepper, paprika for seasoning</li>
+      </ul>
+
+      <h3>Method</h3>
+      <ol class="method-steps">
+        <li>Cook quinoa: rinse ¼ cup dry quinoa, boil in ½ cup water for 12–15 min until fluffy. Cool slightly.</li>
+        <li>Season salmon with salt, pepper, paprika. Pan-sear in a non-stick pan 3–4 min per side until golden.</li>
+        <li>Whisk tahini with lemon juice, a clove of minced garlic, and 2–3 tbsp water until smooth.</li>
+        <li>Build the bowl: layer arugula, quinoa, cucumber, and avocado slices.</li>
+        <li>Flake salmon on top. Drizzle tahini dressing. Garnish with sesame seeds if desired.</li>
+      </ol>
+
+      <div class="pro-tip">
+        <strong>💡 Pro Tip</strong>
+        Batch-cook quinoa for the week and store in the fridge. This makes assembly lightning-fast. Frozen salmon fillets work perfectly — thaw overnight in fridge.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- RECIPE 04 -->
+<!-- ════════════════════════════════════════ -->
+<div class="page recipe-page">
+  <div class="recipe-hero">
+    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&q=80" alt="Turkey Avocado Salad">
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-number">Recipe 04 / 10</div>
+      <h2 class="recipe-title">Turkey Avocado<br>Power Salad</h2>
+      <p class="recipe-tagline">Lean turkey with healthy monounsaturated fats for sustained energy</p>
+      <div class="recipe-badges">
+        <span class="badge badge-green">35g Protein</span>
+        <span class="badge badge-gold">410 cal</span>
+        <span class="badge badge-rust">12 min prep</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-body">
+    <div>
+      <div class="nutrition-panel">
+        <div class="nutrition-title">📊 Nutrition Per Serving</div>
+        <div class="nut-row"><span class="nut-label">Calories</span><span class="nut-value">410 kcal</span></div>
+        <div class="nut-row"><span class="nut-label">Protein</span><span class="nut-value highlight">35 g</span></div>
+        <div class="nut-row"><span class="nut-label">Carbs</span><span class="nut-value">14 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fat</span><span class="nut-value">22 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fiber</span><span class="nut-value">7 g</span></div>
+        <div class="nut-row"><span class="nut-label">Potassium</span><span class="nut-value">680 mg</span></div>
+      </div>
+      <div class="meta-grid" style="margin-top:14px;">
+        <div class="meta-item"><span class="meta-icon">⏱️</span><span class="meta-val">12 min</span><span class="meta-key">Prep</span></div>
+        <div class="meta-item"><span class="meta-icon">🍽️</span><span class="meta-val">1 serving</span><span class="meta-key">Yield</span></div>
+        <div class="meta-item"><span class="meta-icon">🌡️</span><span class="meta-val">Room temp</span><span class="meta-key">Serve</span></div>
+        <div class="meta-item"><span class="meta-icon">⭐</span><span class="meta-val">Easy</span><span class="meta-key">Level</span></div>
+      </div>
+    </div>
+
+    <div class="recipe-right">
+      <h3>Ingredients</h3>
+      <ul class="ingredients-list">
+        <li>180g lean turkey breast, sliced or shredded</li>
+        <li>1 ripe avocado, diced</li>
+        <li>2 cups romaine or mixed greens</li>
+        <li>½ cup corn kernels (fresh or thawed from frozen)</li>
+        <li>½ cup black beans, rinsed &amp; drained</li>
+        <li>¼ red onion, thinly sliced</li>
+        <li>2 tbsp lime juice, 1 tsp olive oil, cumin, salt</li>
+      </ul>
+
+      <h3>Method</h3>
+      <ol class="method-steps">
+        <li>Cook turkey breast if raw: season with cumin, garlic powder, salt. Pan-cook over medium heat 5–6 min per side. Slice or shred when cool enough to handle.</li>
+        <li>In a small bowl, whisk lime juice, olive oil, cumin, and a pinch of salt for the dressing.</li>
+        <li>Layer romaine, black beans, corn, and red onion in a large bowl.</li>
+        <li>Top with sliced turkey and diced avocado. Drizzle lime dressing over everything.</li>
+        <li>Toss lightly and serve immediately. Add jalapeño for a metabolism boost.</li>
+      </ol>
+
+      <div class="pro-tip">
+        <strong>💡 Pro Tip</strong>
+        Buy pre-cooked or rotisserie turkey breast to cut prep time to under 5 minutes. Lime juice prevents avocado from browning if meal-prepping ahead.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- RECIPE 05 -->
+<!-- ════════════════════════════════════════ -->
+<div class="page recipe-page">
+  <div class="recipe-hero">
+    <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=900&q=80" alt="Shrimp Edamame Asian Salad">
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-number">Recipe 05 / 10</div>
+      <h2 class="recipe-title">Shrimp &amp; Edamame<br>Asian Salad</h2>
+      <p class="recipe-tagline">Light, fresh, and packed with two complete protein sources</p>
+      <div class="recipe-badges">
+        <span class="badge badge-green">40g Protein</span>
+        <span class="badge badge-gold">360 cal</span>
+        <span class="badge badge-rust">15 min prep</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-body">
+    <div>
+      <div class="nutrition-panel">
+        <div class="nutrition-title">📊 Nutrition Per Serving</div>
+        <div class="nut-row"><span class="nut-label">Calories</span><span class="nut-value">360 kcal</span></div>
+        <div class="nut-row"><span class="nut-label">Protein</span><span class="nut-value highlight">40 g</span></div>
+        <div class="nut-row"><span class="nut-label">Carbs</span><span class="nut-value">20 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fat</span><span class="nut-value">10 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fiber</span><span class="nut-value">8 g</span></div>
+        <div class="nut-row"><span class="nut-label">Sodium</span><span class="nut-value">510 mg</span></div>
+      </div>
+      <div class="meta-grid" style="margin-top:14px;">
+        <div class="meta-item"><span class="meta-icon">⏱️</span><span class="meta-val">15 min</span><span class="meta-key">Prep</span></div>
+        <div class="meta-item"><span class="meta-icon">🍽️</span><span class="meta-val">1 serving</span><span class="meta-key">Yield</span></div>
+        <div class="meta-item"><span class="meta-icon">🌡️</span><span class="meta-val">Chilled</span><span class="meta-key">Serve</span></div>
+        <div class="meta-item"><span class="meta-icon">⭐</span><span class="meta-val">Easy</span><span class="meta-key">Level</span></div>
+      </div>
+    </div>
+
+    <div class="recipe-right">
+      <h3>Ingredients</h3>
+      <ul class="ingredients-list">
+        <li>150g cooked shrimp (fresh or frozen, thawed)</li>
+        <li>½ cup shelled edamame (thawed from frozen)</li>
+        <li>2 cups shredded purple cabbage</li>
+        <li>1 cup shredded carrots</li>
+        <li>2 spring onions, sliced</li>
+        <li>1 tbsp sesame oil, 2 tbsp low-sodium soy sauce, 1 tsp rice vinegar, 1 tsp grated ginger (dressing)</li>
+        <li>1 tsp sesame seeds, optional chilli flakes</li>
+      </ul>
+
+      <h3>Method</h3>
+      <ol class="method-steps">
+        <li>If using raw shrimp, sauté in a pan with a little sesame oil, salt, and ginger for 2–3 min until pink. Set aside.</li>
+        <li>Whisk sesame oil, soy sauce, rice vinegar, and grated ginger together to make the Asian dressing.</li>
+        <li>Combine cabbage, carrots, edamame, and spring onions in a large mixing bowl.</li>
+        <li>Pour dressing over vegetables and toss well until evenly coated.</li>
+        <li>Arrange shrimp on top. Sprinkle sesame seeds and chilli flakes. Serve chilled or at room temp.</li>
+      </ol>
+
+      <div class="pro-tip">
+        <strong>💡 Pro Tip</strong>
+        Frozen edamame and cooked frozen shrimp make this a 5-minute meal after defrosting. Cabbage holds up well, so this salad can be meal-prepped 24 hours in advance.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- RECIPE 06 -->
+<!-- ════════════════════════════════════════ -->
+<div class="page recipe-page">
+  <div class="recipe-hero">
+    <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=900&q=80" alt="Egg White Spinach Salad">
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-number">Recipe 06 / 10</div>
+      <h2 class="recipe-title">Egg White<br>Spinach Salad</h2>
+      <p class="recipe-tagline">Iron-rich spinach with pure protein egg whites for fat burning</p>
+      <div class="recipe-badges">
+        <span class="badge badge-green">28g Protein</span>
+        <span class="badge badge-gold">280 cal</span>
+        <span class="badge badge-rust">10 min prep</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-body">
+    <div>
+      <div class="nutrition-panel">
+        <div class="nutrition-title">📊 Nutrition Per Serving</div>
+        <div class="nut-row"><span class="nut-label">Calories</span><span class="nut-value">280 kcal</span></div>
+        <div class="nut-row"><span class="nut-label">Protein</span><span class="nut-value highlight">28 g</span></div>
+        <div class="nut-row"><span class="nut-label">Carbs</span><span class="nut-value">12 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fat</span><span class="nut-value">10 g</span></div>
+        <div class="nut-row"><span class="nut-label">Iron</span><span class="nut-value">4.2 mg</span></div>
+        <div class="nut-row"><span class="nut-label">Vitamin C</span><span class="nut-value">45 mg</span></div>
+      </div>
+      <div class="meta-grid" style="margin-top:14px;">
+        <div class="meta-item"><span class="meta-icon">⏱️</span><span class="meta-val">10 min</span><span class="meta-key">Prep</span></div>
+        <div class="meta-item"><span class="meta-icon">🍽️</span><span class="meta-val">1 serving</span><span class="meta-key">Yield</span></div>
+        <div class="meta-item"><span class="meta-icon">🌡️</span><span class="meta-val">Warm</span><span class="meta-key">Serve</span></div>
+        <div class="meta-item"><span class="meta-icon">⭐</span><span class="meta-val">Easy</span><span class="meta-key">Level</span></div>
+      </div>
+    </div>
+
+    <div class="recipe-right">
+      <h3>Ingredients</h3>
+      <ul class="ingredients-list">
+        <li>5 egg whites (or ¾ cup liquid egg whites)</li>
+        <li>3 cups fresh baby spinach</li>
+        <li>½ cup mushrooms, sliced</li>
+        <li>¼ cup sun-dried tomatoes</li>
+        <li>2 tbsp crumbled feta cheese</li>
+        <li>1 tsp olive oil, garlic, salt, pepper</li>
+        <li>1 tbsp balsamic vinegar glaze</li>
+      </ul>
+
+      <h3>Method</h3>
+      <ol class="method-steps">
+        <li>Heat olive oil in a non-stick pan. Sauté mushrooms with garlic and a pinch of salt for 3–4 minutes.</li>
+        <li>Pour egg whites into the pan. Scramble gently over low heat until just set. Remove from heat.</li>
+        <li>Place fresh spinach in a bowl. The warmth of the eggs will lightly wilt it — that's fine.</li>
+        <li>Add sun-dried tomatoes, crumbled feta, and the egg white and mushroom mixture.</li>
+        <li>Drizzle balsamic glaze. Season with black pepper. Serve warm.</li>
+      </ol>
+
+      <div class="pro-tip">
+        <strong>💡 Pro Tip</strong>
+        Buy carton egg whites to save time separating eggs. This salad is excellent as a breakfast salad for a metabolic boost first thing in the morning.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- RECIPE 07 -->
+<!-- ════════════════════════════════════════ -->
+<div class="page recipe-page">
+  <div class="recipe-hero">
+    <img src="https://images.unsplash.com/photo-1529059997568-3d847b1154f0?w=900&q=80" alt="Chickpea Feta Greek Salad">
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-number">Recipe 07 / 10</div>
+      <h2 class="recipe-title">Chickpea &amp; Feta<br>Greek Salad</h2>
+      <p class="recipe-tagline">Vegetarian muscle food with Mediterranean flavour</p>
+      <div class="recipe-badges">
+        <span class="badge badge-green">26g Protein</span>
+        <span class="badge badge-gold">380 cal</span>
+        <span class="badge badge-rust">8 min prep</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-body">
+    <div>
+      <div class="nutrition-panel">
+        <div class="nutrition-title">📊 Nutrition Per Serving</div>
+        <div class="nut-row"><span class="nut-label">Calories</span><span class="nut-value">380 kcal</span></div>
+        <div class="nut-row"><span class="nut-label">Protein</span><span class="nut-value highlight">26 g</span></div>
+        <div class="nut-row"><span class="nut-label">Carbs</span><span class="nut-value">38 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fat</span><span class="nut-value">14 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fiber</span><span class="nut-value">10 g</span></div>
+        <div class="nut-row"><span class="nut-label">Calcium</span><span class="nut-value">220 mg</span></div>
+      </div>
+      <div class="meta-grid" style="margin-top:14px;">
+        <div class="meta-item"><span class="meta-icon">⏱️</span><span class="meta-val">8 min</span><span class="meta-key">Prep</span></div>
+        <div class="meta-item"><span class="meta-icon">🍽️</span><span class="meta-val">1 serving</span><span class="meta-key">Yield</span></div>
+        <div class="meta-item"><span class="meta-icon">🌡️</span><span class="meta-val">Room temp</span><span class="meta-key">Serve</span></div>
+        <div class="meta-item"><span class="meta-icon">⭐</span><span class="meta-val">Very Easy</span><span class="meta-key">Level</span></div>
+      </div>
+    </div>
+
+    <div class="recipe-right">
+      <h3>Ingredients</h3>
+      <ul class="ingredients-list">
+        <li>1 can (240g) chickpeas, rinsed &amp; drained</li>
+        <li>80g feta cheese, crumbled</li>
+        <li>1 cup cherry tomatoes, halved</li>
+        <li>½ cucumber, diced</li>
+        <li>¼ red onion, thinly sliced</li>
+        <li>10 Kalamata olives, pitted</li>
+        <li>2 tbsp olive oil, 1 tbsp red wine vinegar, dried oregano, salt, pepper</li>
+      </ul>
+
+      <h3>Method</h3>
+      <ol class="method-steps">
+        <li>Rinse chickpeas well and pat dry with a kitchen towel. This helps them absorb dressing better.</li>
+        <li>Combine chickpeas, tomatoes, cucumber, red onion, and olives in a large salad bowl.</li>
+        <li>Whisk olive oil, red wine vinegar, a pinch of dried oregano, salt, and pepper together.</li>
+        <li>Pour dressing over salad and toss well. Let sit 3–5 minutes for flavors to develop.</li>
+        <li>Crumble feta cheese on top generously. Serve with a wedge of lemon.</li>
+      </ol>
+
+      <div class="pro-tip">
+        <strong>💡 Pro Tip</strong>
+        For extra protein, add 2 boiled eggs or a scoop of plain Greek yogurt as a side dressing. This salad stores beautifully for up to 2 days in the fridge.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- RECIPE 08 -->
+<!-- ════════════════════════════════════════ -->
+<div class="page recipe-page">
+  <div class="recipe-hero">
+    <img src="https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?w=900&q=80" alt="Lentil Roasted Veggie Salad">
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-number">Recipe 08 / 10</div>
+      <h2 class="recipe-title">Lentil &amp; Roasted<br>Veggie Salad</h2>
+      <p class="recipe-tagline">Plant-based protein powerhouse with warm roasted goodness</p>
+      <div class="recipe-badges">
+        <span class="badge badge-green">30g Protein</span>
+        <span class="badge badge-gold">420 cal</span>
+        <span class="badge badge-rust">25 min prep</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-body">
+    <div>
+      <div class="nutrition-panel">
+        <div class="nutrition-title">📊 Nutrition Per Serving</div>
+        <div class="nut-row"><span class="nut-label">Calories</span><span class="nut-value">420 kcal</span></div>
+        <div class="nut-row"><span class="nut-label">Protein</span><span class="nut-value highlight">30 g</span></div>
+        <div class="nut-row"><span class="nut-label">Carbs</span><span class="nut-value">48 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fat</span><span class="nut-value">8 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fiber</span><span class="nut-value">16 g</span></div>
+        <div class="nut-row"><span class="nut-label">Iron</span><span class="nut-value">6.6 mg</span></div>
+      </div>
+      <div class="meta-grid" style="margin-top:14px;">
+        <div class="meta-item"><span class="meta-icon">⏱️</span><span class="meta-val">25 min</span><span class="meta-key">Prep</span></div>
+        <div class="meta-item"><span class="meta-icon">🍽️</span><span class="meta-val">2 servings</span><span class="meta-key">Yield</span></div>
+        <div class="meta-item"><span class="meta-icon">🌡️</span><span class="meta-val">Warm/cool</span><span class="meta-key">Serve</span></div>
+        <div class="meta-item"><span class="meta-icon">⭐</span><span class="meta-val">Medium</span><span class="meta-key">Level</span></div>
+      </div>
+    </div>
+
+    <div class="recipe-right">
+      <h3>Ingredients</h3>
+      <ul class="ingredients-list">
+        <li>1 cup dry red lentils, cooked until tender (about 15 min)</li>
+        <li>1 cup bell peppers (mixed colours), diced</li>
+        <li>1 zucchini, sliced</li>
+        <li>1 cup cherry tomatoes</li>
+        <li>2 tbsp olive oil for roasting</li>
+        <li>2 cups arugula or rocket</li>
+        <li>Dressing: 1 tbsp tahini, lemon juice, garlic, cumin, salt</li>
+      </ul>
+
+      <h3>Method</h3>
+      <ol class="method-steps">
+        <li>Preheat oven to 200°C. Toss bell peppers, zucchini, and tomatoes with olive oil, salt, and cumin. Roast 20 minutes until edges are caramelised.</li>
+        <li>Meanwhile, cook lentils in boiling salted water for 15 min. Drain and cool slightly.</li>
+        <li>Blend or whisk tahini dressing: combine tahini, lemon juice, minced garlic, cumin, and 3 tbsp water.</li>
+        <li>Spread arugula on a large plate. Layer warm lentils and roasted veggies over the top.</li>
+        <li>Drizzle tahini dressing liberally. Season and serve warm or at room temperature.</li>
+      </ol>
+
+      <div class="pro-tip">
+        <strong>💡 Pro Tip</strong>
+        Cook a large batch of lentils and freeze in portions. Reheat from frozen. Red lentils cook fastest of all legumes — no soaking required.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- RECIPE 09 -->
+<!-- ════════════════════════════════════════ -->
+<div class="page recipe-page">
+  <div class="recipe-hero">
+    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80" alt="Buffalo Chicken Ranch Salad">
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-number">Recipe 09 / 10</div>
+      <h2 class="recipe-title">Buffalo Chicken<br>Ranch Salad</h2>
+      <p class="recipe-tagline">Spicy, satisfying, and the highest-protein recipe in this book</p>
+      <div class="recipe-badges">
+        <span class="badge badge-green">44g Protein</span>
+        <span class="badge badge-gold">450 cal</span>
+        <span class="badge badge-rust">18 min prep</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-body">
+    <div>
+      <div class="nutrition-panel">
+        <div class="nutrition-title">📊 Nutrition Per Serving</div>
+        <div class="nut-row"><span class="nut-label">Calories</span><span class="nut-value">450 kcal</span></div>
+        <div class="nut-row"><span class="nut-label">Protein</span><span class="nut-value highlight">44 g</span></div>
+        <div class="nut-row"><span class="nut-label">Carbs</span><span class="nut-value">16 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fat</span><span class="nut-value">22 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fiber</span><span class="nut-value">4 g</span></div>
+        <div class="nut-row"><span class="nut-label">Capsaicin</span><span class="nut-value">⚡ Fat Burn</span></div>
+      </div>
+      <div class="meta-grid" style="margin-top:14px;">
+        <div class="meta-item"><span class="meta-icon">⏱️</span><span class="meta-val">18 min</span><span class="meta-key">Prep</span></div>
+        <div class="meta-item"><span class="meta-icon">🍽️</span><span class="meta-val">1 serving</span><span class="meta-key">Yield</span></div>
+        <div class="meta-item"><span class="meta-icon">🌡️</span><span class="meta-val">Warm</span><span class="meta-key">Serve</span></div>
+        <div class="meta-item"><span class="meta-icon">⭐</span><span class="meta-val">Easy</span><span class="meta-key">Level</span></div>
+      </div>
+    </div>
+
+    <div class="recipe-right">
+      <h3>Ingredients</h3>
+      <ul class="ingredients-list">
+        <li>200g chicken breast, grilled &amp; shredded</li>
+        <li>3 tbsp hot sauce (Frank's or Sriracha)</li>
+        <li>2 cups romaine, chopped</li>
+        <li>½ cup celery, sliced</li>
+        <li>¼ cup shredded carrots</li>
+        <li>2 tbsp light Greek yogurt ranch (mix Greek yogurt, garlic powder, dill, onion powder)</li>
+        <li>30g crumbled blue cheese or reduced-fat cheddar</li>
+      </ul>
+
+      <h3>Method</h3>
+      <ol class="method-steps">
+        <li>Grill or bake chicken breast until fully cooked. Let rest 5 min, then shred with two forks.</li>
+        <li>Toss shredded chicken with hot sauce in a bowl until evenly coated. Heat briefly in pan if desired.</li>
+        <li>Make Greek yogurt ranch: mix 3 tbsp plain Greek yogurt with garlic powder, dried dill, onion powder, salt, and a splash of lemon juice.</li>
+        <li>Build salad: romaine base, then celery, carrots, and buffalo chicken on top.</li>
+        <li>Drizzle ranch dressing. Crumble cheese on top. Serve immediately while chicken is warm.</li>
+      </ol>
+
+      <div class="pro-tip">
+        <strong>💡 Pro Tip</strong>
+        Capsaicin in hot sauce actively boosts metabolism. Use Greek yogurt ranch instead of traditional ranch to save 120 calories while keeping the creaminess.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- RECIPE 10 -->
+<!-- ════════════════════════════════════════ -->
+<div class="page recipe-page">
+  <div class="recipe-hero">
+    <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=900&q=80" alt="Cottage Cheese Berry Salad">
+    <div class="recipe-hero-overlay"></div>
+    <div class="recipe-hero-content">
+      <div class="recipe-number">Recipe 10 / 10</div>
+      <h2 class="recipe-title">Cottage Cheese<br>Berry Power Salad</h2>
+      <p class="recipe-tagline">Antioxidant-rich berries with slow-digesting casein protein</p>
+      <div class="recipe-badges">
+        <span class="badge badge-green">32g Protein</span>
+        <span class="badge badge-gold">310 cal</span>
+        <span class="badge badge-rust">5 min prep</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-body">
+    <div>
+      <div class="nutrition-panel">
+        <div class="nutrition-title">📊 Nutrition Per Serving</div>
+        <div class="nut-row"><span class="nut-label">Calories</span><span class="nut-value">310 kcal</span></div>
+        <div class="nut-row"><span class="nut-label">Protein</span><span class="nut-value highlight">32 g</span></div>
+        <div class="nut-row"><span class="nut-label">Carbs</span><span class="nut-value">28 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fat</span><span class="nut-value">6 g</span></div>
+        <div class="nut-row"><span class="nut-label">Fiber</span><span class="nut-value">5 g</span></div>
+        <div class="nut-row"><span class="nut-label">Antioxidants</span><span class="nut-value">⭐⭐⭐⭐</span></div>
+      </div>
+      <div class="meta-grid" style="margin-top:14px;">
+        <div class="meta-item"><span class="meta-icon">⏱️</span><span class="meta-val">5 min</span><span class="meta-key">Prep</span></div>
+        <div class="meta-item"><span class="meta-icon">🍽️</span><span class="meta-val">1 serving</span><span class="meta-key">Yield</span></div>
+        <div class="meta-item"><span class="meta-icon">🌡️</span><span class="meta-val">Chilled</span><span class="meta-key">Serve</span></div>
+        <div class="meta-item"><span class="meta-icon">⭐</span><span class="meta-val">Very Easy</span><span class="meta-key">Level</span></div>
+      </div>
+    </div>
+
+    <div class="recipe-right">
+      <h3>Ingredients</h3>
+      <ul class="ingredients-list">
+        <li>1 cup (225g) low-fat cottage cheese</li>
+        <li>½ cup fresh strawberries, sliced</li>
+        <li>½ cup fresh blueberries</li>
+        <li>2 cups baby spinach or mixed greens</li>
+        <li>¼ cup walnuts or almonds, roughly chopped</li>
+        <li>1 tbsp honey or zero-calorie sweetener</li>
+        <li>1 tsp apple cider vinegar, pinch of cinnamon</li>
+      </ul>
+
+      <h3>Method</h3>
+      <ol class="method-steps">
+        <li>Wash all berries and pat dry. Slice strawberries into halves or quarters depending on size.</li>
+        <li>Make the simple dressing: whisk honey (or sweetener), apple cider vinegar, and a pinch of cinnamon.</li>
+        <li>Place spinach/mixed greens as the base on a plate or in a bowl.</li>
+        <li>Spoon cottage cheese in the centre. Arrange berries around and over the cottage cheese.</li>
+        <li>Scatter chopped walnuts over everything. Drizzle honey dressing. Serve immediately chilled.</li>
+      </ol>
+
+      <div class="pro-tip">
+        <strong>💡 Pro Tip</strong>
+        This is the perfect pre-bed salad. Cottage cheese contains casein protein which digests slowly overnight, supporting muscle repair and recovery while you sleep.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- BACK COVER -->
+<!-- ════════════════════════════════════════ -->
+<div class="page" id="backcover">
+  <div class="bc-border"></div>
+  <div class="bc-logo">🌿</div>
+  <h2 class="bc-title">Your Journey to a Stronger,<br>Leaner You Starts Here.</h2>
+  <div class="bc-divider"></div>
+  <p class="bc-body">
+    These 10 recipes are not a diet — they are a lifestyle. High protein, whole foods, and simple preparation are the three pillars that make sustainable fat loss possible. Consistency with these meals, combined with regular movement, will transform your body composition over time.
+  </p>
+  <p class="bc-body" style="font-style:italic;font-size:14px;color:rgba(255,255,255,0.35);">
+    "You don't need to eat less. You need to eat right."
+  </p>
+  <div class="bc-divider"></div>
+  <div class="bc-author">Created by Nida Kashif</div>
+  <div class="bc-author-sub">All recipes are authentic, tested, and made with easily available whole-food ingredients.</div>
+  <p class="bc-disclaimer">
+    All nutritional values are approximate and may vary based on specific brands and preparation methods.
+    Consult a healthcare professional before starting any new dietary program. © Nida Kashif. All Rights Reserved.
+  </p>
+</div>
+
+</body>
+</html>
