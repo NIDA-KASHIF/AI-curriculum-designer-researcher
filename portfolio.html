@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cover Letter – Nida Kashif</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #b8965a;
+    --gold-light: #d4b483;
+    --dark: #1a1410;
+    --warm: #2c2016;
+    --cream: #faf6ef;
+    --text: #3a2e1e;
+    --muted: #8a7460;
+  }
+
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .page {
+    max-width: 780px;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #e8dece;
+    box-shadow: 0 8px 60px rgba(60,30,10,0.10), 0 2px 8px rgba(60,30,10,0.06);
+    animation: fadeUp 0.9s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── Header ─── */
+  .header {
+    background: var(--dark);
+    padding: 52px 60px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 28px,
+      rgba(184,150,90,0.04) 28px,
+      rgba(184,150,90,0.04) 29px
+    );
+  }
+  .header-inner { position: relative; z-index: 1; }
+
+  .gold-rule {
+    width: 44px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+  }
+  .name span { color: var(--gold-light); font-style: italic; }
+
+  .tagline {
+    margin-top: 10px;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .badges {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .badge {
+    background: rgba(184,150,90,0.15);
+    border: 1px solid rgba(184,150,90,0.35);
+    color: var(--gold-light);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 13px;
+    border-radius: 2px;
+  }
+
+  /* ─── Body ─── */
+  .body {
+    padding: 52px 60px;
+  }
+
+  .date-line {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 32px;
+  }
+
+  .salutation {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--warm);
+    margin-bottom: 28px;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--text);
+    margin-bottom: 22px;
+  }
+
+  .highlight {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ─── Skills Grid ─── */
+  .skills-section {
+    margin: 32px 0;
+    border-top: 1px solid #e8dece;
+    border-bottom: 1px solid #e8dece;
+    padding: 28px 0;
+  }
+  .skills-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 30px;
+  }
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.87rem;
+    color: var(--warm);
+  }
+  .skill-item::before {
+    content: '';
+    width: 5px; height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ─── Closing ─── */
+  .closing {
+    margin-top: 36px;
+  }
+  .closing p { margin-bottom: 8px; }
+
+  .sign-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--dark);
+    margin-top: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  .sign-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+
+  /* ─── Footer ─── */
+  .footer {
+    background: #f8f3eb;
+    border-top: 1px solid #e8dece;
+    padding: 20px 60px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .footer-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
+  .footer-text { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; }
+
+  @media (max-width: 560px) {
+    .header, .body, .footer { padding-left: 28px; padding-right: 28px; }
+    .name { font-size: 2.1rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-inner">
+      <div class="gold-rule"></div>
+      <div class="name">Nida <span>Kashif</span></div>
+      <div class="tagline">Graphic Designer &nbsp;·&nbsp; Islamic Scholar &nbsp;·&nbsp; AI Curriculum Designer</div>
+      <div class="badges">
+        <span class="badge">3+ Yrs Design Experience</span>
+        <span class="badge">Dars-e-Nizami Graduate</span>
+        <span class="badge">Computer Science BSc</span>
+        <span class="badge">Tajweed Certified</span>
+        <span class="badge">AI Curriculum</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+    <div class="date-line">April 22, 2026</div>
+
+    <div class="salutation">Dear Hiring Manager,</div>
+
+    <p>
+      I am writing to express my sincere interest in joining your team as a <span class="highlight">Graphic Designer &amp; Creative Content Specialist</span>. I am a multidisciplinary professional whose rare combination of classical scholarship, technology expertise, and creative design skills allows me to deliver work that is not only visually compelling — but deeply meaningful and culturally informed.
+    </p>
+
+    <p>
+      With <span class="highlight">over three years of hands-on graphic design experience</span>, I have successfully completed branding projects, visual identities, and creative campaigns for multiple clients. My design philosophy is simple: every pixel should serve a purpose, and every brand story deserves to be told with clarity and beauty. My background in <span class="highlight">Computer Science (BSc)</span> gives me a strong technical foundation that allows me to work efficiently with design tools, digital platforms, and emerging technologies — bridging the gap between creativity and precision.
+    </p>
+
+    <p>
+      What truly sets me apart is the breadth of my academic and professional journey. I hold a prestigious <span class="highlight">six-year Dars-e-Nizami degree</span> — a rigorous classical Islamic studies program — along with a <span class="highlight">Tajweed certification</span>. Currently, I am pursuing advanced specialization in <span class="highlight">Tafseer (Quranic Exegesis)</span>. This depth of scholarship gives me an exceptional ability to create educational content, Islamic branding, and culturally sensitive materials with authentic understanding and scholarly accuracy — a skill few designers in the online marketplace can offer.
+    </p>
+
+    <p>
+      Recently, I expanded my expertise into <span class="highlight">AI Curriculum Design</span>, developing structured, learner-centered educational programs that integrate modern pedagogical techniques with technology. I am also actively learning <span class="highlight">Arabic (Lughat al-Arabiyya)</span>, which is strengthening my ability to work across Arabic-language content and a broader global audience.
+    </p>
+
+    <!-- SKILLS BLOCK -->
+    <div class="skills-section">
+      <div class="skills-label">Core Competencies</div>
+      <div class="skills-grid">
+        <div class="skill-item">Graphic Design &amp; Branding</div>
+        <div class="skill-item">AI Curriculum Development</div>
+        <div class="skill-item">Islamic &amp; Educational Content</div>
+        <div class="skill-item">Computer Science Foundations</div>
+        <div class="skill-item">Tajweed &amp; Quranic Sciences</div>
+        <div class="skill-item">Arabic Language (In Progress)</div>
+        <div class="skill-item">Visual Identity &amp; Logo Design</div>
+        <div class="skill-item">Multilingual Content (Urdu, Arabic, English)</div>
+      </div>
+    </div>
+
+    <p>
+      I am highly adaptable to remote and online work environments, self-disciplined, and deeply committed to delivering results that exceed expectations. Whether it is a brand that needs a powerful visual identity, educational content that needs structure and creativity, or Islamic materials that demand scholarly integrity — I bring all of these strengths to the table with genuine passion.
+    </p>
+
+    <p>
+      I would be honored to bring my unique skill set to your organization and contribute to meaningful projects that make a real difference. I am available for a conversation at your convenience and look forward to the opportunity to demonstrate what I can offer.
+    </p>
+
+    <div class="closing">
+      <p>Warm regards,</p>
+      <div class="sign-name">Nida Kashif</div>
+      <div class="sign-title">Graphic Designer &nbsp;·&nbsp; Islamic Scholar &nbsp;·&nbsp; AI Curriculum Designer</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-dot"></div>
+    <div class="footer-text">Available for Online &amp; Remote Positions &nbsp;|&nbsp; Open to Freelance &amp; Full-Time Opportunities</div>
+  </div>
+
+</div>
+</body>
+</html>
