@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson Plan — Week 1, Session 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --paper: #ffffff;
+    --ink: #1a1612;
+    --ink2: #3d3830;
+    --muted: #8c8070;
+    --border: #e4ddd3;
+    --teal: #0f7b6c;
+    --teal-light: #e6f5f2;
+    --teal-mid: #b2dfd9;
+    --orange: #e05c2a;
+    --orange-light: #fef0ea;
+    --purple: #5b4ecf;
+    --purple-light: #eeedfb;
+    --gold: #c4862b;
+    --gold-light: #fdf5e7;
+    --red: #d63b3b;
+    --red-light: #fdeaea;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Figtree', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--ink);
+    color: white;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .topbar-right {
+    display: flex;
+    gap: 24px;
+    opacity: 0.6;
+  }
+
+  /* ── HERO HEADER ── */
+  .hero {
+    background: var(--paper);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '01';
+    position: absolute;
+    right: 32px;
+    top: 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: 160px;
+    font-weight: 900;
+    color: var(--ink);
+    opacity: 0.035;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .breadcrumb {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .breadcrumb span { color: var(--muted); }
+
+  h1.lesson-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 10px;
+    max-width: 640px;
+  }
+
+  h1.lesson-title em {
+    font-style: normal;
+    color: var(--teal);
+  }
+
+  .lesson-sub {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    font-weight: 300;
+    max-width: 560px;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink2);
+  }
+
+  .meta-chip .icon { font-size: 14px; }
+
+  /* ── OBJECTIVES STRIP ── */
+  .objectives-strip {
+    background: var(--teal);
+    color: white;
+    padding: 24px 40px;
+  }
+
+  .objectives-strip h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 14px;
+  }
+
+  .obj-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    list-style: none;
+  }
+
+  .obj-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .obj-list li::before {
+    content: '→';
+    opacity: 0.6;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  @media (max-width: 800px) {
+    .main { grid-template-columns: 1fr; }
+    .sidebar { border-left: none; border-top: 1px solid var(--border); }
+    .hero, .objectives-strip, .main-content, .sidebar { padding-left: 20px; padding-right: 20px; }
+  }
+
+  .main-content {
+    padding: 40px;
+    border-right: 1px solid var(--border);
+  }
+
+  .sidebar {
+    padding: 32px 28px;
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  /* ── HOOK SECTION ── */
+  .hook-box {
+    background: var(--orange-light);
+    border: 1.5px solid #f0c4b0;
+    border-left: 5px solid var(--orange);
+    border-radius: 12px;
+    padding: 24px 26px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+
+  .hook-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--orange);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+
+  .hook-time {
+    float: right;
+    background: var(--orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-left: 12px;
+  }
+
+  .hook-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .hook-box p {
+    font-size: 13.5px;
+    color: var(--ink2);
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+
+  .hook-box p:last-child { margin-bottom: 0; }
+
+  .hook-script {
+    background: white;
+    border: 1px solid #f0c4b0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 14px;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ink2);
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .hook-script::before {
+    content: '"';
+    font-size: 48px;
+    font-family: 'Playfair Display', serif;
+    color: var(--orange);
+    opacity: 0.3;
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    line-height: 1;
+  }
+
+  .hook-script p { padding-left: 8px; }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; margin-bottom: 36px; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 38px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .tl-item {
+    display: grid;
+    grid-template-columns: 76px 1fr;
+    gap: 0 20px;
+    margin-bottom: 4px;
+    position: relative;
+  }
+
+  .tl-time-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 16px;
+  }
+
+  .tl-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 3px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--border);
+    background: white;
+    z-index: 1;
+    flex-shrink: 0;
+    margin-bottom: 4px;
+  }
+
+  .tl-min {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .tl-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    transition: box-shadow 0.2s;
+  }
+
+  .tl-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+
+  .tl-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tl-phase {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .phase-intro { background: #eeedfb; color: var(--purple); }
+  .phase-teach { background: var(--teal-light); color: var(--teal); }
+  .phase-demo  { background: var(--gold-light); color: var(--gold); }
+  .phase-work  { background: var(--orange-light); color: var(--orange); }
+  .phase-wrap  { background: var(--red-light); color: var(--red); }
+
+  .tl-duration {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    background: var(--cream);
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+  }
+
+  .tl-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .tl-body {
+    font-size: 13px;
+    color: var(--ink2);
+    line-height: 1.7;
+  }
+
+  .tl-body p { margin-bottom: 6px; }
+  .tl-body p:last-child { margin-bottom: 0; }
+
+  .teacher-tip {
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: #0d6b5d;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .teacher-tip .tip-icon { flex-shrink: 0; font-size: 14px; }
+
+  .tl-steps {
+    list-style: none;
+    counter-reset: steps;
+    margin-top: 8px;
+  }
+
+  .tl-steps li {
+    counter-increment: steps;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--ink2);
+  }
+
+  .tl-steps li::before {
+    content: counter(steps);
+    min-width: 22px;
+    height: 22px;
+    background: var(--ink);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── WORKSHOP SECTION ── */
+  .workshop-box {
+    background: linear-gradient(135deg, #1a1612 0%, #2d2820 100%);
+    border-radius: 16px;
+    padding: 28px 28px;
+    margin-bottom: 36px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .workshop-box::before {
+    content: '⚡';
+    position: absolute;
+    right: 20px;
+    bottom: -10px;
+    font-size: 100px;
+    opacity: 0.07;
+  }
+
+  .workshop-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fbbf5a;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+  .workshop-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .workshop-subtitle {
+    font-size: 13px;
+    opacity: 0.55;
+    margin-bottom: 22px;
+  }
+
+  .workshop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 560px) {
+    .workshop-grid { grid-template-columns: 1fr; }
+  }
+
+  .ws-block {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 16px;
+  }
+
+  .ws-block-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fbbf5a;
+    margin-bottom: 8px;
+  }
+
+  .ws-block p, .ws-block li {
+    font-size: 12.5px;
+    opacity: 0.75;
+    line-height: 1.6;
+  }
+
+  .ws-block ul { list-style: none; }
+  .ws-block ul li::before {
+    content: '—  ';
+    opacity: 0.4;
+    font-size: 11px;
+  }
+
+  .ws-steps {
+    list-style: none;
+    counter-reset: ws;
+  }
+
+  .ws-steps li {
+    counter-increment: ws;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 13px;
+    opacity: 0.85;
+    line-height: 1.6;
+  }
+
+  .ws-steps li:last-child { border-bottom: none; }
+
+  .ws-steps li::before {
+    content: counter(ws);
+    min-width: 24px;
+    height: 24px;
+    background: rgba(251,191,90,0.15);
+    border: 1px solid rgba(251,191,90,0.3);
+    color: #fbbf5a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .ws-step-time {
+    font-size: 10px;
+    font-weight: 700;
+    color: #fbbf5a;
+    opacity: 0.8;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+
+  .ws-step-body { flex: 1; }
+  .ws-step-title { font-weight: 600; margin-bottom: 3px; }
+
+  /* ── HOMEWORK ── */
+  .hw-section { margin-bottom: 36px; }
+
+  .hw-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .hw-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+    align-items: start;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .hw-card:hover {
+    transform: translateX(4px);
+    box-shadow: -4px 0 0 var(--teal), 0 4px 16px rgba(0,0,0,0.05);
+  }
+
+  .hw-num {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .hw-num-1 { background: var(--teal-light); color: var(--teal); }
+  .hw-num-2 { background: var(--purple-light); color: var(--purple); }
+  .hw-num-3 { background: var(--gold-light); color: var(--gold); }
+
+  .hw-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .hw-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .hw-desc {
+    font-size: 13px;
+    color: var(--ink2);
+    line-height: 1.65;
+  }
+
+  .hw-deliverable {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--teal);
+    background: var(--teal-light);
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar-block {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .sb-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .timeline-mini {
+    list-style: none;
+  }
+
+  .tl-mini-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+
+  .tl-mini-item:last-child { border-bottom: none; }
+
+  .tl-mini-time {
+    font-weight: 700;
+    color: var(--muted);
+    min-width: 40px;
+    font-size: 11px;
+  }
+
+  .tl-mini-name {
+    color: var(--ink2);
+    flex: 1;
+  }
+
+  .tl-mini-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .materials-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .materials-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--ink2);
+  }
+
+  .materials-list li .mat-icon {
+    font-size: 16px;
+    width: 28px;
+    text-align: center;
+  }
+
+  .diff-block {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .diff-row {
+    padding: 11px 14px;
+    font-size: 12.5px;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink2);
+    line-height: 1.5;
+  }
+
+  .diff-row:last-child { border-bottom: none; }
+
+  .diff-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .support { color: var(--teal); }
+  .extend  { color: var(--purple); }
+
+  .vocab-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .vocab-item {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+
+  .vocab-term {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .vocab-def {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ink);
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer-left { opacity: 0.5; }
+
+  .footer-badges {
+    display: flex;
+    gap: 8px;
+  }
+
+  .footer-badge {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* Animations */
+  .hook-box, .tl-card, .hw-card { animation: fadeIn 0.4s ease both; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .tl-card:nth-child(2) { animation-delay: 0.05s; }
+  .tl-card:nth-child(3) { animation-delay: 0.10s; }
+  .tl-card:nth-child(4) { animation-delay: 0.15s; }
+  .tl-card:nth-child(5) { animation-delay: 0.20s; }
+  .hw-card:nth-child(2) { animation-delay: 0.08s; }
+  .hw-card:nth-child(3) { animation-delay: 0.16s; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div>AI & Digital Literacy · O & A Level · Ages 14–19</div>
+  <div class="topbar-right">
+    <span>Week 1</span>
+    <span>Session 1 of 8</span>
+    <span>60 Minutes</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="breadcrumb">
+    Week 1 <span>›</span> Session 1 <span>›</span> Detailed Lesson Plan
+  </div>
+  <h1 class="lesson-title">Navigating Your <em>Digital Workspace</em></h1>
+  <p class="lesson-sub">Students explore file management, Google Drive, and the habits that make digital work effortless — the essential foundation for everything AI to come.</p>
+  <div class="meta-row">
+    <div class="meta-chip"><span class="icon">⏱️</span> 60 Minutes Total</div>
+    <div class="meta-chip"><span class="icon">👥</span> Individual + Pairs</div>
+    <div class="meta-chip"><span class="icon">💻</span> Laptop / Tablet Required</div>
+    <div class="meta-chip"><span class="icon">🌐</span> Browser-Based Only</div>
+    <div class="meta-chip"><span class="icon">📁</span> Google Drive</div>
+  </div>
+</div>
+
+<!-- OBJECTIVES STRIP -->
+<div class="objectives-strip">
+  <h2>By the end of this lesson, students will be able to…</h2>
+  <ul class="obj-list">
+    <li>Navigate Google Drive with confidence and explain why file organisation matters</li>
+    <li>Create a logical folder hierarchy using a consistent naming convention</li>
+    <li>Use at least 5 keyboard shortcuts to work faster</li>
+    <li>Share a file with correct permissions (view / comment / edit)</li>
+    <li>Articulate what "digital hygiene" means in their own words</li>
+  </ul>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- ── LEFT COLUMN ── -->
+  <div class="main-content">
+
+    <!-- HOOK -->
+    <div class="section-label">Part 1</div>
+    <div class="section-title">🪝 The Hook — Grab Their Attention</div>
+
+    <div class="hook-box">
+      <div class="hook-tag">🔥 Hook · Opening Activity</div>
+      <span class="hook-time">5 min</span>
+      <div class="hook-headline">"The Messy Desktop Challenge"</div>
+
+      <p>Before any slides go up, project this image on the board: a computer desktop completely buried under hundreds of unnamed files — "Document1," "final_FINAL_v3," screenshots everywhere. Ask the class a dead-simple question:</p>
+
+      <div class="hook-script">
+        <p><strong>Teacher says:</strong> "Raise your hand if your desktop or Downloads folder looks even a little bit like this right now..." <em>(pause for laughs)</em> "Now — if I asked you to find a specific file in 10 seconds, could you do it?" Let students respond. "Today we fix that — and we build habits that will make every class this term faster and less stressful."</p>
+      </div>
+
+      <p style="margin-top:14px">This works because it's <strong>instantly relatable</strong>. Every student has experienced file chaos. You're not teaching abstract theory — you're solving a real pain they already feel.</p>
+
+      <div class="teacher-tip">
+        <span class="tip-icon">💡</span>
+        <span><strong>Teacher Tip:</strong> If possible, display an actual messy student desktop (ask a volunteer before class, blur their name). Real examples land harder than stock images. Alternatively, create a fake one yourself in 2 minutes.</span>
+      </div>
+    </div>
+
+    <!-- TEACHING GUIDE -->
+    <div class="section-label">Part 2</div>
+    <div class="section-title">📖 Step-by-Step Teaching Guide</div>
+
+    <div class="timeline">
+
+      <!-- Step 1 -->
+      <div class="tl-item">
+        <div class="tl-time-col">
+          <div class="tl-dot" style="background: var(--purple); box-shadow: 0 0 0 3px #eeedfb;"></div>
+          <div class="tl-min">Min<br>0–5</div>
+        </div>
+        <div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase phase-intro">🎬 Hook &amp; Intro</span>
+              <span class="tl-duration">5 min</span>
+            </div>
+            <div class="tl-title">The Messy Desktop Challenge</div>
+            <div class="tl-body">
+              <p>Run the hook as described above. After the opening question, introduce yourself and the course in one minute. Keep energy high — this first impression sets the tone for all 8 sessions.</p>
+              <div class="teacher-tip">
+                <span class="tip-icon">🎯</span>
+                <span>Ask a quick show-of-hands poll: "Who has more than 50 files on their desktop?" — it creates instant community and sets a low-stakes, fun atmosphere.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="tl-item">
+        <div class="tl-time-col">
+          <div class="tl-dot" style="background: var(--teal); box-shadow: 0 0 0 3px var(--teal-light);"></div>
+          <div class="tl-min">Min<br>5–18</div>
+        </div>
+        <div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase phase-teach">🧠 Direct Teaching</span>
+              <span class="tl-duration">13 min</span>
+            </div>
+            <div class="tl-title">The Three Pillars of Digital Organisation</div>
+            <div class="tl-body">
+              <p>Walk students through the three core ideas on your slides. Keep each pillar to 3–4 minutes max with a live demonstration after each one.</p>
+              <ul class="tl-steps">
+                <li><div><strong>Pillar 1 — Naming Conventions:</strong> Show two folder names: <code>Biology/Term3/Homework/Essay_Draft_v2.docx</code> vs. <code>stuff/doc1.docx</code>. Ask: "Which would you trust at 11pm before an exam?" Teach: use dates (YYYY-MM-DD), no spaces, version numbers.</div></li>
+                <li><div><strong>Pillar 2 — Folder Hierarchy:</strong> Draw a simple tree on the board: Subject → Term → Type (Notes / Homework / Projects). Explain that depth beyond 3 levels becomes a maze. Show Google Drive live.</div></li>
+                <li><div><strong>Pillar 3 — Sharing Permissions:</strong> Explain View / Comment / Edit. Use a story: "Imagine giving someone 'Edit' access to your coursework by mistake..." Demonstrate changing permissions on a dummy Google Doc.</div></li>
+              </ul>
+              <div class="teacher-tip">
+                <span class="tip-icon">⚡</span>
+                <span><strong>Key question to ask mid-lesson:</strong> "Why might a naming convention matter if you're working on a group project?" — lets students connect the dots independently.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="tl-item">
+        <div class="tl-time-col">
+          <div class="tl-dot" style="background: var(--gold); box-shadow: 0 0 0 3px var(--gold-light);"></div>
+          <div class="tl-min">Min<br>18–28</div>
+        </div>
+        <div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase phase-demo">💻 Live Demo</span>
+              <span class="tl-duration">10 min</span>
+            </div>
+            <div class="tl-title">Keyboard Shortcuts — Work at the Speed of Thought</div>
+            <div class="tl-body">
+              <p>This is a memorable, high-energy segment. Teach students 8 essential shortcuts with live performance — you type, they watch the magic happen on the projected screen.</p>
+              <ul class="tl-steps">
+                <li><strong>Ctrl+C / Ctrl+V</strong> — Copy &amp; Paste (the classic duo)</li>
+                <li><strong>Ctrl+Z</strong> — Undo ("The greatest invention in computing")</li>
+                <li><strong>Ctrl+F</strong> — Find in any document or page</li>
+                <li><strong>Ctrl+Shift+N</strong> — New folder (in Drive / File Explorer)</li>
+                <li><strong>Alt+Tab</strong> — Switch between open windows instantly</li>
+                <li><strong>Ctrl+Shift+T</strong> — Reopen a closed browser tab</li>
+                <li><strong>Windows+D / Cmd+M</strong> — Show desktop</li>
+                <li><strong>Ctrl+S</strong> — Save (remind: Google Docs auto-saves, but habit matters)</li>
+              </ul>
+              <div class="teacher-tip">
+                <span class="tip-icon">🏆</span>
+                <span><strong>Speed Round:</strong> Call out a task ("Find the word 'portfolio' in this document!") and race the students using the shortcut. First one to do it wins a point. Makes it unforgettable.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 — Workshop -->
+      <div class="tl-item">
+        <div class="tl-time-col">
+          <div class="tl-dot" style="background: var(--orange); box-shadow: 0 0 0 3px var(--orange-light);"></div>
+          <div class="tl-min">Min<br>28–43</div>
+        </div>
+        <div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase phase-work">⚡ Practical Workshop</span>
+              <span class="tl-duration">15 min</span>
+            </div>
+            <div class="tl-title">Digital Desk Makeover — Full Activity Below ↓</div>
+            <div class="tl-body">
+              <p>Students independently complete the 15-minute hands-on workshop. See the detailed breakdown in the <strong>Workshop</strong> section below. Your role during this time is to circulate, ask guiding questions, and spot creative naming conventions worth sharing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="tl-item">
+        <div class="tl-time-col">
+          <div class="tl-dot" style="background: var(--teal); box-shadow: 0 0 0 3px var(--teal-light);"></div>
+          <div class="tl-min">Min<br>43–54</div>
+        </div>
+        <div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase phase-teach">🔍 Share &amp; Discuss</span>
+              <span class="tl-duration">11 min</span>
+            </div>
+            <div class="tl-title">Gallery Walk + Class Debrief</div>
+            <div class="tl-body">
+              <p>Ask 2–3 volunteers to share their Google Drive structure on the projected screen. Frame the debrief around three discussion questions:</p>
+              <ul class="tl-steps">
+                <li><em>"What naming convention did you choose, and why?"</em> — surfaces different valid approaches, shows there's no single right answer.</li>
+                <li><em>"What would happen if a classmate needed to access your files? Could they navigate it?"</em> — introduces the idea of designing for others, a key professional skill.</li>
+                <li><em>"What's one thing you'd do differently next time?"</em> — builds metacognitive reflection habits early.</li>
+              </ul>
+              <div class="teacher-tip">
+                <span class="tip-icon">💬</span>
+                <span>Celebrate creative solutions. If a student invents an unexpected but logical system, highlight it positively. This encourages original thinking over template-following.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="tl-item">
+        <div class="tl-time-col">
+          <div class="tl-dot" style="background: var(--red); box-shadow: 0 0 0 3px var(--red-light);"></div>
+          <div class="tl-min">Min<br>54–60</div>
+        </div>
+        <div>
+          <div class="tl-card">
+            <div class="tl-card-header">
+              <span class="tl-phase phase-wrap">🎁 Wrap-Up</span>
+              <span class="tl-duration">6 min</span>
+            </div>
+            <div class="tl-title">Exit Ticket + Homework Reveal</div>
+            <div class="tl-body">
+              <p>Close the loop in three quick moves:</p>
+              <ul class="tl-steps">
+                <li><strong>3-2-1 Exit Ticket (3 min):</strong> Each student writes on a sticky note (digital or physical): 3 things they learned, 2 shortcuts they'll actually use, 1 question they still have.</li>
+                <li><strong>Preview Next Session (1 min):</strong> "Next class — we meet Claude AI. You'll have a conversation with an AI and teach it something about yourself. But only if you finish this week's homework…"</li>
+                <li><strong>Homework Reveal (2 min):</strong> Show the 3 Home Challenges (below). Emphasise they're not graded busywork — they're missions that build real skills.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end timeline -->
+
+    <!-- WORKSHOP -->
+    <div class="section-label">Part 3</div>
+    <div class="section-title">⚡ 15-Minute Practical Workshop</div>
+
+    <div class="workshop-box">
+      <div class="workshop-tag">⚡ Hands-On Workshop · 15 Minutes</div>
+      <div class="workshop-title">"Digital Desk Makeover"</div>
+      <div class="workshop-subtitle">Minutes 28–43 · Individual Work · Google Drive</div>
+
+      <div class="workshop-grid">
+        <div class="ws-block">
+          <div class="ws-block-label">🎯 Goal</div>
+          <p>Organise a provided messy mock folder system in Google Drive using a naming convention the student designs themselves. First to find a hidden file wins!</p>
+        </div>
+        <div class="ws-block">
+          <div class="ws-block-label">🛠️ What Students Need</div>
+          <ul>
+            <li>Laptop or tablet with a browser</li>
+            <li>Google account (school or personal)</li>
+            <li>Teacher-shared "Messy Folder" link</li>
+            <li>Nothing else — no downloads!</li>
+          </ul>
+        </div>
+        <div class="ws-block">
+          <div class="ws-block-label">📋 Teacher Setup (Before Class)</div>
+          <ul>
+            <li>Create a shared Google Drive folder</li>
+            <li>Add 15–20 random, poorly named files</li>
+            <li>Hide one file called "Secret_Mission.txt"</li>
+            <li>Share link with "Anyone with link — Viewer"</li>
+          </ul>
+        </div>
+        <div class="ws-block">
+          <div class="ws-block-label">🏆 Success Criteria</div>
+          <ul>
+            <li>Clean, logical folder hierarchy (3 levels max)</li>
+            <li>Consistent naming convention throughout</li>
+            <li>Found the hidden file using Ctrl+F</li>
+            <li>Can explain their system in one sentence</li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="ws-steps">
+        <li>
+          <div>
+            <div class="ws-step-body">
+              <div class="ws-step-title">Make a Copy & Explore (0–3 min)</div>
+              Students click the shared link, make a copy to their own Drive, and spend 90 seconds exploring the chaos without changing anything. What patterns do they notice? Jot down their naming convention idea.
+            </div>
+            <div class="ws-step-time">Min 0–3</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="ws-step-body">
+              <div class="ws-step-title">Design Your Naming Convention (3–5 min)</div>
+              Each student writes out their folder structure plan before touching the files: Subject → Term → Type or custom. Teacher circulates and approves plans quickly. No plan = no makeover!
+            </div>
+            <div class="ws-step-time">Min 3–5</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="ws-step-body">
+              <div class="ws-step-title">The Big Makeover (5–13 min)</div>
+              Students reorganise the Drive folder: create subfolders, rename files, move items. Race against each other. First student to finish AND find the hidden "Secret_Mission.txt" using Ctrl+F wins class bragging rights!
+            </div>
+            <div class="ws-step-time">Min 5–13</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="ws-step-body">
+              <div class="ws-step-title">Share &amp; Speed Test (13–15 min)</div>
+              Students share their finished Drive folder with the teacher (Comment access). Teacher does a 30-second speed test: names a specific file type — who can locate it fastest? Discuss what made the winning structure effective.
+            </div>
+            <div class="ws-step-time">Min 13–15</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- HOMEWORK -->
+    <div class="section-label">Part 4</div>
+    <div class="section-title">🏠 3 Home Challenges</div>
+
+    <div class="hw-section">
+      <div class="hw-cards">
+
+        <div class="hw-card">
+          <div class="hw-num hw-num-1">1</div>
+          <div>
+            <div class="hw-label">Home Challenge 1 · Due Next Session</div>
+            <div class="hw-title">Operation: Real Desk Makeover</div>
+            <div class="hw-desc">Apply today's naming convention to YOUR actual Downloads folder or Desktop. Take a "before" screenshot first, then reorganise everything. The goal: someone else should be able to find any file in under 10 seconds without asking you a single question.</div>
+            <div class="hw-deliverable">📸 Submit: Before + After screenshots to Google Classroom</div>
+          </div>
+        </div>
+
+        <div class="hw-card">
+          <div class="hw-num hw-num-2">2</div>
+          <div>
+            <div class="hw-label">Home Challenge 2 · Creative Research</div>
+            <div class="hw-title">The "10 Shortcuts I Wish I Knew" List</div>
+            <div class="hw-desc">Look up 5 keyboard shortcuts we didn't cover in class that you think would be genuinely useful for students your age. For each one, write one sentence explaining a real situation where it would save time. Share your list in the class Google Doc (link in Classroom).</div>
+            <div class="hw-deliverable">📝 Submit: Your 5 shortcuts added to the class shared doc</div>
+          </div>
+        </div>
+
+        <div class="hw-card">
+          <div class="hw-num hw-num-3">3</div>
+          <div>
+            <div class="hw-label">Home Challenge 3 · Reflection &amp; Stretch</div>
+            <div class="hw-title">Design a "Digital Hygiene" Policy for Your Family</div>
+            <div class="hw-desc">Imagine you're the IT manager of your household. Write a simple 5-rule "Digital Hygiene Policy" in Google Docs that your family should follow — file naming, photo backup, password habits, whatever you think matters most. Make it clear enough that even a 10-year-old could follow it. Bonus: actually present it to one family member!</div>
+            <div class="hw-deliverable">📄 Submit: Google Doc link (View access) in Classroom</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end main-content -->
+
+  <!-- ── SIDEBAR ── -->
+  <div class="sidebar">
+
+    <!-- Quick Timeline -->
+    <div class="sidebar-block">
+      <div class="sb-label">⏱ Session At A Glance</div>
+      <ul class="timeline-mini">
+        <li class="tl-mini-item">
+          <div class="tl-mini-dot" style="background:var(--purple)"></div>
+          <div class="tl-mini-time">0–5</div>
+          <div class="tl-mini-name">Hook: Messy Desktop</div>
+        </li>
+        <li class="tl-mini-item">
+          <div class="tl-mini-dot" style="background:var(--teal)"></div>
+          <div class="tl-mini-time">5–18</div>
+          <div class="tl-mini-name">3 Pillars Teaching</div>
+        </li>
+        <li class="tl-mini-item">
+          <div class="tl-mini-dot" style="background:var(--gold)"></div>
+          <div class="tl-mini-time">18–28</div>
+          <div class="tl-mini-name">Shortcuts Demo</div>
+        </li>
+        <li class="tl-mini-item">
+          <div class="tl-mini-dot" style="background:var(--orange)"></div>
+          <div class="tl-mini-time">28–43</div>
+          <div class="tl-mini-name">🛠 Workshop</div>
+        </li>
+        <li class="tl-mini-item">
+          <div class="tl-mini-dot" style="background:var(--teal)"></div>
+          <div class="tl-mini-time">43–54</div>
+          <div class="tl-mini-name">Gallery + Debrief</div>
+        </li>
+        <li class="tl-mini-item">
+          <div class="tl-mini-dot" style="background:var(--red)"></div>
+          <div class="tl-mini-time">54–60</div>
+          <div class="tl-mini-name">Exit Ticket + HW</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Materials -->
+    <div class="sidebar-block">
+      <div class="sb-label">🧰 Materials Checklist</div>
+      <ul class="materials-list">
+        <li><span class="mat-icon">💻</span> 1 device per student</li>
+        <li><span class="mat-icon">📡</span> Stable Wi-Fi + projector</li>
+        <li><span class="mat-icon">📁</span> Pre-made "Messy Folder" in Drive</li>
+        <li><span class="mat-icon">📋</span> Google Classroom set up</li>
+        <li><span class="mat-icon">📝</span> Sticky notes (optional)</li>
+        <li><span class="mat-icon">🔗</span> Shortcut cheat sheet (printable)</li>
+        <li><span class="mat-icon">🖼️</span> Messy desktop image for hook</li>
+      </ul>
+    </div>
+
+    <!-- Key Vocabulary -->
+    <div class="sidebar-block">
+      <div class="sb-label">📚 Key Vocabulary</div>
+      <div class="vocab-grid">
+        <div class="vocab-item">
+          <div class="vocab-term">File Hierarchy</div>
+          <div class="vocab-def">A layered folder system where broader categories contain more specific ones</div>
+        </div>
+        <div class="vocab-item">
+          <div class="vocab-term">Naming Convention</div>
+          <div class="vocab-def">A consistent rule for naming files so they're easy to find and sort</div>
+        </div>
+        <div class="vocab-item">
+          <div class="vocab-term">Permissions</div>
+          <div class="vocab-def">Controls who can view, comment, or edit a shared file</div>
+        </div>
+        <div class="vocab-item">
+          <div class="vocab-term">Digital Hygiene</div>
+          <div class="vocab-def">Good habits that keep your digital life organised, safe, and efficient</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Differentiation -->
+    <div class="sidebar-block">
+      <div class="sb-label">🎯 Differentiation</div>
+      <div class="diff-block">
+        <div class="diff-row">
+          <span class="diff-label support">🟢 Support</span>
+          Provide a pre-made folder template students can copy and fill in. Pair with a stronger peer during the workshop. Offer a printed shortcut cheat sheet.
+        </div>
+        <div class="diff-row">
+          <span class="diff-label extend">🟣 Extension</span>
+          Challenge fast finishers to create a Google Apps Script that auto-names files by date. Or: design a naming convention for a hypothetical company with 10 employees.
+        </div>
+      </div>
+    </div>
+
+    <!-- Assessment -->
+    <div class="sidebar-block">
+      <div class="sb-label">📊 Quick Assessment</div>
+      <div class="diff-block">
+        <div class="diff-row">
+          <span class="diff-label" style="color:var(--teal)">✅ Formative</span>
+          3-2-1 Exit Ticket + circulating observations during workshop. Listen for correct use of terminology.
+        </div>
+        <div class="diff-row">
+          <span class="diff-label" style="color:var(--orange)">📸 Homework Evidence</span>
+          Before/after screenshots submitted to Google Classroom — quick visual check in under 30 seconds per student.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end sidebar -->
+
+</div><!-- end main grid -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">AI & Digital Literacy · Week 1, Session 1 · Detailed Lesson Plan</div>
+  <div class="footer-badges">
+    <span class="footer-badge">60 Minutes</span>
+    <span class="footer-badge">Ages 14–19</span>
+    <span class="footer-badge">Google Drive</span>
+  </div>
+</div>
+
+</body>
+</html>
