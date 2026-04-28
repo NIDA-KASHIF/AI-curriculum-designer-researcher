@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>سیرت کورس — الرحیق المختوم</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --dark: #0e0c08;
+    --dark2: #1a1710;
+    --dark3: #252218;
+    --cream: #f5ecd7;
+    --cream2: #ede0c4;
+    --text: #2a220e;
+    --green: #2d5a27;
+    --green-light: #3d7a35;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
+    background: var(--dark);
+    color: var(--cream);
+    direction: rtl;
+    text-align: right;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Decorative background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(201,168,76,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(45,90,39,0.07) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+    animation: fadeDown 1s ease both;
+  }
+
+  .header::before {
+    content: '﷽';
+    display: block;
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin-bottom: 28px;
+    letter-spacing: 2px;
+    opacity: 0.9;
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .ornament-line {
+    flex: 1;
+    max-width: 120px;
+    height: 1px;
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+  .ornament-line.left {
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .ornament-diamond {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  .book-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--green), var(--green-light));
+    color: var(--cream);
+    font-size: 0.85rem;
+    padding: 6px 20px;
+    border-radius: 30px;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .main-title {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--gold);
+    line-height: 1.4;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 20px rgba(201,168,76,0.3);
+  }
+
+  .sub-title {
+    font-size: 1.1rem;
+    color: var(--cream2);
+    opacity: 0.8;
+    margin-bottom: 30px;
+    line-height: 2;
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .meta-pill {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-size: 0.95rem;
+    color: var(--gold-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .meta-pill span.icon { font-size: 1.2rem; }
+
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 40px 0;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to left, transparent, rgba(201,168,76,0.4), transparent);
+  }
+  .divider-star { color: var(--gold); font-size: 1.2rem; }
+
+  /* Intro box */
+  .intro-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(45,90,39,0.08));
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 50px;
+    line-height: 2.4;
+    font-size: 1.05rem;
+    color: var(--cream2);
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+
+  /* Month Section */
+  .month-section {
+    margin-bottom: 50px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .month-header {
+    background: linear-gradient(135deg, var(--green), #1e3d1a);
+    border-radius: 14px 14px 0 0;
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 2px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .month-header::after {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -10%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04), transparent 70%);
+    border-radius: 50%;
+  }
+
+  .month-number {
+    background: var(--gold);
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 1.3rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Amiri', serif;
+  }
+
+  .month-title {
+    font-size: 1.35rem;
+    color: var(--cream);
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  .month-subtitle {
+    font-size: 0.85rem;
+    color: rgba(232,201,122,0.7);
+    margin-top: 2px;
+  }
+
+  .month-body {
+    background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+    padding: 10px 0;
+  }
+
+  /* Session Card */
+  .session {
+    padding: 24px 28px;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    transition: background 0.3s;
+    position: relative;
+  }
+
+  .session:last-child { border-bottom: none; }
+  .session:hover { background: rgba(201,168,76,0.04); }
+
+  .session-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .session-num {
+    font-family: 'Amiri', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 6px;
+    padding: 3px 10px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+
+  .session-title {
+    font-size: 1.15rem;
+    color: var(--cream);
+    font-weight: 600;
+    line-height: 1.8;
+  }
+
+  .reading-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(45,90,39,0.3);
+    border: 1px solid rgba(45,90,39,0.6);
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 0.88rem;
+    color: #8ec887;
+    margin-bottom: 12px;
+    line-height: 1.8;
+  }
+
+  .session-details {
+    display: grid;
+    gap: 10px;
+    padding-right: 0;
+  }
+
+  .detail-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 0.93rem;
+    line-height: 2;
+  }
+
+  .detail-label {
+    color: var(--gold-light);
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .detail-text {
+    color: var(--cream2);
+    opacity: 0.85;
+  }
+
+  .reflection-box {
+    margin-top: 14px;
+    background: rgba(201,168,76,0.06);
+    border-right: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    color: var(--gold-light);
+    line-height: 2.2;
+    font-style: italic;
+  }
+
+  /* Structure Section */
+  .structure-section {
+    background: var(--dark3);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 14px;
+    padding: 32px;
+    margin-top: 50px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .section-heading {
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .structure-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  .structure-item {
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .structure-item .s-icon { font-size: 1.6rem; margin-bottom: 6px; }
+  .structure-item .s-label { font-size: 0.85rem; color: var(--cream2); line-height: 1.8; }
+  .structure-item .s-time { font-size: 1rem; color: var(--gold); font-weight: 600; }
+
+  /* Tips */
+  .tips-section {
+    background: linear-gradient(135deg, rgba(45,90,39,0.15), rgba(201,168,76,0.08));
+    border: 1px solid rgba(45,90,39,0.4);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-top: 30px;
+  }
+
+  .tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    font-size: 0.95rem;
+    color: var(--cream2);
+    line-height: 2;
+  }
+  .tip-item:last-child { border-bottom: none; }
+  .tip-dot { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; margin-top: 4px; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    color: rgba(201,168,76,0.5);
+    font-size: 0.9rem;
+    line-height: 2.5;
+  }
+
+  .footer .salat {
+    font-size: 1.1rem;
+    color: var(--gold);
+    opacity: 0.8;
+    margin-bottom: 6px;
+  }
+
+  /* Animations */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .month-section:nth-child(1) { animation-delay: 0.1s; }
+  .month-section:nth-child(2) { animation-delay: 0.2s; }
+  .month-section:nth-child(3) { animation-delay: 0.3s; }
+  .month-section:nth-child(4) { animation-delay: 0.4s; }
+
+  @media (max-width: 600px) {
+    .wrapper { padding: 20px 14px 60px; }
+    .session { padding: 18px 16px; }
+    .month-header { padding: 14px 18px; }
+    .intro-box { padding: 20px 18px; }
+    .structure-section, .tips-section { padding: 20px 18px; }
+    .meta-row { gap: 12px; }
+    .meta-pill { padding: 8px 14px; font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="book-badge">📖 الرحیق المختوم — مصنف: صفی الرحمٰن مبارکپوری</div>
+    <div class="ornament">
+      <div class="ornament-line left"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+    <h1 class="main-title">سیرت النبی ﷺ کورس</h1>
+    <p class="sub-title">
+      ہفتہ وار سیرت کا مطالعہ — چار ماہ، سولہ نشستیں<br/>
+      نبی کریم ﷺ کی حیاتِ مبارکہ کا ترتیب وار علمی اور ایمانی سفر
+    </p>
+    <div class="meta-row">
+      <div class="meta-pill"><span class="icon">📅</span> ہفتہ میں ایک بار</div>
+      <div class="meta-pill"><span class="icon">🕐</span> ۶۰–۹۰ منٹ فی نشست</div>
+      <div class="meta-pill"><span class="icon">📚</span> ۱۶ نشستیں</div>
+      <div class="meta-pill"><span class="icon">🗓</span> ۴ ماہ</div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro-box">
+    یہ کورس شیخ صفی الرحمٰن مبارکپوری کی مشہورِ زمانہ کتاب <strong style="color:var(--gold)">الرحیق المختوم (مہرِ نبوت)</strong> پر مبنی ہے جو رابطۃ العالم الاسلامی کے عالمی مقابلے میں اوّل آئی۔ یہ کورس ہر ہفتے ایک نشست کے ذریعے چار ماہ میں مکمل ہوگا۔ ہر نشست میں متعینہ حصہ پڑھ کر آنا لازمی ہے تاکہ بحث و غور کا بھرپور فائدہ اٹھایا جا سکے۔
+  </div>
+
+  <!-- ===== MONTH 1 ===== -->
+  <div class="month-section">
+    <div class="month-header">
+      <div class="month-number">١</div>
+      <div>
+        <div class="month-title">پہلا مہینہ — نبوت سے پہلے کا عرب اور آپ ﷺ کی ابتدائی زندگی</div>
+        <div class="month-subtitle">نشستیں ۱ تا ۴</div>
+      </div>
+    </div>
+    <div class="month-body">
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۱</div>
+          <div class="session-title">بعثتِ نبوی سے پہلے کا عرب — جغرافیہ، سیاست اور مذہب</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: مقدمہ اور عرب کا جغرافیائی و سیاسی جائزہ</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">عرب کا قبائلی نظام، جاہلیت کی مذہبی حالت، کعبۃ اللہ کی مرکزیت، اور آخری نبی کے لیے عرب کا انتخاب — کیوں اور کیسے؟</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: دنیا کی حالت نبوت سے پہلے کیسی تھی؟ نبوت کی ضرورت کیوں تھی؟</div>
+      </div>
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۲</div>
+          <div class="session-title">قریش کا نسب اور آپ ﷺ کا خاندان</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: قریش، عبدالمطلب اور حضرت عبداللہ کا نکاح</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">قریش کی عظمت، کعبہ کی تولیت، عبدالمطلب کی نذر اور حضرت عبداللہ کی قربانی سے بچاؤ، نبی ﷺ کا شجرۂ نسب</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: نسب کا علم ہمارے ایمان اور نبی ﷺ کی محبت میں کیا اضافہ کرتا ہے؟</div>
+      </div>
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۳</div>
+          <div class="session-title">ولادتِ با سعادت اور ابتدائی بچپن</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: عامُ الفیل سے حلیمہ سعدیہ کے پاس تک</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">ابرہہ کا حملہ اور ابابیل، ۱۲ ربیع الاول کی ولادت، حلیمہ سعدیہ کے پاس رضاعت، شقِ صدر کا واقعہ اور والدہ کا انتقال</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: بچپن میں پیش آنے والے واقعات نبوت کی کیا نشانیاں تھیں؟</div>
+      </div>
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۴</div>
+          <div class="session-title">جوانی، کردار اور حضرت خدیجہ ؓ سے نکاح</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: دادا اور چچا کی کفالت سے نکاح تک</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">شامِ سفر اور بَحِیرا راہب، حلف الفضول، الامین کا لقب، تجارت اور حضرت خدیجہ ؓ کا رشتہ، حجرِ اسود کی تنصیب</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: نبوت سے پہلے کی زندگی نے آپ ﷺ کو رسالت کے لیے کس طرح تیار کیا؟</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== MONTH 2 ===== -->
+  <div class="month-section">
+    <div class="month-header">
+      <div class="month-number">٢</div>
+      <div>
+        <div class="month-title">دوسرا مہینہ — مکی دور — وحی، دعوت اور آزمائش</div>
+        <div class="month-subtitle">نشستیں ۵ تا ۸</div>
+      </div>
+    </div>
+    <div class="month-body">
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۵</div>
+          <div class="session-title">نزولِ وحی — پہلی وحی کا آغاز</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: غارِ حرا سے وحی کی ابتدا اور وقفہ</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">تحنُّث، پہلی وحی "اقرأ"، حضرت خدیجہ ؓ کا تسلی دینا، ورقہ بن نوفل کا بیان، وقفۂ وحی اور سورۃ المدثر</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: حضرت خدیجہ ؓ کا ردِّ عمل ہمیں شریکِ حیات کے کردار کے بارے میں کیا سکھاتا ہے؟</div>
+      </div>
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۶</div>
+          <div class="session-title">ابتدائی دعوت — خفیہ اور اعلانیہ</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: پہلے مسلمان اور کوہِ صفا پر اعلان</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">سابقینِ اسلام: حضرت خدیجہ، علی، ابوبکر، زید ؓ۔ دارِ ارقم میں خفیہ تعلیم، صفا پر علی الاعلان دعوت اور قریش کی سخت مخالفت</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: ابتدائی صحابہ ؓ کس چیز نے سب کچھ قربان کرنے پر آمادہ کیا؟</div>
+      </div>
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۷</div>
+          <div class="session-title">مکہ میں ظلم و ستم</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: قریش کی مخالفت اور مسلمانوں پر تشدد</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">بلال ؓ پر ظلم، حضرت سمیہ ؓ کی شہادت، عمار ؓ اور خباب ؓ کا صبر، نبی ﷺ کے ساتھ دشمنوں کا سلوک، ابوطالب کی پناہ</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: آزمائش میں صحابہ ؓ کا صبر ہمیں آج کیا سکھاتا ہے؟</div>
+      </div>
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۸</div>
+          <div class="session-title">ہجرتِ حبشہ، سالِ حزن اور معاشی بائیکاٹ</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: دو ہجرتیں، نجاشی کا دربار اور شعبِ ابی طالب</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">حبشہ ہجرت کی حکمت، جعفر طیار ؓ کا خطاب، نجاشی کا انصاف، تین سالہ بائیکاٹ، حضرت خدیجہ ؓ اور ابوطالب کا انتقال</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: نجاشی کا ردِّ عمل انصاف اور حق کے بارے میں کیا سبق دیتا ہے؟</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== MONTH 3 ===== -->
+  <div class="month-section">
+    <div class="month-header">
+      <div class="month-number">٣</div>
+      <div>
+        <div class="month-title">تیسرا مہینہ — ہجرت اور مدینہ میں اسلامی ریاست کا قیام</div>
+        <div class="month-subtitle">نشستیں ۹ تا ۱۲</div>
+      </div>
+    </div>
+    <div class="month-body">
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۹</div>
+          <div class="session-title">طائف کا سفر، معراج اور بیعتِ عقبہ</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: طائف سے دوسری بیعتِ عقبہ تک</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">طائف میں ہولناک رد، انسِ جن کا ایمان، اسراء و معراج کا معجزہ، نماز کی فرضیت، انصار کا عقبہ میں عہد و پیمان</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: طائف کی تکلیف کے بعد معراج کا انعام — اللہ کی حکمت کیا تھی؟</div>
+      </div>
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۱۰</div>
+          <div class="session-title">ہجرتِ مدینہ — ایمان کا سفر</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: قتل کی سازش سے مدینہ آمد تک</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">دارالندوہ کی سازش، حضرت علی ؓ کا بستر پر لیٹنا، غارِ ثور، سراقہ کا تعاقب، قبا میں ورود اور پہلی مسجد کی تعمیر</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: ہجرت ہمیں اللہ پر توکل کے بارے میں کیا سکھاتی ہے؟</div>
+      </div>
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۱۱</div>
+          <div class="session-title">مدینے میں اسلامی ریاست کی تشکیل</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: مسجدِ نبوی، مؤاخات اور میثاقِ مدینہ</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">مہاجرین و انصار کا بھائی چارہ، مسجدِ نبوی کی تعمیر، یہودی قبائل سے تعلقات، میثاقِ مدینہ — تاریخ کا پہلا تحریری دستور</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: نبی ﷺ نے ایک کثیر مذہبی معاشرے کو کس طرح یکجا رکھا؟</div>
+      </div>
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۱۲</div>
+          <div class="session-title">غزوۂ بدر اور غزوۂ اُحد</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: سرایا سے غزوۂ احد تک</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">بدر کی فیصلہ کن فتح اور غیبی مدد، اُحد میں تیر اندازوں کی نافرمانی کا نتیجہ، نبی ﷺ کا زخمی ہونا، مصیبت میں آپ کا حوصلہ</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: اُحد کا سبق آج ہمیں اطاعت اور احتساب کے بارے میں کیا سکھاتا ہے؟</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== MONTH 4 ===== -->
+  <div class="month-section">
+    <div class="month-header">
+      <div class="month-number">٤</div>
+      <div>
+        <div class="month-title">چوتھا مہینہ — فتح، خطبۂ حجۃ الوداع اور وراثتِ نبوت</div>
+        <div class="month-subtitle">نشستیں ۱۳ تا ۱۶</div>
+      </div>
+    </div>
+    <div class="month-body">
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۱۳</div>
+          <div class="session-title">غزوۂ خندق اور صلحِ حدیبیہ</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: احزاب کا محاصرہ سے فتحِ مبین تک</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">خندق کی حکمتِ عملی، سلمان فارسی ؓ کا مشورہ، غطفان کا انتشار، بنو قریظہ، اور صلحِ حدیبیہ — ظاہری شکست، اصل میں فتحِ مبین</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: جب نتیجہ ناموافق لگے تو اللہ کی حکمت کو کیسے سمجھیں؟</div>
+      </div>
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۱۴</div>
+          <div class="session-title">بادشاہوں کو خطوط اور فتحِ مکہ</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: دعوتی خطوط سے فتحِ مکہ اور غزوۂ حنین تک</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">قیصر، کسریٰ اور نجاشی کو دعوتی خطوط، بغیر خون بہائے مکہ کی فتح، عام معافی کا اعلان، غزوۂ حنین میں آزمائش</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: مطلق اقتدار ملنے پر نبی ﷺ نے کیا کیا — یہ آج کے لیڈروں کے لیے کیا سبق ہے؟</div>
+      </div>
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۱۵</div>
+          <div class="session-title">حجۃ الوداع اور آخری ایام</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: حجۃ الوداع سے وصال تک</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">خطبۂ حجۃ الوداع کے ابدی اصول، "آج میں نے تمہارا دین مکمل کر دیا"، آخری بیماری، ابوبکر ؓ کی امامت، ۱۲ ربیع الاول کو وصال</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: نبی ﷺ نے اپنی آخری سانس تک کیا پیغام دیا؟ ان کی آخری وصیت کیا تھی؟</div>
+      </div>
+
+      <div class="session">
+        <div class="session-top">
+          <div class="session-num">نشست ۱۶</div>
+          <div class="session-title">اختتامی نشست — آپ ﷺ کا کردار اور دائمی وراثت</div>
+        </div>
+        <div class="reading-tag">📖 مطالعہ: آپ ﷺ کا حلیہ مبارک، اخلاق، اور کتاب کا اختتامی حصہ</div>
+        <div class="session-details">
+          <div class="detail-row">
+            <span class="detail-label">🔑 اہم موضوعات:</span>
+            <span class="detail-text">حلیۂ مبارک، صحابہ ؓ کے ساتھ تعلق، گھریلو زندگی، پورے کورس کا خلاصہ اور اطلاقی جائزہ — اب آگے کیا؟</span>
+          </div>
+        </div>
+        <div class="reflection-box">💭 غور کریں: اس کورس نے نبی ﷺ سے آپ کا رشتہ کیسے بدلا؟ آپ ان کی سیرت کو اپنی زندگی میں کیسے اپنائیں گے؟</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-star">✦</span>
+    <span class="divider-star">✦</span>
+    <span class="divider-star">✦</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- Session Structure -->
+  <div class="structure-section">
+    <div class="section-heading">🗂 ہر نشست کا ڈھانچہ</div>
+    <p style="color:var(--cream2);font-size:0.95rem;line-height:2.2;margin-bottom:16px;">
+      ہر ہفتہ وار نشست کو مندرجہ ذیل ترتیب سے منعقد کریں:
+    </p>
+    <div class="structure-grid">
+      <div class="structure-item">
+        <div class="s-icon">🔄</div>
+        <div class="s-time">۱۰ منٹ</div>
+        <div class="s-label">گزشتہ نشست کا اعادہ اور سوال و جواب</div>
+      </div>
+      <div class="structure-item">
+        <div class="s-icon">📖</div>
+        <div class="s-time">۴۵ منٹ</div>
+        <div class="s-label">متعین حصے پر تفصیلی بحث و تدریس</div>
+      </div>
+      <div class="structure-item">
+        <div class="s-icon">🤲</div>
+        <div class="s-time">۱۵ منٹ</div>
+        <div class="s-label">فکری سوال پر غور و خوض اور ذاتی اطلاق</div>
+      </div>
+      <div class="structure-item">
+        <div class="s-icon">📝</div>
+        <div class="s-time">۵ منٹ</div>
+        <div class="s-label">اگلی نشست کا تعارف اور مطالعے کی ہدایت</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tips -->
+  <div class="tips-section">
+    <div class="section-heading">💡 کامیاب مطالعے کے اہم نکات</div>
+    <div class="tip-item"><span class="tip-dot">◆</span><span>ہر نشست سے پہلے متعین حصہ ضرور پڑھ لیں — اس سے بحث زیادہ مفید ہوگی۔</span></div>
+    <div class="tip-item"><span class="tip-dot">◆</span><span>ایک مخصوص ڈائری رکھیں جس میں ہر نشست کے بعد اپنے تأثرات، سوالات اور سبق لکھیں۔</span></div>
+    <div class="tip-item"><span class="tip-dot">◆</span><span>فکری سوالات پر سوچنے کے لیے وقت دیں — یہ کورس کا سب سے قیمتی حصہ ہے۔</span></div>
+    <div class="tip-item"><span class="tip-dot">◆</span><span>ساتھی مطالعہ گروپ بنائیں — گروہی بحث سے سمجھ گہری اور دل پر اثر زیادہ ہوتا ہے۔</span></div>
+    <div class="tip-item"><span class="tip-dot">◆</span><span>اضافی مطالعے کے لیے: ابنِ ہشام کی سیرت، رحمۃ للعالمین (قاضی سلیمان منصورپوری) اور نبی رحمت (مولانا ابوالحسن ندوی) موزوں کتب ہیں۔</span></div>
+    <div class="tip-item"><span class="tip-dot">◆</span><span>نبی ﷺ پر کثرت سے درود پڑھیں — سیرت کا مطالعہ محبت کے بغیر ادھورا ہے۔</span></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="salat">اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ ﷺ</div>
+    <p>یہ کورس مبتدیوں اور سیرت سے پہلے سے واقف دونوں کے لیے موزوں ہے</p>
+    <p>مقصد: علمی تحقیق نہیں — ایمانی گہرائی، محبتِ نبوی اور سیرت کا عملی اطلاق</p>
+    <p style="margin-top:10px;color:rgba(201,168,76,0.35);font-size:0.8rem;">الرحیق المختوم — صفی الرحمٰن مبارکپوری • ۴ ماہ • ۱۶ نشستیں</p>
+  </div>
+
+</div>
+</body>
+</html>
