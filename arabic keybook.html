@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>طالبہ کی کی بک | Student Key Book - العربية الميسرة</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #0a2714;
+    --forest: #064e3b;
+    --emerald: #065f46;
+    --mid: #047857;
+    --bright: #10b981;
+    --pale: #d1fae5;
+    --xpale: #f0fdf4;
+    --gold: #92400e;
+    --goldb: #b45309;
+    --goldc: #f59e0b;
+    --goldpale: #fef3c7;
+    --teal: #0e7490;
+    --tealpale: #e0f7fa;
+    --navy: #1e3a5f;
+    --ink: #111827;
+    --muted: #6b7280;
+    --cream: #fffdf5;
+    --parch: #fefae0;
+    --white: #ffffff;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Cairo', 'Amiri', serif;
+    background: var(--cream);
+    color: var(--ink);
+    direction: rtl;
+  }
+
+  /* ===== ORNAMENTAL COVER ===== */
+  .cover {
+    background: linear-gradient(160deg, var(--deep) 0%, var(--forest) 35%, var(--emerald) 65%, #0d9488 100%);
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 15%, rgba(245,158,11,0.12) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 85%, rgba(16,185,129,0.08) 0%, transparent 45%);
+  }
+
+  .cover-ornament {
+    position: absolute;
+    width: 100%; height: 100%;
+    top:0; left:0;
+    opacity: 0.04;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent, transparent 20px,
+      rgba(255,255,255,0.5) 20px, rgba(255,255,255,0.5) 21px
+    );
+  }
+
+  .cover-inner { position: relative; z-index: 1; max-width: 700px; }
+
+  .cover-bismillah {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 2.2rem;
+    color: var(--goldc);
+    margin-bottom: 32px;
+    text-shadow: 0 3px 12px rgba(0,0,0,0.4);
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 3px 12px rgba(0,0,0,0.4), 0 0 20px rgba(245,158,11,0.2); }
+    to   { text-shadow: 0 3px 12px rgba(0,0,0,0.4), 0 0 40px rgba(245,158,11,0.5); }
+  }
+
+  .cover-gem {
+    width: 120px; height: 120px;
+    background: linear-gradient(135deg, rgba(245,158,11,0.3), rgba(16,185,129,0.3));
+    border: 2px solid rgba(245,158,11,0.5);
+    border-radius: 20px;
+    transform: rotate(45deg);
+    margin: 0 auto 36px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .cover-gem-inner {
+    transform: rotate(-45deg);
+    font-size: 2.8rem;
+  }
+
+  .cover-title {
+    font-family: 'Cairo', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .cover-title .highlight { color: var(--goldc); }
+
+  .cover-arabic-title {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 2rem;
+    color: rgba(255,255,255,0.8);
+    margin: 16px 0 28px;
+  }
+
+  .cover-line {
+    width: 200px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245,158,11,0.6), transparent);
+    margin: 20px auto;
+  }
+
+  .cover-desc {
+    color: rgba(255,255,255,0.75);
+    font-size: 1rem; line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .cover-pills {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  }
+
+  .pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white; padding: 7px 18px;
+    border-radius: 50px; font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .pill.gold {
+    background: rgba(245,158,11,0.2);
+    border-color: var(--goldc); color: var(--goldc);
+  }
+
+  /* ===== NAVIGATION TABS ===== */
+  .nav-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--forest);
+    padding: 0 24px;
+    overflow-x: auto;
+    display: flex;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    scrollbar-width: none;
+  }
+  .nav-bar::-webkit-scrollbar { display: none; }
+
+  .nav-tab {
+    padding: 16px 22px;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem; font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+  .nav-tab:hover, .nav-tab.active {
+    color: var(--goldc);
+    border-bottom-color: var(--goldc);
+  }
+
+  /* ===== MAIN WRAPPER ===== */
+  .content { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ===== SECTION HEADS ===== */
+  .sec-head {
+    display: flex; align-items: center; gap: 16px;
+    padding: 48px 0 20px;
+    border-bottom: 3px solid var(--pale);
+    margin-bottom: 28px;
+  }
+
+  .sec-icon {
+    width: 54px; height: 54px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; flex-shrink: 0;
+  }
+
+  .sec-head h2 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.7rem; font-weight: 900;
+    color: var(--forest);
+  }
+
+  .sec-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem; color: var(--teal);
+  }
+
+  /* ===== VOCAB TABLE ===== */
+  .vocab-wrap {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(6,78,59,0.1);
+    margin-bottom: 20px;
+  }
+
+  .vocab-table { width: 100%; border-collapse: collapse; }
+
+  .vocab-table thead th {
+    padding: 14px 16px;
+    font-size: 0.85rem; font-weight: 700;
+    text-align: center;
+  }
+
+  .th-ar { background: var(--forest); color: white; }
+  .th-ur { background: var(--goldb); color: white; }
+  .th-en { background: var(--teal); color: white; }
+
+  .vocab-table tbody tr { border-bottom: 1px solid #f3f4f6; }
+  .vocab-table tbody tr:hover { background: var(--xpale); }
+
+  .vocab-table td {
+    padding: 11px 16px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .td-ar {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 1.3rem; color: var(--forest);
+    font-weight: 700;
+    background: rgba(6,78,59,0.03);
+  }
+
+  .td-ur {
+    font-size: 0.92rem; color: var(--ink);
+    background: rgba(180,83,9,0.03);
+  }
+
+  .td-en {
+    font-size: 0.88rem; color: var(--navy);
+    font-style: italic;
+    background: rgba(14,116,144,0.03);
+    direction: ltr;
+  }
+
+  .vocab-table tbody tr:nth-child(even) .td-ar { background: rgba(6,78,59,0.06); }
+  .vocab-table tbody tr:nth-child(even) .td-ur { background: rgba(180,83,9,0.05); }
+  .vocab-table tbody tr:nth-child(even) .td-en { background: rgba(14,116,144,0.05); }
+
+  /* ===== HADITH CARDS ===== */
+  .hadith-grid { display: grid; gap: 20px; }
+
+  .hadith-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(6,78,59,0.1);
+    border-right: 6px solid var(--bright);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .hadith-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(6,78,59,0.15); }
+
+  .hadith-header {
+    background: linear-gradient(135deg, var(--forest), var(--emerald));
+    padding: 12px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .hadith-num {
+    font-family: 'Amiri', serif;
+    font-size: 1rem; color: var(--goldc); font-weight: 700;
+  }
+
+  .hadith-source { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+
+  .hadith-body { padding: 20px 24px; }
+
+  .hadith-arabic {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 1.7rem;
+    color: var(--forest);
+    line-height: 2; margin-bottom: 14px;
+    text-align: right;
+    border-bottom: 1px dashed var(--pale);
+    padding-bottom: 14px;
+  }
+
+  .hadith-urdu { font-size: 0.95rem; color: var(--ink); line-height: 1.7; margin-bottom: 8px; }
+  .hadith-english { font-size: 0.87rem; color: var(--muted); font-style: italic; direction: ltr; text-align: left; }
+
+  /* ===== DIALOGUE SECTION ===== */
+  .dialogue-block {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(6,78,59,0.1);
+    margin-bottom: 28px;
+  }
+
+  .dialogue-title {
+    padding: 16px 24px;
+    font-size: 1rem; font-weight: 700;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .d-teacher {
+    background: var(--pale); color: var(--forest);
+    padding: 14px 20px 14px 60px;
+    position: relative;
+    margin: 0;
+  }
+
+  .d-student {
+    background: var(--goldpale); color: var(--gold);
+    padding: 14px 60px 14px 20px;
+    position: relative;
+    margin: 0;
+    text-align: right;
+  }
+
+  .d-label {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    font-size: 0.72rem; font-weight: 800;
+    padding: 3px 8px; border-radius: 20px;
+  }
+
+  .d-teacher .d-label { left: 12px; background: var(--forest); color: white; }
+  .d-student .d-label { right: 12px; background: var(--goldb); color: white; }
+
+  .d-arabic {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 1.15rem; color: var(--forest);
+    display: block; margin-bottom: 4px;
+  }
+  .d-student .d-arabic { color: var(--gold); }
+
+  .d-trans { font-size: 0.82rem; color: var(--muted); }
+
+  /* ===== DAILY CHECKLIST ===== */
+  .checklist {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 28px 32px;
+    box-shadow: 0 4px 20px rgba(6,78,59,0.1);
+  }
+
+  .check-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--xpale);
+  }
+  .check-item:last-child { border-bottom: none; }
+
+  .check-box {
+    width: 26px; height: 26px;
+    border: 2px solid var(--bright);
+    border-radius: 6px; flex-shrink: 0;
+    margin-top: 2px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; color: transparent;
+    transition: all 0.2s;
+  }
+  .check-box:hover { background: var(--pale); color: var(--forest); }
+  .check-box.done { background: var(--bright); color: white; border-color: var(--bright); }
+
+  .check-text { flex: 1; }
+  .check-main { font-size: 0.95rem; font-weight: 600; color: var(--ink); }
+  .check-sub { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
+
+  /* ===== PROGRESS CHART ===== */
+  .progress-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+  }
+
+  .prog-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 20px 16px;
+    text-align: center;
+    box-shadow: 0 3px 14px rgba(6,78,59,0.1);
+    border-top: 4px solid var(--bright);
+    transition: transform 0.3s;
+  }
+  .prog-card:hover { transform: translateY(-4px); }
+  .prog-card:nth-child(2) { border-top-color: var(--goldc); }
+  .prog-card:nth-child(3) { border-top-color: var(--teal); }
+  .prog-card:nth-child(4) { border-top-color: #7c3aed; }
+  .prog-card:nth-child(5) { border-top-color: #be123c; }
+  .prog-card:nth-child(6) { border-top-color: #0e7490; }
+
+  .prog-months { font-size: 0.8rem; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
+  .prog-topic { font-size: 1rem; font-weight: 800; color: var(--forest); margin-bottom: 8px; }
+  .prog-vocab {
+    font-size: 1.6rem; font-weight: 900; color: var(--bright);
+    display: block;
+  }
+  .prog-skill { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+
+  /* ===== FOOTER ===== */
+  .book-footer {
+    background: linear-gradient(135deg, var(--deep), var(--forest));
+    color: white; text-align: center;
+    padding: 50px 20px;
+  }
+
+  .book-footer-ayah {
+    font-family: 'Scheherazade New', 'Amiri', serif;
+    font-size: 2rem; color: var(--goldc);
+    margin-bottom: 12px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+
+  .book-footer p { opacity: 0.8; font-size: 0.9rem; margin-top: 8px; }
+
+  /* ===== PRINT HINT ===== */
+  .print-hint {
+    background: var(--goldpale);
+    border: 1px solid var(--goldc);
+    border-radius: 12px;
+    padding: 14px 20px;
+    text-align: center;
+    margin: 24px 0;
+    font-size: 0.9rem; color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .cover { padding: 40px 20px; }
+    .cover-title { font-size: 2rem; }
+    .content { padding: 0 16px 60px; }
+    .sec-head { padding-top: 36px; }
+    .sec-head h2 { font-size: 1.4rem; }
+    .hadith-arabic { font-size: 1.3rem; }
+    .checklist { padding: 20px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .cover { min-height: auto; padding: 40px; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover" id="cover">
+  <div class="cover-ornament"></div>
+  <div class="cover-inner">
+    <div class="cover-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <div class="cover-gem">
+      <span class="cover-gem-inner">📖</span>
+    </div>
+    <div class="cover-title">
+      طالبہ کی <span class="highlight">کی بک</span><br>
+      Student Key Book
+    </div>
+    <div class="cover-arabic-title">كتاب الطالبة المرجعي • العربية الميسرة</div>
+    <div class="cover-line"></div>
+    <div class="cover-desc">
+      یہ کتاب ہر طالبہ کو دی جائے گی<br>
+      روزانہ دیکھیں اور یاد کریں<br>
+      <em>This book is for every student — Review & Memorize Daily</em>
+    </div>
+    <div class="cover-pills">
+      <span class="pill gold">🌙 عربی + اردو + English</span>
+      <span class="pill">13 حصے | 13 Sections</span>
+      <span class="pill">300+ الفاظ</span>
+      <span class="pill gold">✦ مدرسۃ عائشہ الصدیقہ</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a class="nav-tab" href="#sec1">🌙 سلام</a>
+  <a class="nav-tab" href="#sec2">👩‍🎓 تعارف</a>
+  <a class="nav-tab" href="#sec3">🏫 کلاس روم</a>
+  <a class="nav-tab" href="#sec4">🎨 رنگ</a>
+  <a class="nav-tab" href="#sec5">🔢 اعداد</a>
+  <a class="nav-tab" href="#sec6">📍 سمتیں</a>
+  <a class="nav-tab" href="#sec7">❓ سوالات</a>
+  <a class="nav-tab" href="#sec8">📦 اشیاء</a>
+  <a class="nav-tab" href="#sec9">⚡ افعال</a>
+  <a class="nav-tab" href="#sec10">🌟 اذکار</a>
+  <a class="nav-tab" href="#sec11">📜 احادیث</a>
+  <a class="nav-tab" href="#sec12">💬 حوارات</a>
+  <a class="nav-tab" href="#sec13">✅ مشق</a>
+</nav>
+
+<div class="content">
+
+  <div class="print-hint">💡 اس کتاب کو پرنٹ کریں اور روزانہ مشق کریں | Print this book and practice daily</div>
+
+  <!-- SECTION 1: GREETINGS -->
+  <div id="sec1">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#d1fae5;">🌙</div>
+      <div>
+        <h2>حصہ 1: سلام اور دعائیں | Greetings & Duas</h2>
+        <div class="sec-arabic">التحية والأدعية اليومية</div>
+      </div>
+    </div>
+    <div class="vocab-wrap">
+      <table class="vocab-table">
+        <thead><tr>
+          <th class="th-ar" style="width:38%">عربی 🇸🇦</th>
+          <th class="th-ur" style="width:32%">اردو 🇵🇰</th>
+          <th class="th-en" style="width:30%">English 🇬🇧</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="td-ar">اَلسَّلَامُ عَلَيْكُمْ</td><td class="td-ur">آپ پر سلامتی ہو</td><td class="td-en">Peace be upon you</td></tr>
+          <tr><td class="td-ar">وَعَلَيْكُمُ السَّلَامُ</td><td class="td-ur">اور آپ پر بھی سلامتی</td><td class="td-en">And upon you peace</td></tr>
+          <tr><td class="td-ar">أَهْلاً وَسَهْلاً</td><td class="td-ur">خوش آمدید</td><td class="td-en">Welcome</td></tr>
+          <tr><td class="td-ar">كَيْفَ حَالُكِ؟</td><td class="td-ur">آپ کا کیا حال ہے؟</td><td class="td-en">How are you?</td></tr>
+          <tr><td class="td-ar">بِخَيْرٍ، وَالحَمْدُ لِلَّهِ</td><td class="td-ur">بخیر ہوں، اللہ کا شکر</td><td class="td-en">Fine, Alhamdulillah</td></tr>
+          <tr><td class="td-ar">مَا أَخْبَارُكِ؟</td><td class="td-ur">آپ کے کیا حال ہیں؟</td><td class="td-en">What's your news?</td></tr>
+          <tr><td class="td-ar">شُكْراً جَزِيلاً</td><td class="td-ur">بہت شکریہ</td><td class="td-en">Thank you very much</td></tr>
+          <tr><td class="td-ar">عَفْواً</td><td class="td-ur">کوئی بات نہیں</td><td class="td-en">You're welcome / Excuse me</td></tr>
+          <tr><td class="td-ar">مَعَ السَّلَامَةِ</td><td class="td-ur">اللہ حافظ</td><td class="td-en">Goodbye (Go safely)</td></tr>
+          <tr><td class="td-ar">إِلَى اللِّقَاء</td><td class="td-ur">پھر ملیں گے</td><td class="td-en">See you again</td></tr>
+          <tr><td class="td-ar">صَبَاحُ الخَيْرِ</td><td class="td-ur">صبح بخیر</td><td class="td-en">Good morning</td></tr>
+          <tr><td class="td-ar">مَسَاءُ الخَيْرِ</td><td class="td-ur">شام بخیر</td><td class="td-en">Good evening</td></tr>
+          <tr><td class="td-ar">تَفَضَّلِي</td><td class="td-ur">تشریف رکھیں</td><td class="td-en">Please (come in / sit)</td></tr>
+          <tr><td class="td-ar">نَعَمْ</td><td class="td-ur">جی ہاں</td><td class="td-en">Yes</td></tr>
+          <tr><td class="td-ar">لَا</td><td class="td-ur">نہیں</td><td class="td-en">No</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 2: INTRODUCTIONS -->
+  <div id="sec2">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#fef3c7;">👩‍🎓</div>
+      <div>
+        <h2>حصہ 2: اپنا تعارف | Introducing Yourself</h2>
+        <div class="sec-arabic">التعارف بالنفس</div>
+      </div>
+    </div>
+    <div class="vocab-wrap">
+      <table class="vocab-table">
+        <thead><tr><th class="th-ar">عربی</th><th class="th-ur">اردو</th><th class="th-en">English</th></tr></thead>
+        <tbody>
+          <tr><td class="td-ar">أَنَا طَالِبَةٌ</td><td class="td-ur">میں طالبہ ہوں</td><td class="td-en">I am a student</td></tr>
+          <tr><td class="td-ar">أَنَا مُعَلِّمَةٌ</td><td class="td-ur">میں استانی ہوں</td><td class="td-en">I am a teacher</td></tr>
+          <tr><td class="td-ar">اِسْمِي...</td><td class="td-ur">میرا نام ... ہے</td><td class="td-en">My name is...</td></tr>
+          <tr><td class="td-ar">مَا اسْمُكِ؟</td><td class="td-ur">آپ کا نام کیا ہے؟</td><td class="td-en">What is your name?</td></tr>
+          <tr><td class="td-ar">أَنَا مِنْ بَاكِسْتَانَ</td><td class="td-ur">میں پاکستان سے ہوں</td><td class="td-en">I am from Pakistan</td></tr>
+          <tr><td class="td-ar">مِنْ أَيْنَ أَنْتِ؟</td><td class="td-ur">آپ کہاں سے ہیں؟</td><td class="td-en">Where are you from?</td></tr>
+          <tr><td class="td-ar">أَنَا بَاكِسْتَانِيَّةٌ</td><td class="td-ur">میں پاکستانی ہوں</td><td class="td-en">I am Pakistani</td></tr>
+          <tr><td class="td-ar">أَنَا فِي الصَّفِّ الأَوَّلِ</td><td class="td-ur">میں پہلی جماعت میں ہوں</td><td class="td-en">I am in the first class</td></tr>
+          <tr><td class="td-ar">أَنَا طَالِبَةٌ جَدِيدَةٌ</td><td class="td-ur">میں نئی طالبہ ہوں</td><td class="td-en">I am a new student</td></tr>
+          <tr><td class="td-ar">مَدِينَتِي كَرَاتْشِي</td><td class="td-ur">میرا شہر کراچی ہے</td><td class="td-en">My city is Karachi</td></tr>
+          <tr><td class="td-ar">مَنْ مُعَلِّمَتُكِ؟</td><td class="td-ur">آپ کی استانی کون ہیں؟</td><td class="td-en">Who is your teacher?</td></tr>
+          <tr><td class="td-ar">هَلْ أَنْتِ جَدِيدَةٌ؟</td><td class="td-ur">کیا آپ نئی ہیں؟</td><td class="td-en">Are you new?</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 3: CLASSROOM COMMANDS -->
+  <div id="sec3">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#e0f2fe;">🏫</div>
+      <div>
+        <h2>حصہ 3: کلاس روم احکامات | Classroom Commands</h2>
+        <div class="sec-arabic">أوامر الفصل الدراسي</div>
+      </div>
+    </div>
+    <div class="vocab-wrap">
+      <table class="vocab-table">
+        <thead><tr><th class="th-ar">عربی</th><th class="th-ur">اردو</th><th class="th-en">English</th></tr></thead>
+        <tbody>
+          <tr><td class="td-ar">اُنْتَبِهِي!</td><td class="td-ur">توجہ دو!</td><td class="td-en">Pay attention!</td></tr>
+          <tr><td class="td-ar">أَصْغِي إِلَيَّ</td><td class="td-ur">میری طرف سنو</td><td class="td-en">Listen to me carefully</td></tr>
+          <tr><td class="td-ar">اِسْتَمِعِي إِلَى الدَّرْسِ</td><td class="td-ur">سبق غور سے سنو</td><td class="td-en">Listen to the lesson</td></tr>
+          <tr><td class="td-ar">كَرِّرِي مِنْ فَضْلِكِ!</td><td class="td-ur">دہرائیں براہ کرم!</td><td class="td-en">Please repeat!</td></tr>
+          <tr><td class="td-ar">أَعِيدِي</td><td class="td-ur">دہراؤ</td><td class="td-en">Repeat</td></tr>
+          <tr><td class="td-ar">اِحْفَظِي</td><td class="td-ur">یاد کرو</td><td class="td-en">Memorize</td></tr>
+          <tr><td class="td-ar">رَاجِعِي</td><td class="td-ur">دہرائی کرو</td><td class="td-en">Revise</td></tr>
+          <tr><td class="td-ar">اُكْتُبِي</td><td class="td-ur">لکھو</td><td class="td-en">Write</td></tr>
+          <tr><td class="td-ar">اِقْرَئِي</td><td class="td-ur">پڑھو</td><td class="td-en">Read</td></tr>
+          <tr><td class="td-ar">اُنْظُرِي إِلَى...</td><td class="td-ur">اس کی طرف دیکھو</td><td class="td-en">Look at...</td></tr>
+          <tr><td class="td-ar">اِسْأَلِي</td><td class="td-ur">سوال کرو</td><td class="td-en">Ask</td></tr>
+          <tr><td class="td-ar">أَجِيبِي</td><td class="td-ur">جواب دو</td><td class="td-en">Answer</td></tr>
+          <tr><td class="td-ar">اِجْتَهِدِي</td><td class="td-ur">محنت کرو</td><td class="td-en">Make an effort</td></tr>
+          <tr><td class="td-ar">فَهِمْتُ</td><td class="td-ur">میں سمجھ گئی</td><td class="td-en">I understood</td></tr>
+          <tr><td class="td-ar">لَمْ أَفْهَمْ</td><td class="td-ur">میں نہیں سمجھی</td><td class="td-en">I did not understand</td></tr>
+          <tr><td class="td-ar">لَا أَفْهَمُ</td><td class="td-ur">میں نہیں سمجھتی</td><td class="td-en">I do not understand</td></tr>
+          <tr><td class="td-ar">صَوَابٌ / صَحِيحٌ</td><td class="td-ur">درست / صحیح</td><td class="td-en">Right / Correct</td></tr>
+          <tr><td class="td-ar">خَطَأٌ</td><td class="td-ur">غلط</td><td class="td-en">Wrong</td></tr>
+          <tr><td class="td-ar">مَفْهُومٌ</td><td class="td-ur">سمجھ آیا</td><td class="td-en">Understood</td></tr>
+          <tr><td class="td-ar">بِسُرْعَةٍ مِنْ فَضْلِكِ!</td><td class="td-ur">جلدی کرو براہ کرم!</td><td class="td-en">Speed up please!</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 4: COLORS -->
+  <div id="sec4">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:linear-gradient(135deg,#fecdd3,#bbf7d0,#bfdbfe);">🎨</div>
+      <div>
+        <h2>حصہ 4: رنگ | Colors - الألوان</h2>
+        <div class="sec-arabic">أسماء الألوان في اللغة العربية</div>
+      </div>
+    </div>
+    <div class="vocab-wrap">
+      <table class="vocab-table">
+        <thead><tr><th class="th-ar">عربی (مذکر / مؤنث)</th><th class="th-ur">اردو</th><th class="th-en">English</th></tr></thead>
+        <tbody>
+          <tr><td class="td-ar">أَسْوَدُ / سَوْدَاءُ</td><td class="td-ur">کالا / کالی</td><td class="td-en">Black</td></tr>
+          <tr><td class="td-ar">أَبْيَضُ / بَيْضَاءُ</td><td class="td-ur">سفید / سفید</td><td class="td-en">White</td></tr>
+          <tr><td class="td-ar">أَحْمَرُ / حَمْرَاءُ</td><td class="td-ur">لال / لال</td><td class="td-en">Red</td></tr>
+          <tr><td class="td-ar">أَخْضَرُ / خَضْرَاءُ</td><td class="td-ur">سبز / سبز</td><td class="td-en">Green</td></tr>
+          <tr><td class="td-ar">أَزْرَقُ / زَرْقَاءُ</td><td class="td-ur">نیلا / نیلی</td><td class="td-en">Blue</td></tr>
+          <tr><td class="td-ar">أَصْفَرُ / صَفْرَاءُ</td><td class="td-ur">پیلا / پیلی</td><td class="td-en">Yellow</td></tr>
+          <tr><td class="td-ar">بُنِّيٌّ</td><td class="td-ur">بھورا</td><td class="td-en">Brown</td></tr>
+          <tr><td class="td-ar">بُرْتُقَالِيٌّ</td><td class="td-ur">نارنجی</td><td class="td-en">Orange</td></tr>
+          <tr><td class="td-ar">وَرْدِيٌّ</td><td class="td-ur">گلابی</td><td class="td-en">Pink</td></tr>
+          <tr><td class="td-ar">بَنَفْسَجِيٌّ</td><td class="td-ur">جامنی</td><td class="td-en">Purple</td></tr>
+          <tr><td class="td-ar">رَمَادِيٌّ</td><td class="td-ur">سرمئی / خاکی</td><td class="td-en">Grey</td></tr>
+          <tr><td class="td-ar">ذَهَبِيٌّ</td><td class="td-ur">سنہرا</td><td class="td-en">Golden</td></tr>
+          <tr><td class="td-ar">فِضِّيٌّ</td><td class="td-ur">چاندی رنگ</td><td class="td-en">Silver</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 5: NUMBERS -->
+  <div id="sec5">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#ede9fe;">🔢</div>
+      <div>
+        <h2>حصہ 5: اعداد | Numbers - الأعداد</h2>
+        <div class="sec-arabic">الأعداد من واحد إلى مئة</div>
+      </div>
+    </div>
+    <div class="vocab-wrap">
+      <table class="vocab-table">
+        <thead><tr><th class="th-ar">عربی (مذکر / مؤنث)</th><th class="th-ur">اردو</th><th class="th-en">English</th></tr></thead>
+        <tbody>
+          <tr><td class="td-ar">وَاحِدٌ / وَاحِدَةٌ</td><td class="td-ur">ایک</td><td class="td-en">1 — One</td></tr>
+          <tr><td class="td-ar">اثْنَانِ / اثْنَتَانِ</td><td class="td-ur">دو</td><td class="td-en">2 — Two</td></tr>
+          <tr><td class="td-ar">ثَلَاثَةٌ / ثَلَاثٌ</td><td class="td-ur">تین</td><td class="td-en">3 — Three</td></tr>
+          <tr><td class="td-ar">أَرْبَعَةٌ / أَرْبَعٌ</td><td class="td-ur">چار</td><td class="td-en">4 — Four</td></tr>
+          <tr><td class="td-ar">خَمْسَةٌ / خَمْسٌ</td><td class="td-ur">پانچ</td><td class="td-en">5 — Five</td></tr>
+          <tr><td class="td-ar">سِتَّةٌ / سِتٌّ</td><td class="td-ur">چھ</td><td class="td-en">6 — Six</td></tr>
+          <tr><td class="td-ar">سَبْعَةٌ / سَبْعٌ</td><td class="td-ur">سات</td><td class="td-en">7 — Seven</td></tr>
+          <tr><td class="td-ar">ثَمَانِيَةٌ / ثَمَانٍ</td><td class="td-ur">آٹھ</td><td class="td-en">8 — Eight</td></tr>
+          <tr><td class="td-ar">تِسْعَةٌ / تِسْعٌ</td><td class="td-ur">نو</td><td class="td-en">9 — Nine</td></tr>
+          <tr><td class="td-ar">عَشَرَةٌ / عَشْرٌ</td><td class="td-ur">دس</td><td class="td-en">10 — Ten</td></tr>
+          <tr><td class="td-ar">عِشْرُونَ</td><td class="td-ur">بیس</td><td class="td-en">20 — Twenty</td></tr>
+          <tr><td class="td-ar">ثَلَاثُونَ</td><td class="td-ur">تیس</td><td class="td-en">30 — Thirty</td></tr>
+          <tr><td class="td-ar">أَرْبَعُونَ</td><td class="td-ur">چالیس</td><td class="td-en">40 — Forty</td></tr>
+          <tr><td class="td-ar">خَمْسُونَ</td><td class="td-ur">پچاس</td><td class="td-en">50 — Fifty</td></tr>
+          <tr><td class="td-ar">مِئَةٌ</td><td class="td-ur">سو</td><td class="td-en">100 — Hundred</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 6: DIRECTIONS -->
+  <div id="sec6">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#ccfbf1;">📍</div>
+      <div>
+        <h2>حصہ 6: سمتیں اور جگہ | Directions & Location</h2>
+        <div class="sec-arabic">الجهات والظروف المكانية</div>
+      </div>
+    </div>
+    <div class="vocab-wrap">
+      <table class="vocab-table">
+        <thead><tr><th class="th-ar">عربی</th><th class="th-ur">اردو</th><th class="th-en">English</th></tr></thead>
+        <tbody>
+          <tr><td class="td-ar">فَوْقَ</td><td class="td-ur">اوپر</td><td class="td-en">Above / On top</td></tr>
+          <tr><td class="td-ar">تَحْتَ</td><td class="td-ur">نیچے</td><td class="td-en">Below / Under</td></tr>
+          <tr><td class="td-ar">أَمَامَ</td><td class="td-ur">سامنے</td><td class="td-en">In front of</td></tr>
+          <tr><td class="td-ar">خَلْفَ</td><td class="td-ur">پیچھے</td><td class="td-en">Behind</td></tr>
+          <tr><td class="td-ar">عَنْ يَمِينٍ</td><td class="td-ur">دائیں طرف</td><td class="td-en">On the right</td></tr>
+          <tr><td class="td-ar">عَنْ يَسَارٍ / شِمَالٍ</td><td class="td-ur">بائیں طرف</td><td class="td-en">On the left</td></tr>
+          <tr><td class="td-ar">بِجَوَارِ / عِنْدَ</td><td class="td-ur">برابر میں / پاس</td><td class="td-en">Next to / Near</td></tr>
+          <tr><td class="td-ar">بَيْنَ</td><td class="td-ur">درمیان</td><td class="td-en">Between</td></tr>
+          <tr><td class="td-ar">هُنَا</td><td class="td-ur">یہاں</td><td class="td-en">Here</td></tr>
+          <tr><td class="td-ar">هُنَاكَ</td><td class="td-ur">وہاں</td><td class="td-en">There</td></tr>
+          <tr><td class="td-ar">قَرِيبٌ مِنْ</td><td class="td-ur">قریب</td><td class="td-en">Near / Close to</td></tr>
+          <tr><td class="td-ar">بَعِيدٌ عَنْ</td><td class="td-ur">دور</td><td class="td-en">Far from</td></tr>
+          <tr><td class="td-ar">عَلَى</td><td class="td-ur">پر / اوپر</td><td class="td-en">On / Upon</td></tr>
+          <tr><td class="td-ar">فِي</td><td class="td-ur">میں</td><td class="td-en">In</td></tr>
+          <tr><td class="td-ar">مِنْ</td><td class="td-ur">سے</td><td class="td-en">From</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 7: QUESTION WORDS -->
+  <div id="sec7">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#fef9c3;">❓</div>
+      <div>
+        <h2>حصہ 7: سوالیہ کلمات | Question Words</h2>
+        <div class="sec-arabic">أدوات الاستفهام</div>
+      </div>
+    </div>
+    <div class="vocab-wrap">
+      <table class="vocab-table">
+        <thead><tr><th class="th-ar">عربی</th><th class="th-ur">اردو</th><th class="th-en">English</th></tr></thead>
+        <tbody>
+          <tr><td class="td-ar">مَنْ؟</td><td class="td-ur">کون؟</td><td class="td-en">Who?</td></tr>
+          <tr><td class="td-ar">مَا؟</td><td class="td-ur">کیا؟</td><td class="td-en">What?</td></tr>
+          <tr><td class="td-ar">مَاذَا؟</td><td class="td-ur">کیا کر رہی ہو؟</td><td class="td-en">What are you doing?</td></tr>
+          <tr><td class="td-ar">أَيْنَ؟</td><td class="td-ur">کہاں؟</td><td class="td-en">Where?</td></tr>
+          <tr><td class="td-ar">مِنْ أَيْنَ؟</td><td class="td-ur">کہاں سے؟</td><td class="td-en">From where?</td></tr>
+          <tr><td class="td-ar">إِلَى أَيْنَ؟</td><td class="td-ur">کہاں جا رہی ہو؟</td><td class="td-en">Where are you going?</td></tr>
+          <tr><td class="td-ar">كَيْفَ؟</td><td class="td-ur">کیسے؟ / کیسی ہو؟</td><td class="td-en">How?</td></tr>
+          <tr><td class="td-ar">كَمْ؟</td><td class="td-ur">کتنا/کتنی؟</td><td class="td-en">How many / much?</td></tr>
+          <tr><td class="td-ar">مَتَى؟</td><td class="td-ur">کب؟</td><td class="td-en">When?</td></tr>
+          <tr><td class="td-ar">لِمَاذَا؟</td><td class="td-ur">کیوں؟</td><td class="td-en">Why?</td></tr>
+          <tr><td class="td-ar">هَلْ؟</td><td class="td-ur">کیا؟ (ہاں/نہیں)</td><td class="td-en">Is it? / Are you?</td></tr>
+          <tr><td class="td-ar">فِي أَيِّ؟</td><td class="td-ur">کس میں؟</td><td class="td-en">In which?</td></tr>
+          <tr><td class="td-ar">لِمَنْ؟</td><td class="td-ur">کس کا / کس کی؟</td><td class="td-en">Whose?</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 8: CLASSROOM ITEMS -->
+  <div id="sec8">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#dbeafe;">📦</div>
+      <div>
+        <h2>حصہ 8: کلاس روم کی اشیاء | Classroom Items</h2>
+        <div class="sec-arabic">مفردات قاعة الدرس</div>
+      </div>
+    </div>
+    <div class="vocab-wrap">
+      <table class="vocab-table">
+        <thead><tr><th class="th-ar">عربی (+ جمع)</th><th class="th-ur">اردو</th><th class="th-en">English</th></tr></thead>
+        <tbody>
+          <tr><td class="td-ar">سَبُّورَةٌ ج: سَبُّورَاتٌ</td><td class="td-ur">بلیک بورڈ</td><td class="td-en">Blackboard</td></tr>
+          <tr><td class="td-ar">مَكْتَبٌ ج: مَكَاتِبُ</td><td class="td-ur">میز / ڈیسک</td><td class="td-en">Desk</td></tr>
+          <tr><td class="td-ar">كُرْسِيٌّ ج: كَرَاسِيُّ</td><td class="td-ur">کرسی</td><td class="td-en">Chair</td></tr>
+          <tr><td class="td-ar">كِتَابٌ ج: كُتُبٌ</td><td class="td-ur">کتاب</td><td class="td-en">Book</td></tr>
+          <tr><td class="td-ar">قَلَمٌ ج: أَقْلَامٌ</td><td class="td-ur">قلم</td><td class="td-en">Pen</td></tr>
+          <tr><td class="td-ar">مِرْسَمٌ ج: مَرَاسِمُ</td><td class="td-ur">پنسل</td><td class="td-en">Pencil</td></tr>
+          <tr><td class="td-ar">حَايَةٌ / مَحَّاةٌ</td><td class="td-ur">ربڑ</td><td class="td-en">Eraser</td></tr>
+          <tr><td class="td-ar">بَرَّايَةٌ ج: بَرَّايَاتٌ</td><td class="td-ur">شارپنر</td><td class="td-en">Sharpener</td></tr>
+          <tr><td class="td-ar">مِسْطَرَةٌ ج: مَسَاطِرُ</td><td class="td-ur">فٹا / اسکیل</td><td class="td-en">Ruler</td></tr>
+          <tr><td class="td-ar">طَبْشُورٌ ج: طَبَاشِيرُ</td><td class="td-ur">چاک</td><td class="td-en">Chalk</td></tr>
+          <tr><td class="td-ar">شَبَّاكٌ ج: شَبَابِيكُ</td><td class="td-ur">کھڑکی</td><td class="td-en">Window</td></tr>
+          <tr><td class="td-ar">بَابٌ ج: أَبْوَابٌ</td><td class="td-ur">دروازہ</td><td class="td-en">Door</td></tr>
+          <tr><td class="td-ar">جِدَارٌ ج: جُدْرَانٌ</td><td class="td-ur">دیوار</td><td class="td-en">Wall</td></tr>
+          <tr><td class="td-ar">مِرْوَحَةٌ ج: مَرَاوِحُ</td><td class="td-ur">پنکھا</td><td class="td-en">Fan</td></tr>
+          <tr><td class="td-ar">مِصْبَاحٌ ج: مَصَابِيحُ</td><td class="td-ur">لائٹ / بلب</td><td class="td-en">Light / Lamp</td></tr>
+          <tr><td class="td-ar">سِتَارٌ ج: سَتَائِرُ</td><td class="td-ur">پردہ</td><td class="td-en">Curtain</td></tr>
+          <tr><td class="td-ar">مُصْحَفٌ ج: مَصَاحِفُ</td><td class="td-ur">قرآن مجید</td><td class="td-en">The Holy Quran</td></tr>
+          <tr><td class="td-ar">رَفٌّ ج: رُفُوفٌ</td><td class="td-ur">شیلف</td><td class="td-en">Shelf</td></tr>
+          <tr><td class="td-ar">سَجَّادَةٌ ج: سَجَّادَاتٌ</td><td class="td-ur">قالین</td><td class="td-en">Carpet / Rug</td></tr>
+          <tr><td class="td-ar">سَاعَةٌ ج: سَاعَاتٌ</td><td class="td-ur">گھڑی</td><td class="td-en">Clock / Watch</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 9: VERBS -->
+  <div id="sec9">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#fce7f3;">⚡</div>
+      <div>
+        <h2>حصہ 9: بنیادی افعال | Basic Verbs</h2>
+        <div class="sec-arabic">الأفعال الأساسية • ماضي ومضارع</div>
+      </div>
+    </div>
+    <div class="vocab-wrap">
+      <table class="vocab-table">
+        <thead><tr><th class="th-ar">عربی (ماضی / مضارع)</th><th class="th-ur">اردو</th><th class="th-en">English</th></tr></thead>
+        <tbody>
+          <tr><td class="td-ar">دَرَسَ / يَدْرُسُ</td><td class="td-ur">پڑھا / پڑھتی ہے</td><td class="td-en">to study / to learn</td></tr>
+          <tr><td class="td-ar">دَرَّسَ / يُدَرِّسُ</td><td class="td-ur">پڑھایا / پڑھاتی ہے</td><td class="td-en">to teach</td></tr>
+          <tr><td class="td-ar">كَتَبَ / يَكْتُبُ</td><td class="td-ur">لکھا / لکھتی ہے</td><td class="td-en">to write</td></tr>
+          <tr><td class="td-ar">قَرَأَ / يَقْرَأُ</td><td class="td-ur">پڑھا / پڑھتی ہے</td><td class="td-en">to read</td></tr>
+          <tr><td class="td-ar">فَهِمَ / يَفْهَمُ</td><td class="td-ur">سمجھا / سمجھتی ہے</td><td class="td-en">to understand</td></tr>
+          <tr><td class="td-ar">جَلَسَ / يَجْلِسُ</td><td class="td-ur">بیٹھا / بیٹھتی ہے</td><td class="td-en">to sit</td></tr>
+          <tr><td class="td-ar">قَامَ / يَقُومُ</td><td class="td-ur">کھڑا ہوا</td><td class="td-en">to stand up</td></tr>
+          <tr><td class="td-ar">فَتَحَ / يَفْتَحُ</td><td class="td-ur">کھولا / کھولتی ہے</td><td class="td-en">to open</td></tr>
+          <tr><td class="td-ar">أَغْلَقَ / يُغْلِقُ</td><td class="td-ur">بند کیا / بند کرتی ہے</td><td class="td-en">to close</td></tr>
+          <tr><td class="td-ar">رَاجَعَ / يُرَاجِعُ</td><td class="td-ur">دہرایا / دہراتی ہے</td><td class="td-en">to revise</td></tr>
+          <tr><td class="td-ar">شَرَحَ / يَشْرَحُ</td><td class="td-ur">سمجھایا / سمجھاتی ہے</td><td class="td-en">to explain</td></tr>
+          <tr><td class="td-ar">حَفِظَ / يَحْفَظُ</td><td class="td-ur">یاد کیا / یاد کرتی ہے</td><td class="td-en">to memorize</td></tr>
+          <tr><td class="td-ar">ذَهَبَ / يَذْهَبُ</td><td class="td-ur">گیا / جاتی ہے</td><td class="td-en">to go</td></tr>
+          <tr><td class="td-ar">جَاءَ / يَجِيءُ</td><td class="td-ur">آیا / آتی ہے</td><td class="td-en">to come</td></tr>
+          <tr><td class="td-ar">سَمِعَ / يَسْمَعُ</td><td class="td-ur">سنا / سنتی ہے</td><td class="td-en">to hear / listen</td></tr>
+          <tr><td class="td-ar">رَأَى / يَرَى</td><td class="td-ur">دیکھا / دیکھتی ہے</td><td class="td-en">to see</td></tr>
+          <tr><td class="td-ar">أَكَلَ / يَأْكُلُ</td><td class="td-ur">کھایا / کھاتی ہے</td><td class="td-en">to eat</td></tr>
+          <tr><td class="td-ar">شَرِبَ / يَشْرَبُ</td><td class="td-ur">پیا / پیتی ہے</td><td class="td-en">to drink</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 10: ISLAMIC PHRASES -->
+  <div id="sec10">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#fef3c7;">🌟</div>
+      <div>
+        <h2>حصہ 10: اسلامی فقرے | Islamic Phrases - الأذكار</h2>
+        <div class="sec-arabic">الأذكار والأدعية والعبارات الإسلامية</div>
+      </div>
+    </div>
+    <div class="vocab-wrap">
+      <table class="vocab-table">
+        <thead><tr><th class="th-ar">عربی</th><th class="th-ur">اردو</th><th class="th-en">English</th></tr></thead>
+        <tbody>
+          <tr><td class="td-ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</td><td class="td-ur">اللہ کے نام سے شروع کرتی ہوں</td><td class="td-en">In the name of Allah</td></tr>
+          <tr><td class="td-ar">الحَمْدُ لِلَّهِ</td><td class="td-ur">اللہ کا شکر ہے</td><td class="td-en">All praise is for Allah</td></tr>
+          <tr><td class="td-ar">سُبْحَانَ اللَّهِ</td><td class="td-ur">اللہ پاک ہے</td><td class="td-en">Glory be to Allah</td></tr>
+          <tr><td class="td-ar">اللَّهُ أَكْبَرُ</td><td class="td-ur">اللہ سب سے بڑا ہے</td><td class="td-en">Allah is the Greatest</td></tr>
+          <tr><td class="td-ar">لَا إِلَهَ إِلَّا اللَّهُ</td><td class="td-ur">اللہ کے سوا کوئی معبود نہیں</td><td class="td-en">There is no god but Allah</td></tr>
+          <tr><td class="td-ar">إِنْ شَاءَ اللَّهُ</td><td class="td-ur">اگر اللہ نے چاہا</td><td class="td-en">If Allah wills</td></tr>
+          <tr><td class="td-ar">مَا شَاءَ اللَّهُ</td><td class="td-ur">اللہ نے جو چاہا (تعریف)</td><td class="td-en">As Allah wills (admiration)</td></tr>
+          <tr><td class="td-ar">جَزَاكِ اللَّهُ خَيْراً</td><td class="td-ur">اللہ آپ کو خیر دے</td><td class="td-en">May Allah reward you with good</td></tr>
+          <tr><td class="td-ar">بَارَكَ اللَّهُ فِيكِ</td><td class="td-ur">اللہ آپ میں برکت دے</td><td class="td-en">May Allah bless you</td></tr>
+          <tr><td class="td-ar">أَعُوذُ بِاللَّهِ</td><td class="td-ur">میں اللہ کی پناہ لیتی ہوں</td><td class="td-en">I seek refuge with Allah</td></tr>
+          <tr><td class="td-ar">أَسْتَغْفِرُ اللَّهَ</td><td class="td-ur">میں اللہ سے معافی مانگتی ہوں</td><td class="td-en">I seek Allah's forgiveness</td></tr>
+          <tr><td class="td-ar">تَوَكَّلْتُ عَلَى اللَّهِ</td><td class="td-ur">میں نے اللہ پر بھروسہ کیا</td><td class="td-en">I put my trust in Allah</td></tr>
+          <tr><td class="td-ar">إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</td><td class="td-ur">ہم اللہ کے لیے ہیں اور اسی کی طرف لوٹنا ہے</td><td class="td-en">Indeed to Allah we belong and to Him we return</td></tr>
+          <tr><td class="td-ar">يَرْحَمُكِ اللَّهُ</td><td class="td-ur">اللہ آپ پر رحم کرے</td><td class="td-en">May Allah have mercy on you</td></tr>
+          <tr><td class="td-ar">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً</td><td class="td-ur">اے ہمارے رب! دنیا میں بھلائی دے</td><td class="td-en">Our Lord, give us good in this world</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 11: HADITHS -->
+  <div id="sec11">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#fef3c7;">📜</div>
+      <div>
+        <h2>حصہ 11: منتخب احادیث | Selected Hadiths</h2>
+        <div class="sec-arabic">أحاديث مختارة من الأربعين النووية</div>
+      </div>
+    </div>
+    <div class="hadith-grid">
+
+      <div class="hadith-card">
+        <div class="hadith-header">
+          <span class="hadith-num">الحديث الأول • حدیث نمبر 1</span>
+          <span class="hadith-source">رواه البخاري ومسلم</span>
+        </div>
+        <div class="hadith-body">
+          <div class="hadith-arabic">«إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ»</div>
+          <div class="hadith-urdu">اردو: تمام اعمال کا دارومدار نیتوں پر ہے</div>
+          <div class="hadith-english">English: Actions are judged by intentions</div>
+        </div>
+      </div>
+
+      <div class="hadith-card">
+        <div class="hadith-header">
+          <span class="hadith-num">الحديث السابع • حدیث نمبر 7</span>
+          <span class="hadith-source">رواه مسلم</span>
+        </div>
+        <div class="hadith-body">
+          <div class="hadith-arabic">«الدِّينُ النَّصِيحَةُ»</div>
+          <div class="hadith-urdu">اردو: دین خیرخواہی کا نام ہے</div>
+          <div class="hadith-english">English: Religion is sincere advice</div>
+        </div>
+      </div>
+
+      <div class="hadith-card">
+        <div class="hadith-header">
+          <span class="hadith-num">الحديث الثاني عشر • حدیث نمبر 12</span>
+          <span class="hadith-source">رواه الترمذي</span>
+        </div>
+        <div class="hadith-body">
+          <div class="hadith-arabic">«مِنْ حُسْنِ إِسْلَامِ المَرْءِ تَرْكُهُ مَا لَا يَعْنِيهِ»</div>
+          <div class="hadith-urdu">اردو: اچھے اسلام کی علامت فضول چیز چھوڑنا ہے</div>
+          <div class="hadith-english">English: A sign of good Islam is leaving what does not concern you</div>
+        </div>
+      </div>
+
+      <div class="hadith-card">
+        <div class="hadith-header">
+          <span class="hadith-num">الحديث الثالث عشر • حدیث نمبر 13</span>
+          <span class="hadith-source">رواه البخاري ومسلم</span>
+        </div>
+        <div class="hadith-body">
+          <div class="hadith-arabic">«لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ»</div>
+          <div class="hadith-urdu">اردو: تم میں کوئی مومن نہیں جب تک اپنے بھائی کے لیے وہی پسند نہ کرے جو اپنے لیے</div>
+          <div class="hadith-english">English: None believes until he loves for his brother what he loves for himself</div>
+        </div>
+      </div>
+
+      <div class="hadith-card">
+        <div class="hadith-header">
+          <span class="hadith-num">الحديث السابع والعشرون • حدیث نمبر 27</span>
+          <span class="hadith-source">رواه مسلم</span>
+        </div>
+        <div class="hadith-body">
+          <div class="hadith-arabic">«البِرُّ حُسْنُ الخُلُقِ»</div>
+          <div class="hadith-urdu">اردو: نیکی اچھے اخلاق کا نام ہے</div>
+          <div class="hadith-english">English: Righteousness is good character</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 12: DIALOGUES -->
+  <div id="sec12">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#e0f2fe;">💬</div>
+      <div>
+        <h2>حصہ 12: گفتگو کے نمونے | Sample Dialogues</h2>
+        <div class="sec-arabic">نماذج الحوارات العربية</div>
+      </div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="dialogue-title" style="background:var(--pale); color:var(--forest);">
+        💬 حوار 1: پہلی ملاقات | First Meeting — التحية والتعارف
+      </div>
+      <div class="d-teacher"><span class="d-label">استانی</span><span class="d-arabic">اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</span><span class="d-trans">Peace and blessings of Allah be upon you</span></div>
+      <div class="d-student"><span class="d-label">طالبہ</span><span class="d-arabic">وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</span><span class="d-trans">And upon you peace and blessings of Allah</span></div>
+      <div class="d-teacher"><span class="d-label">استانی</span><span class="d-arabic">مَا اسْمُكِ؟ مَنْ أَنْتِ؟</span><span class="d-trans">آپ کا نام کیا ہے؟ | What is your name?</span></div>
+      <div class="d-student"><span class="d-label">طالبہ</span><span class="d-arabic">أَنَا طَالِبَةٌ، اسْمِي زَيْنَبُ</span><span class="d-trans">میں طالبہ ہوں، میرا نام زینب ہے | I am a student, my name is Zainab</span></div>
+      <div class="d-teacher"><span class="d-label">استانی</span><span class="d-arabic">هَلْ أَنْتِ طَالِبَةٌ جَدِيدَةٌ؟</span><span class="d-trans">کیا آپ نئی طالبہ ہیں؟ | Are you a new student?</span></div>
+      <div class="d-student"><span class="d-label">طالبہ</span><span class="d-arabic">نَعَمْ، أَنَا طَالِبَةٌ جَدِيدَةٌ</span><span class="d-trans">ہاں، میں نئی طالبہ ہوں | Yes, I am a new student</span></div>
+      <div class="d-teacher"><span class="d-label">استانی</span><span class="d-arabic">مِنْ أَيْنَ أَنْتِ؟</span><span class="d-trans">آپ کہاں سے ہیں؟ | Where are you from?</span></div>
+      <div class="d-student"><span class="d-label">طالبہ</span><span class="d-arabic">أَنَا مِنْ كَرَاتْشِي، بَاكِسْتَانِيَّةٌ</span><span class="d-trans">میں کراچی سے ہوں، پاکستانی ہوں | I am from Karachi, Pakistani</span></div>
+      <div class="d-teacher"><span class="d-label">استانی</span><span class="d-arabic">أَهْلاً وَسَهْلاً يَا زَيْنَبُ!</span><span class="d-trans">خوش آمدید زینب! | Welcome, Zainab!</span></div>
+    </div>
+
+    <div class="dialogue-block">
+      <div class="dialogue-title" style="background:#ede9fe; color:#4c1d95;">
+        💬 حوار 2: کلاس روم میں | In the Classroom — في قاعة الدرس
+      </div>
+      <div class="d-teacher"><span class="d-label">استانی</span><span class="d-arabic">أَيْنَ نَحْنُ الْآنَ؟</span><span class="d-trans">ہم ابھی کہاں ہیں؟ | Where are we now?</span></div>
+      <div class="d-student"><span class="d-label">طالبات</span><span class="d-arabic">نَحْنُ فِي قَاعَةِ الدَّرْسِ</span><span class="d-trans">ہم کلاس میں ہیں | We are in the classroom</span></div>
+      <div class="d-teacher"><span class="d-label">استانی</span><span class="d-arabic">كَيْفَ هَذِهِ الْقَاعَةُ؟ هَلْ هِيَ كَبِيرَةٌ؟</span><span class="d-trans">کلاس کیسی ہے؟ کیا یہ بڑی ہے؟ | How is the classroom? Is it big?</span></div>
+      <div class="d-student"><span class="d-label">طالبہ</span><span class="d-arabic">نَعَمْ، هِيَ كَبِيرَةٌ وَنَظِيفَةٌ وَوَاسِعَةٌ</span><span class="d-trans">ہاں، یہ بڑی، صاف اور کشادہ ہے | Yes, it is big, clean and spacious</span></div>
+      <div class="d-teacher"><span class="d-label">استانی</span><span class="d-arabic">مَا لَوْنُ السَّبُّورَةِ؟</span><span class="d-trans">بورڈ کا رنگ کیا ہے؟ | What color is the board?</span></div>
+      <div class="d-student"><span class="d-label">طالبہ</span><span class="d-arabic">لَوْنُهَا أَسْوَدُ</span><span class="d-trans">اس کا رنگ کالا ہے | Its color is black</span></div>
+      <div class="d-teacher"><span class="d-label">استانی</span><span class="d-arabic">كَمْ بَابًا فِي الْقَاعَةِ؟</span><span class="d-trans">کلاس میں کتنے دروازے ہیں؟ | How many doors are there?</span></div>
+      <div class="d-student"><span class="d-label">طالبہ</span><span class="d-arabic">فِيهَا بَابَانِ وَثَلَاثَةُ شَبَابِيكَ</span><span class="d-trans">اس میں دو دروازے اور تین کھڑکیاں ہیں | There are two doors and three windows</span></div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 13: DAILY PRACTICE -->
+  <div id="sec13">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#d1fae5;">✅</div>
+      <div>
+        <h2>حصہ 13: روزانہ مشق | Daily Practice Checklist</h2>
+        <div class="sec-arabic">قائمة المهام اليومية للطالبة</div>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''">✓</div>
+        <div class="check-text">
+          <div class="check-main">صبح اٹھ کر اسلامی فقرے زبانی دہرائیں</div>
+          <div class="check-sub">Recite Islamic phrases upon waking up</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''">✓</div>
+        <div class="check-text">
+          <div class="check-main">کم از کم 5 نئی عربی الفاظ یاد کریں</div>
+          <div class="check-sub">Memorize at least 5 new Arabic words today</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''">✓</div>
+        <div class="check-text">
+          <div class="check-main">کی بک میں سے ایک حوار (گفتگو) پڑھیں</div>
+          <div class="check-sub">Read one dialogue from the Key Book</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''">✓</div>
+        <div class="check-text">
+          <div class="check-main">کلاس میں آج جو پڑھا اسے گھر میں دہرائیں</div>
+          <div class="check-sub">Revise today's class lesson at home</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''">✓</div>
+        <div class="check-text">
+          <div class="check-main">کسی ساتھی سے عربی میں بات کریں</div>
+          <div class="check-sub">Speak Arabic with a classmate</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''">✓</div>
+        <div class="check-text">
+          <div class="check-main">آئینے کے سامنے کھڑے ہو کر عربی بولیں</div>
+          <div class="check-sub">Stand in front of mirror and speak Arabic aloud</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''">✓</div>
+        <div class="check-text">
+          <div class="check-main">آج کی ایک حدیث کا ترجمہ یاد کریں</div>
+          <div class="check-sub">Memorize the translation of one hadith today</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box" onclick="this.classList.toggle('done');this.textContent=this.classList.contains('done')?'✓':''">✓</div>
+        <div class="check-text">
+          <div class="check-main">سونے سے پہلے آج کے الفاظ چیک کریں</div>
+          <div class="check-sub">Review today's vocabulary before sleeping</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <div class="sec-head" style="padding-top:0; margin-bottom:20px;">
+        <div class="sec-icon" style="background:#fef3c7;">🏆</div>
+        <div>
+          <h2 style="font-size:1.4rem;">ترقی کا چارٹ | Progress Chart</h2>
+          <div class="sec-arabic">مستوى الطالبة عبر الأشهر</div>
+        </div>
+      </div>
+      <div class="progress-grid">
+        <div class="prog-card"><div class="prog-months">ماہ 1-2</div><div class="prog-topic">سلام و تعارف</div><span class="prog-vocab">~100</span><div class="prog-skill">الفاظ | Words</div></div>
+        <div class="prog-card"><div class="prog-months">ماہ 3-4</div><div class="prog-topic">کلاس روم + رنگ</div><span class="prog-vocab" style="color:var(--goldc);">~200</span><div class="prog-skill">الفاظ | Words</div></div>
+        <div class="prog-card"><div class="prog-months">ماہ 5-6</div><div class="prog-topic">روزمرہ گفتگو</div><span class="prog-vocab" style="color:var(--teal);">~350</span><div class="prog-skill">الفاظ | Words</div></div>
+        <div class="prog-card"><div class="prog-months">ماہ 7-8</div><div class="prog-topic">سوال جواب + افعال</div><span class="prog-vocab" style="color:#7c3aed;">~500</span><div class="prog-skill">الفاظ | Words</div></div>
+        <div class="prog-card"><div class="prog-months">ماہ 9-10</div><div class="prog-topic">حروف جر + اذکار</div><span class="prog-vocab" style="color:#be123c;">~650</span><div class="prog-skill">الفاظ | Words</div></div>
+        <div class="prog-card"><div class="prog-months">ماہ 11-12</div><div class="prog-topic">مکمل حوار</div><span class="prog-vocab" style="color:#0e7490;">800+</span><div class="prog-skill">الفاظ | Words</div></div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- end content -->
+
+<!-- FOOTER -->
+<div class="book-footer">
+  <div class="book-footer-ayah">وَقُلْ رَبِّ زِدْنِي عِلْماً</div>
+  <p>اے میرے رب! میرا علم بڑھا دے</p>
+  <p>O My Lord! Increase me in knowledge — سورة طه: 114</p>
+  <p style="margin-top:16px;">مدرسۃ عائشہ الصدیقہ رضی اللہ عنہا للبنات • حلستان گوہر، کراچی، پاکستان</p>
+  <p>عربی بولنے کا مکمل ایک سالہ کورس • طالبہ کی کی بک</p>
+</div>
+
+<script>
+// Smooth scroll for nav
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', e => {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+  });
+});
+
+// Highlight active nav on scroll
+const sections = document.querySelectorAll('[id^="sec"]');
+const navTabs = document.querySelectorAll('.nav-tab');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navTabs.forEach(t => {
+    t.classList.remove('active');
+    if (t.getAttribute('href') === '#' + current) t.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
