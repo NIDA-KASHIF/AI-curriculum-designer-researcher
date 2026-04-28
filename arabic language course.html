@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عربی بولنے کا مکمل ایک سالہ کورس</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Nastaliq+Urdu&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --emerald: #064e3b;
+    --emerald-mid: #065f46;
+    --emerald-light: #10b981;
+    --emerald-pale: #d1fae5;
+    --gold: #92400e;
+    --gold-light: #f59e0b;
+    --gold-pale: #fef3c7;
+    --teal: #0f766e;
+    --teal-pale: #ccfbf1;
+    --ink: #1c1917;
+    --cream: #fffbeb;
+    --parchment: #fef9ee;
+    --white: #ffffff;
+    --shadow: rgba(6,78,59,0.15);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Cairo', 'Amiri', serif;
+    background: var(--parchment);
+    color: var(--ink);
+    direction: rtl;
+    min-height: 100vh;
+  }
+
+  /* ===== GEOMETRIC BACKGROUND ===== */
+  body::before {
+    content: '';
+    position: fixed; top:0; left:0; right:0; bottom:0;
+    background:
+      radial-gradient(circle at 10% 20%, rgba(16,185,129,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(245,158,11,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(6,78,59,0.03) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .page-wrap { position: relative; z-index: 1; }
+
+  /* ===== HEADER ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--emerald) 0%, #047857 40%, #065f46 70%, #064e3b 100%);
+    padding: 60px 40px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(245,158,11,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 30%);
+  }
+
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M30 0l30 30-30 30L0 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .bismillah {
+    font-family: 'Amiri', serif;
+    font-size: 2rem;
+    color: var(--gold-light);
+    margin-bottom: 24px;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Cairo', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    animation: fadeDown 0.9s ease 0.1s both;
+  }
+
+  .hero h1 span {
+    color: var(--gold-light);
+    display: block;
+    font-size: 0.7em;
+  }
+
+  .hero-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 2.2rem;
+    color: rgba(255,255,255,0.85);
+    margin: 12px 0;
+    animation: fadeDown 1s ease 0.2s both;
+  }
+
+  .hero-badges {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 12px; margin-top: 32px;
+    animation: fadeDown 1s ease 0.3s both;
+  }
+
+  .badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+  }
+
+  .badge.gold {
+    background: rgba(245,158,11,0.25);
+    border-color: var(--gold-light);
+    color: var(--gold-light);
+  }
+
+  /* ===== DECORATIVE DIVIDER ===== */
+  .divider {
+    text-align: center; padding: 30px;
+    font-size: 1.5rem; color: var(--gold-light);
+    letter-spacing: 8px;
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-title {
+    text-align: center;
+    padding: 40px 20px 20px;
+  }
+
+  .section-title h2 {
+    font-family: 'Cairo', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 900;
+    color: var(--emerald);
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title h2::after {
+    content: '';
+    display: block;
+    width: 80px; height: 4px;
+    background: linear-gradient(90deg, var(--gold-light), var(--emerald-light));
+    margin: 8px auto 0;
+    border-radius: 2px;
+  }
+
+  .section-sub {
+    color: var(--teal);
+    font-size: 1rem;
+    margin-top: 6px;
+    font-family: 'Amiri', serif;
+  }
+
+  /* ===== INTRO CARDS ===== */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 20px 40px 40px;
+    max-width: 1300px; margin: 0 auto;
+  }
+
+  .intro-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px var(--shadow);
+    border-top: 5px solid var(--emerald-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .intro-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px var(--shadow); }
+
+  .intro-card.gold-top { border-top-color: var(--gold-light); }
+  .intro-card.teal-top { border-top-color: var(--teal); }
+
+  .card-icon { font-size: 2.5rem; margin-bottom: 12px; }
+  .card-title {
+    font-size: 1.1rem; font-weight: 800; color: var(--emerald);
+    margin-bottom: 14px; border-bottom: 1px dashed var(--emerald-pale);
+    padding-bottom: 10px;
+  }
+
+  .feature-list { list-style: none; }
+  .feature-list li {
+    padding: 6px 0;
+    font-size: 0.92rem;
+    color: #374151;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .feature-list li::before { content: '◆'; color: var(--gold-light); font-size: 0.6rem; margin-top: 4px; flex-shrink: 0; }
+
+  /* ===== MONTH SECTIONS ===== */
+  .months-container { max-width: 1300px; margin: 0 auto; padding: 0 30px 60px; }
+
+  .month-block {
+    margin-bottom: 40px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 6px 28px var(--shadow);
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .month-header {
+    padding: 24px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+
+  .month-num {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; font-weight: 900; color: white;
+    flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.4);
+  }
+
+  .month-title-wrap { flex: 1; }
+
+  .month-title {
+    font-size: 1.3rem; font-weight: 800;
+    color: white; line-height: 1.3;
+  }
+
+  .month-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 1.1rem; color: rgba(255,255,255,0.8);
+    margin-top: 2px;
+  }
+
+  .month-body { background: white; }
+
+  .class-table { width: 100%; border-collapse: collapse; }
+
+  .class-table thead tr th {
+    padding: 14px 16px;
+    font-size: 0.85rem; font-weight: 700;
+    text-align: right;
+    border-bottom: 2px solid var(--emerald-pale);
+  }
+
+  .th-num { width: 50px; text-align: center; }
+  .th-topic { color: var(--emerald); }
+  .th-activity { color: var(--teal); }
+  .th-goal { color: var(--gold); }
+
+  .class-table tbody tr {
+    border-bottom: 1px solid #f3f4f6;
+    transition: background 0.2s;
+  }
+  .class-table tbody tr:hover { background: #f0fdf4; }
+  .class-table tbody tr.quiz-row { background: var(--gold-pale); }
+  .class-table tbody tr.quiz-row:hover { background: #fde68a; }
+
+  .class-table td {
+    padding: 12px 16px;
+    font-size: 0.9rem; vertical-align: top;
+  }
+
+  .td-num {
+    text-align: center; font-weight: 700;
+    color: var(--emerald);
+    width: 50px;
+  }
+
+  .td-topic { font-weight: 600; color: #1f2937; }
+
+  .td-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 1rem; color: var(--teal);
+    direction: rtl;
+  }
+
+  .td-goal { color: #6b7280; font-size: 0.85rem; }
+
+  .quiz-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--gold-light); color: white;
+    padding: 3px 12px; border-radius: 20px;
+    font-size: 0.8rem; font-weight: 700;
+  }
+
+  /* ===== MONTH COLORS ===== */
+  .m1 .month-header { background: linear-gradient(135deg, #064e3b, #065f46); }
+  .m2 .month-header { background: linear-gradient(135deg, #0f766e, #0d9488); }
+  .m3 .month-header { background: linear-gradient(135deg, #1e40af, #1d4ed8); }
+  .m4 .month-header { background: linear-gradient(135deg, #6d28d9, #7c3aed); }
+  .m5 .month-header { background: linear-gradient(135deg, #c2410c, #ea580c); }
+  .m6 .month-header { background: linear-gradient(135deg, #9f1239, #be123c); }
+  .m7 .month-header { background: linear-gradient(135deg, #064e3b, #059669); }
+  .m8 .month-header { background: linear-gradient(135deg, #115e59, #0f766e); }
+  .m9 .month-header { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+  .m10 .month-header { background: linear-gradient(135deg, #92400e, #b45309); }
+  .m11 .month-header { background: linear-gradient(135deg, #0f766e, #14b8a6); }
+  .m12 .month-header { background: linear-gradient(135deg, #7f1d1d, #b91c1c); }
+
+  /* ===== QUIZ SECTION ===== */
+  .quiz-section {
+    max-width: 1000px; margin: 0 auto;
+    padding: 0 30px 60px;
+  }
+
+  .quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px; margin-top: 24px;
+  }
+
+  .quiz-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: 0 4px 16px var(--shadow);
+    border-bottom: 4px solid var(--emerald-light);
+    transition: transform 0.3s;
+  }
+  .quiz-card:hover { transform: translateY(-4px); }
+
+  .quiz-score {
+    font-size: 2.5rem; font-weight: 900;
+    color: var(--emerald); line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .quiz-label { font-size: 0.85rem; color: #6b7280; font-weight: 600; }
+  .quiz-urdu { font-size: 0.9rem; color: var(--ink); font-weight: 700; margin-top: 8px; }
+
+  .quiz-total-box {
+    background: linear-gradient(135deg, var(--emerald), #065f46);
+    color: white; border-radius: 16px;
+    padding: 24px 32px;
+    text-align: center;
+    margin-top: 28px;
+    font-size: 1.2rem; font-weight: 700;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--emerald);
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .footer-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+  }
+  .footer-text { font-size: 0.9rem; opacity: 0.8; margin-top: 8px; }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeDown {
+    from { opacity:0; transform: translateY(-20px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(20px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 40px 20px 60px; }
+    .intro-grid { padding: 20px; }
+    .months-container { padding: 0 16px 40px; }
+    .month-header { padding: 20px; }
+    .class-table td { padding: 10px 12px; font-size: 0.82rem; }
+    .td-arabic { font-size: 0.9rem; }
+    .quiz-section { padding: 0 16px 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <h1>
+      عربی بولنے کا مکمل کورس
+      <span>Complete Arabic Spoken Course</span>
+    </h1>
+    <div class="hero-arabic">العربية الميسرة • المنهج السنوي الشامل</div>
+    <div class="hero-badges">
+      <span class="badge gold">📅 ایک سال • One Year</span>
+      <span class="badge">📚 60 کلاسیں • 60 Classes</span>
+      <span class="badge">📅 ہر ماہ 5 کلاسیں • 5 per Month</span>
+      <span class="badge">🔴 ہفتہ اتوار بند • Sat & Sun Off</span>
+      <span class="badge gold">✅ ماہانہ کوئز • Monthly Quiz</span>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO CARDS -->
+<div class="section-title" style="padding-top:50px;">
+  <h2>کورس کی خصوصیات | Course Features</h2>
+  <p class="section-sub">مكونات ومميزات المنهج الدراسي</p>
+</div>
+
+<div class="intro-grid">
+  <div class="intro-card" style="animation-delay:0s">
+    <div class="card-icon">🎯</div>
+    <div class="card-title">مقصد | Objective</div>
+    <ul class="feature-list">
+      <li>100% عربی بولنے میں مہارت</li>
+      <li>روزمرہ گفتگو میں اعتماد</li>
+      <li>اسلامی فقروں کا صحیح استعمال</li>
+      <li>12 مہینوں میں مکمل تربیت</li>
+    </ul>
+  </div>
+  <div class="intro-card gold-top" style="animation-delay:0.1s">
+    <div class="card-icon">🗓️</div>
+    <div class="card-title">شیڈول | Schedule</div>
+    <ul class="feature-list">
+      <li>ہر ماہ 5 کلاسیں</li>
+      <li>ہفتہ اور اتوار کی چھٹی</li>
+      <li>ماہ کی آخری کلاس میں کوئز</li>
+      <li>سال کے آخر میں آخری امتحان</li>
+    </ul>
+  </div>
+  <div class="intro-card teal-top" style="animation-delay:0.2s">
+    <div class="card-icon">📖</div>
+    <div class="card-title">مواد | Content</div>
+    <ul class="feature-list">
+      <li>عربی، اردو، انگلش تینوں زبانیں</li>
+      <li>المیسر کتاب پر مبنی</li>
+      <li>الأربعین النووية سے احادیث</li>
+      <li>کلاس روم ووکیبلری شامل</li>
+    </ul>
+  </div>
+  <div class="intro-card" style="animation-delay:0.3s; border-top-color: #7c3aed;">
+    <div class="card-icon">🏆</div>
+    <div class="card-title">کامیابی | Success</div>
+    <ul class="feature-list">
+      <li>اپنا تعارف عربی میں کروائیں</li>
+      <li>سوال و جواب کریں</li>
+      <li>احکامات سمجھیں</li>
+      <li>روانی سے بولیں</li>
+    </ul>
+  </div>
+</div>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- 12 MONTH PLAN -->
+<div class="section-title">
+  <h2>12 مہینوں کا تفصیلی پلان</h2>
+  <p class="section-sub">خطة الدراسة التفصيلية لاثني عشر شهراً</p>
+</div>
+
+<div class="months-container">
+
+  <!-- MONTH 1 -->
+  <div class="month-block m1">
+    <div class="month-header">
+      <div class="month-num">۱</div>
+      <div class="month-title-wrap">
+        <div class="month-title">مہینہ اول | Month 1</div>
+        <div class="month-arabic">سلام دعا اور تعارف • التحية والتعارف</div>
+      </div>
+      <span class="badge">Greetings & Introductions</span>
+    </div>
+    <div class="month-body">
+      <table class="class-table">
+        <thead><tr>
+          <th class="th-num">#</th>
+          <th class="th-topic">موضوع | Topic</th>
+          <th class="th-activity">عربی سرگرمی | Arabic Practice</th>
+          <th class="th-goal">مقصد | Goal</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="td-num">1</td><td class="td-topic">اسلامی سلام سیکھنا</td><td class="td-arabic">اَلسَّلَامُ عَلَيْكُمْ / وَعَلَيْكُمُ السَّلَامُ / أَهْلاً وَسَهْلاً</td><td class="td-goal">صحیح جواب دینا</td></tr>
+          <tr><td class="td-num">2</td><td class="td-topic">اپنا تعارف</td><td class="td-arabic">أَنَا اسْمِي... / أَنَا طَالِبَةٌ / أَنَا مِنْ...</td><td class="td-goal">نام اور ملک بتانا</td></tr>
+          <tr><td class="td-num">3</td><td class="td-topic">دوسروں سے پوچھنا</td><td class="td-arabic">مَنْ أَنْتِ؟ / مَا اسْمُكِ؟ / مِنْ أَيْنَ أَنْتِ؟</td><td class="td-goal">دوسروں سے تعارف</td></tr>
+          <tr><td class="td-num">4</td><td class="td-topic">قومیتیں اور ملک</td><td class="td-arabic">بَاكِسْتَانِيَّةٌ / مِصْرِيَّةٌ / تُرْكِيَّةٌ</td><td class="td-goal">قومیت بتانا</td></tr>
+          <tr class="quiz-row"><td class="td-num">5</td><td class="td-topic"><span class="quiz-badge">✅ کوئز 1</span></td><td class="td-arabic">مکمل تعارفی گفتگو کی مشق</td><td class="td-goal">ماہانہ جائزہ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MONTH 2 -->
+  <div class="month-block m2">
+    <div class="month-header">
+      <div class="month-num">۲</div>
+      <div class="month-title-wrap">
+        <div class="month-title">مہینہ دوم | Month 2</div>
+        <div class="month-arabic">ضمائر اور بنیادی جملے • الضمائر والجمل الأساسية</div>
+      </div>
+      <span class="badge">Pronouns & Basic Sentences</span>
+    </div>
+    <div class="month-body">
+      <table class="class-table">
+        <thead><tr><th class="th-num">#</th><th class="th-topic">موضوع</th><th class="th-activity">عربی مشق</th><th class="th-goal">مقصد</th></tr></thead>
+        <tbody>
+          <tr><td class="td-num">1</td><td class="td-topic">منفصل ضمائر</td><td class="td-arabic">أَنَا، أَنْتِ، هِيَ، هُوَ، نَحْنُ، أَنْتُنَّ</td><td class="td-goal">ضمائر پہچاننا</td></tr>
+          <tr><td class="td-num">2</td><td class="td-topic">متصل ضمائر</td><td class="td-arabic">كِ، كَ، هَا، هُ، ي</td><td class="td-goal">ملے ہوئے ضمائر</td></tr>
+          <tr><td class="td-num">3</td><td class="td-topic">نئی/پرانی طالبہ</td><td class="td-arabic">هَلْ أَنْتِ طَالِبَةٌ جَدِيدَةٌ؟ / نَعَمْ / لَا، بَلْ</td><td class="td-goal">سوال جواب</td></tr>
+          <tr><td class="td-num">4</td><td class="td-topic">اشارے کے الفاظ</td><td class="td-arabic">هَذَا، هَذِهِ / ذَلِكَ، تِلْكَ</td><td class="td-goal">قریب اور دور</td></tr>
+          <tr class="quiz-row"><td class="td-num">5</td><td class="td-topic"><span class="quiz-badge">✅ کوئز 2</span></td><td class="td-arabic">ضمائر اور اشارے کی مکمل مشق</td><td class="td-goal">ماہانہ جائزہ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MONTH 3 -->
+  <div class="month-block m3">
+    <div class="month-header">
+      <div class="month-num">۳</div>
+      <div class="month-title-wrap">
+        <div class="month-title">مہینہ سوم | Month 3</div>
+        <div class="month-arabic">کلاس روم کی زبان • لغة الفصل الدراسي</div>
+      </div>
+      <span class="badge">Classroom Language</span>
+    </div>
+    <div class="month-body">
+      <table class="class-table">
+        <thead><tr><th class="th-num">#</th><th class="th-topic">موضوع</th><th class="th-activity">عربی مشق</th><th class="th-goal">مقصد</th></tr></thead>
+        <tbody>
+          <tr><td class="td-num">1</td><td class="td-topic">کلاس روم احکامات</td><td class="td-arabic">اُنْتَبِهِي / أَصْغِي / كَرِّرِي / اُكْتُبِي</td><td class="td-goal">احکامات سمجھنا</td></tr>
+          <tr><td class="td-num">2</td><td class="td-topic">کلاس روم کی چیزیں</td><td class="td-arabic">كِتَابٌ، قَلَمٌ، سَبُّورَةٌ، مَكْتَبٌ، كُرْسِيٌّ</td><td class="td-goal">نام بتانا</td></tr>
+          <tr><td class="td-num">3</td><td class="td-topic">کلاس روم صفات</td><td class="td-arabic">كَبِيرَةٌ، صَغِيرَةٌ، نَظِيفَةٌ، وَاسِعَةٌ</td><td class="td-goal">تعریف کرنا</td></tr>
+          <tr><td class="td-num">4</td><td class="td-topic">سمجھنا/نہ سمجھنا</td><td class="td-arabic">فَهِمْتُ / لَمْ أَفْهَمْ / لَا أَفْهَمُ</td><td class="td-goal">کلاس میں بات</td></tr>
+          <tr class="quiz-row"><td class="td-num">5</td><td class="td-topic"><span class="quiz-badge">✅ کوئز 3</span></td><td class="td-arabic">کلاس روم کے بارے میں مکمل حوار</td><td class="td-goal">ماہانہ جائزہ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MONTH 4 -->
+  <div class="month-block m4">
+    <div class="month-header">
+      <div class="month-num">۴</div>
+      <div class="month-title-wrap">
+        <div class="month-title">مہینہ چہارم | Month 4</div>
+        <div class="month-arabic">رنگ، اعداد، سمتیں • الألوان والأعداد والجهات</div>
+      </div>
+      <span class="badge">Colors, Numbers & Directions</span>
+    </div>
+    <div class="month-body">
+      <table class="class-table">
+        <thead><tr><th class="th-num">#</th><th class="th-topic">موضوع</th><th class="th-activity">عربی مشق</th><th class="th-goal">مقصد</th></tr></thead>
+        <tbody>
+          <tr><td class="td-num">1</td><td class="td-topic">رنگوں کے نام</td><td class="td-arabic">أَسْوَدُ، أَبْيَضُ، أَحْمَرُ، أَخْضَرُ، أَزْرَقُ، أَصْفَرُ</td><td class="td-goal">رنگ پہچاننا</td></tr>
+          <tr><td class="td-num">2</td><td class="td-topic">اعداد 1-10 مذکر</td><td class="td-arabic">وَاحِدٌ، اثْنَانِ، ثَلَاثَةٌ ... عَشَرَةٌ</td><td class="td-goal">گننا</td></tr>
+          <tr><td class="td-num">3</td><td class="td-topic">اعداد 1-10 مؤنث</td><td class="td-arabic">وَاحِدَةٌ، اثْنَتَانِ، ثَلَاثٌ ... عَشْرٌ</td><td class="td-goal">مؤنث اعداد</td></tr>
+          <tr><td class="td-num">4</td><td class="td-topic">سمتیں</td><td class="td-arabic">فَوْقَ، تَحْتَ، أَمَامَ، خَلْفَ، يَمِين، شِمَال</td><td class="td-goal">جگہ بتانا</td></tr>
+          <tr class="quiz-row"><td class="td-num">5</td><td class="td-topic"><span class="quiz-badge">✅ کوئز 4</span></td><td class="td-arabic">رنگ، اعداد، سمتوں کی مشق</td><td class="td-goal">ماہانہ جائزہ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MONTH 5 -->
+  <div class="month-block m5">
+    <div class="month-header">
+      <div class="month-num">۵</div>
+      <div class="month-title-wrap">
+        <div class="month-title">مہینہ پنجم | Month 5</div>
+        <div class="month-arabic">روزمرہ گفتگو • المحادثات اليومية</div>
+      </div>
+      <span class="badge">Daily Conversations</span>
+    </div>
+    <div class="month-body">
+      <table class="class-table">
+        <thead><tr><th class="th-num">#</th><th class="th-topic">موضوع</th><th class="th-activity">عربی مشق</th><th class="th-goal">مقصد</th></tr></thead>
+        <tbody>
+          <tr><td class="td-num">1</td><td class="td-topic">حال احوال</td><td class="td-arabic">كَيْفَ حَالُكِ؟ / بِخَيْرٍ وَالحَمْدُ لِلَّهِ / مَا أَخْبَارُكِ؟</td><td class="td-goal">روزانہ سوال</td></tr>
+          <tr><td class="td-num">2</td><td class="td-topic">مدرسے کے بارے میں</td><td class="td-arabic">فِي أَيِّ مَدْرَسَةٍ أَنْتِ؟ / فِي أَيِّ صَفٍّ أَنْتِ؟</td><td class="td-goal">مدرسے کی بات</td></tr>
+          <tr><td class="td-num">3</td><td class="td-topic">شہر اور علاقہ</td><td class="td-arabic">فِي أَيِّ مَدِينَةٍ؟ / فِي أَيِّ مِنْطَقَةٍ مَدْرَسَتُكِ؟</td><td class="td-goal">رہائش بتانا</td></tr>
+          <tr><td class="td-num">4</td><td class="td-topic">روزانہ کام</td><td class="td-arabic">مَاذَا تَفْعَلِينَ الْيَوْمَ؟ / أَذْهَبُ إِلَى الْمَدْرَسَةِ</td><td class="td-goal">یومیہ سرگرمی</td></tr>
+          <tr class="quiz-row"><td class="td-num">5</td><td class="td-topic"><span class="quiz-badge">✅ کوئز 5</span></td><td class="td-arabic">یومیہ زندگی کی گفتگو</td><td class="td-goal">ماہانہ جائزہ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MONTH 6 -->
+  <div class="month-block m6">
+    <div class="month-header">
+      <div class="month-num">۶</div>
+      <div class="month-title-wrap">
+        <div class="month-title">مہینہ ششم | Month 6</div>
+        <div class="month-arabic">صفات اور مخالف الفاظ • الصفات والمتضادات</div>
+      </div>
+      <span class="badge">Adjectives & Opposites</span>
+    </div>
+    <div class="month-body">
+      <table class="class-table">
+        <thead><tr><th class="th-num">#</th><th class="th-topic">موضوع</th><th class="th-activity">عربی مشق</th><th class="th-goal">مقصد</th></tr></thead>
+        <tbody>
+          <tr><td class="td-num">1</td><td class="td-topic">عام صفات</td><td class="td-arabic">جَمِيلٌ، قَبِيحٌ، كَبِيرٌ، صَغِيرٌ، جَدِيدٌ، قَدِيمٌ</td><td class="td-goal">تعریف کرنا</td></tr>
+          <tr><td class="td-num">2</td><td class="td-topic">مخالف صفات</td><td class="td-arabic">مَفْتُوحٌ/مُغْلَقٌ، نَظِيفٌ/وَسِخٌ، غَالٍ/رَخِيصٌ</td><td class="td-goal">مخالف الفاظ</td></tr>
+          <tr><td class="td-num">3</td><td class="td-topic">حال کی صفات</td><td class="td-arabic">مُضِيئَةٌ/مُظْلِمَةٌ، قَائِمٌ/جَالِسٌ</td><td class="td-goal">حال بتانا</td></tr>
+          <tr><td class="td-num">4</td><td class="td-topic">مفرد، مثنی، جمع</td><td class="td-arabic">كِتَابٌ / كِتَابَانِ / كُتُبٌ</td><td class="td-goal">تعداد کے ساتھ</td></tr>
+          <tr class="quiz-row"><td class="td-num">5</td><td class="td-topic"><span class="quiz-badge">✅ کوئز 6</span></td><td class="td-arabic">صفات کے ساتھ مکمل جملے</td><td class="td-goal">ماہانہ جائزہ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MONTH 7 -->
+  <div class="month-block m7">
+    <div class="month-header">
+      <div class="month-num">۷</div>
+      <div class="month-title-wrap">
+        <div class="month-title">مہینہ ہفتم | Month 7</div>
+        <div class="month-arabic">سوالیہ کلمات • أدوات الاستفهام</div>
+      </div>
+      <span class="badge">Question Words</span>
+    </div>
+    <div class="month-body">
+      <table class="class-table">
+        <thead><tr><th class="th-num">#</th><th class="th-topic">موضوع</th><th class="th-activity">عربی مشق</th><th class="th-goal">مقصد</th></tr></thead>
+        <tbody>
+          <tr><td class="td-num">1</td><td class="td-topic">من، ما، ماذا</td><td class="td-arabic">مَنْ أَنْتِ؟ مَا هَذَا؟ مَاذَا تَفْعَلِينَ؟</td><td class="td-goal">بنیادی سوالات</td></tr>
+          <tr><td class="td-num">2</td><td class="td-topic">أين، من أين</td><td class="td-arabic">أَيْنَ أَنْتِ؟ مِنْ أَيْنَ أَنْتِ؟ إِلَى أَيْنَ؟</td><td class="td-goal">جگہ کے سوالات</td></tr>
+          <tr><td class="td-num">3</td><td class="td-topic">كيف، كم، متى</td><td class="td-arabic">كَيْفَ حَالُكِ؟ كَمْ عُمْرُكِ؟ مَتَى الدَّرْسُ؟</td><td class="td-goal">حال، تعداد، وقت</td></tr>
+          <tr><td class="td-num">4</td><td class="td-topic">لماذا، هل، أ</td><td class="td-arabic">لِمَاذَا تَتَأَخَّرِينَ؟ هَلْ فَهِمْتِ؟</td><td class="td-goal">وجہ اور تصدیق</td></tr>
+          <tr class="quiz-row"><td class="td-num">5</td><td class="td-topic"><span class="quiz-badge">✅ کوئز 7</span></td><td class="td-arabic">مکمل سوال جواب کی مشق</td><td class="td-goal">ماہانہ جائزہ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MONTH 8 -->
+  <div class="month-block m8">
+    <div class="month-header">
+      <div class="month-num">۸</div>
+      <div class="month-title-wrap">
+        <div class="month-title">مہینہ ہشتم | Month 8</div>
+        <div class="month-arabic">بنیادی افعال • الأفعال الأساسية</div>
+      </div>
+      <span class="badge">Basic Verbs</span>
+    </div>
+    <div class="month-body">
+      <table class="class-table">
+        <thead><tr><th class="th-num">#</th><th class="th-topic">موضوع</th><th class="th-activity">عربی مشق</th><th class="th-goal">مقصد</th></tr></thead>
+        <tbody>
+          <tr><td class="td-num">1</td><td class="td-topic">پڑھنا/لکھنا</td><td class="td-arabic">دَرَسَ يَدْرُسُ / كَتَبَ يَكْتُبُ / قَرَأَ يَقْرَأُ</td><td class="td-goal">علمی افعال</td></tr>
+          <tr><td class="td-num">2</td><td class="td-topic">بیٹھنا/کھڑا ہونا</td><td class="td-arabic">جَلَسَ يَجْلِسُ / قَامَ يَقُومُ</td><td class="td-goal">حرکت</td></tr>
+          <tr><td class="td-num">3</td><td class="td-topic">سمجھنا/کھولنا</td><td class="td-arabic">فَهِمَ يَفْهَمُ / فَتَحَ يَفْتَحُ / أَغْلَقَ يُغْلِقُ</td><td class="td-goal">روزمرہ افعال</td></tr>
+          <tr><td class="td-num">4</td><td class="td-topic">ماضی اور مضارع</td><td class="td-arabic">مختلف زمانوں میں جملے بنانا</td><td class="td-goal">زمانے</td></tr>
+          <tr class="quiz-row"><td class="td-num">5</td><td class="td-topic"><span class="quiz-badge">✅ کوئز 8</span></td><td class="td-arabic">افعال کے ساتھ مکمل جملے</td><td class="td-goal">ماہانہ جائزہ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MONTH 9 -->
+  <div class="month-block m9">
+    <div class="month-header">
+      <div class="month-num">۹</div>
+      <div class="month-title-wrap">
+        <div class="month-title">مہینہ نہم | Month 9</div>
+        <div class="month-arabic">حروف جر اور ظروف • حروف الجر والظروف</div>
+      </div>
+      <span class="badge">Prepositions & Adverbs</span>
+    </div>
+    <div class="month-body">
+      <table class="class-table">
+        <thead><tr><th class="th-num">#</th><th class="th-topic">موضوع</th><th class="th-activity">عربی مشق</th><th class="th-goal">مقصد</th></tr></thead>
+        <tbody>
+          <tr><td class="td-num">1</td><td class="td-topic">حروف جر 1</td><td class="td-arabic">فِي، مِنْ، إِلَى، عَلَى، عَنْ</td><td class="td-goal">جگہ بتانا</td></tr>
+          <tr><td class="td-num">2</td><td class="td-topic">حروف جر 2</td><td class="td-arabic">مَعَ، عِنْدَ، بِجَوَارِ، أَمَامَ، خَلْفَ</td><td class="td-goal">قربت</td></tr>
+          <tr><td class="td-num">3</td><td class="td-topic">ظروف مکان</td><td class="td-arabic">هُنَا، هُنَاكَ، فَوْقَ، تَحْتَ، بَيْنَ</td><td class="td-goal">جگہ کی وضاحت</td></tr>
+          <tr><td class="td-num">4</td><td class="td-topic">مکمل جملے</td><td class="td-arabic">اَلْمَكْتَبُ عَلَى الأَرْضِ أَمَامَ السَّبُّورَةِ</td><td class="td-goal">تفصیل</td></tr>
+          <tr class="quiz-row"><td class="td-num">5</td><td class="td-topic"><span class="quiz-badge">✅ کوئز 9</span></td><td class="td-arabic">حروف جر کی مکمل گفتگو</td><td class="td-goal">ماہانہ جائزہ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MONTH 10 -->
+  <div class="month-block m10">
+    <div class="month-header">
+      <div class="month-num">۱۰</div>
+      <div class="month-title-wrap">
+        <div class="month-title">مہینہ دہم | Month 10</div>
+        <div class="month-arabic">اسلامی فقرے اور احادیث • الأذكار والأحاديث النبوية</div>
+      </div>
+      <span class="badge">Islamic Phrases & Hadiths</span>
+    </div>
+    <div class="month-body">
+      <table class="class-table">
+        <thead><tr><th class="th-num">#</th><th class="th-topic">موضوع</th><th class="th-activity">عربی مشق</th><th class="th-goal">مقصد</th></tr></thead>
+        <tbody>
+          <tr><td class="td-num">1</td><td class="td-topic">روزمرہ اذکار</td><td class="td-arabic">بِسْمِ اللَّهِ، الحَمْدُ لِلَّهِ، سُبْحَانَ اللَّهِ، اللَّهُ أَكْبَرُ</td><td class="td-goal">ذکر</td></tr>
+          <tr><td class="td-num">2</td><td class="td-topic">اسلامی تحیات</td><td class="td-arabic">إِنْ شَاءَ اللَّهُ، مَا شَاءَ اللَّهُ، جَزَاكِ اللَّهُ خَيْراً</td><td class="td-goal">اسلامی گفتگو</td></tr>
+          <tr><td class="td-num">3</td><td class="td-topic">حدیث: نیت کی اہمیت</td><td class="td-arabic">«إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ» - الحديث الأول</td><td class="td-goal">حدیث سیکھنا</td></tr>
+          <tr><td class="td-num">4</td><td class="td-topic">حدیث: حلال و حرام</td><td class="td-arabic">«الحَلَالُ بَيِّنٌ وَالحَرَامُ بَيِّنٌ» - الحديث السادس</td><td class="td-goal">حدیث سمجھنا</td></tr>
+          <tr class="quiz-row"><td class="td-num">5</td><td class="td-topic"><span class="quiz-badge">✅ کوئز 10</span></td><td class="td-arabic">اذکار اور احادیث کی مشق</td><td class="td-goal">ماہانہ جائزہ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MONTH 11 -->
+  <div class="month-block m11">
+    <div class="month-header">
+      <div class="month-num">۱۱</div>
+      <div class="month-title-wrap">
+        <div class="month-title">مہینہ یازدہم | Month 11</div>
+        <div class="month-arabic">مکمل گفتگو • المحادثات الموسعة</div>
+      </div>
+      <span class="badge">Extended Conversations</span>
+    </div>
+    <div class="month-body">
+      <table class="class-table">
+        <thead><tr><th class="th-num">#</th><th class="th-topic">موضوع</th><th class="th-activity">عربی مشق</th><th class="th-goal">مقصد</th></tr></thead>
+        <tbody>
+          <tr><td class="td-num">1</td><td class="td-topic">مدرسے میں گفتگو</td><td class="td-arabic">کلاس، استاد، طالبات کے بارے میں</td><td class="td-goal">مکمل حوار</td></tr>
+          <tr><td class="td-num">2</td><td class="td-topic">گھر اور خاندان</td><td class="td-arabic">بیٹی، ماں، بہن کے بارے میں گفتگو</td><td class="td-goal">خاندانی گفتگو</td></tr>
+          <tr><td class="td-num">3</td><td class="td-topic">کتب اور علم</td><td class="td-arabic">مَا الْكِتَابُ الَّذِي تَقْرَئِينَ؟ / أُحِبُّ الدِّرَاسَةَ</td><td class="td-goal">علمی گفتگو</td></tr>
+          <tr><td class="td-num">4</td><td class="td-topic">رول پلے</td><td class="td-arabic">جوڑوں میں مکمل عربی گفتگو</td><td class="td-goal">اعتماد سے بولنا</td></tr>
+          <tr class="quiz-row"><td class="td-num">5</td><td class="td-topic"><span class="quiz-badge">✅ کوئز 11</span></td><td class="td-arabic">مکمل رول پلے اور گفتگو</td><td class="td-goal">ماہانہ جائزہ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MONTH 12 -->
+  <div class="month-block m12">
+    <div class="month-header">
+      <div class="month-num">۱۲</div>
+      <div class="month-title-wrap">
+        <div class="month-title">مہینہ دوازدہم | Month 12</div>
+        <div class="month-arabic">دہرائی اور آخری امتحان • المراجعة العامة والاختبار النهائي</div>
+      </div>
+      <span class="badge gold">🏆 Final Assessment</span>
+    </div>
+    <div class="month-body">
+      <table class="class-table">
+        <thead><tr><th class="th-num">#</th><th class="th-topic">موضوع</th><th class="th-activity">عربی مشق</th><th class="th-goal">مقصد</th></tr></thead>
+        <tbody>
+          <tr><td class="td-num">1</td><td class="td-topic">مکمل ووکیبلری دہرائی</td><td class="td-arabic">تمام 12 مہینوں کے الفاظ</td><td class="td-goal">مکمل مفردات</td></tr>
+          <tr><td class="td-num">2</td><td class="td-topic">گرامر دہرانا</td><td class="td-arabic">ضمائر، افعال، حروف جر، صفات</td><td class="td-goal">قواعد کا اعادہ</td></tr>
+          <tr><td class="td-num">3</td><td class="td-topic">گفتگو کی مشق</td><td class="td-arabic">تمام موضوعات پر گفتگو</td><td class="td-goal">اعتماد</td></tr>
+          <tr><td class="td-num">4</td><td class="td-topic">آخری امتحان</td><td class="td-arabic">ہر طالبہ 5 منٹ عربی میں بولے</td><td class="td-goal">حتمی تشخیص</td></tr>
+          <tr class="quiz-row"><td class="td-num">5</td><td class="td-topic"><span class="quiz-badge">🏆 فائنل کوئز</span></td><td class="td-arabic">مکمل سالانہ امتحان اور سرٹیفکیٹ</td><td class="td-goal">فارغ التحصیل</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- end months-container -->
+
+<!-- QUIZ SECTION -->
+<div class="section-title">
+  <h2>کوئز کا ڈھانچہ | Quiz Structure</h2>
+  <p class="section-sub">ہر ماہ کے آخر میں • At the End of Every Month</p>
+</div>
+
+<div class="quiz-section">
+  <div class="quiz-grid">
+    <div class="quiz-card">
+      <div class="quiz-score">10</div>
+      <div class="quiz-label">نمبر | Marks</div>
+      <div class="quiz-urdu">زبانی سوال جواب<br><small>Oral Q&A</small></div>
+    </div>
+    <div class="quiz-card" style="border-bottom-color: var(--gold-light);">
+      <div class="quiz-score" style="color:var(--gold);">10</div>
+      <div class="quiz-label">نمبر | Marks</div>
+      <div class="quiz-urdu">ووکیبلری<br><small>Vocabulary</small></div>
+    </div>
+    <div class="quiz-card" style="border-bottom-color: var(--teal);">
+      <div class="quiz-score" style="color:var(--teal);">10</div>
+      <div class="quiz-label">نمبر | Marks</div>
+      <div class="quiz-urdu">جملہ بنانا<br><small>Sentence Making</small></div>
+    </div>
+    <div class="quiz-card" style="border-bottom-color: #7c3aed;">
+      <div class="quiz-score" style="color:#7c3aed;">10</div>
+      <div class="quiz-label">نمبر | Marks</div>
+      <div class="quiz-urdu">حوار<br><small>Dialogue</small></div>
+    </div>
+    <div class="quiz-card" style="border-bottom-color: #be123c;">
+      <div class="quiz-score" style="color:#be123c;">10</div>
+      <div class="quiz-label">نمبر | Marks</div>
+      <div class="quiz-urdu">استماع<br><small>Listening</small></div>
+    </div>
+  </div>
+  <div class="quiz-total-box">
+    کل نمبر: 50 &nbsp;|&nbsp; پاس نمبر: 35 (70%) &nbsp;|&nbsp; Total: 50 Marks &nbsp;|&nbsp; Pass: 35 (70%)
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-arabic">وَقُلْ رَبِّ زِدْنِي عِلْماً</div>
+  <div>اے میرے رب! میرا علم بڑھا دے | O My Lord! Increase me in knowledge</div>
+  <div class="footer-text">مدرسۃ عائشہ الصدیقہ رضی اللہ عنہا للبنات • حلستان گوہر، کراچی، پاکستان</div>
+  <div class="footer-text">عربی بولنے کا مکمل ایک سالہ کورس • Complete Arabic Spoken Course</div>
+</div>
+
+</div><!-- end page-wrap -->
+</body>
+</html>
