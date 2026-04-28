@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & Digital Literacy — Course Syllabus</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent1: #7c6dfa;
+    --accent2: #fa6d9a;
+    --accent3: #6dfacc;
+    --accent4: #facc6d;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --w1: #7c6dfa;
+    --w2: #fa6d9a;
+    --w3: #6dfacc;
+    --w4: #facc6d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124,109,250,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,109,250,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 72px 0 48px;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent1);
+    border: 1px solid rgba(124,109,250,0.35);
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    background: rgba(124,109,250,0.08);
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 50%, var(--accent3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .meta-pill .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  /* ── TOOLS STRIP ── */
+  .tools-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+    margin-bottom: 60px;
+    overflow: hidden;
+  }
+
+  .tools-inner {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    align-items: center;
+  }
+
+  .tool-badge {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tool-badge .ico {
+    font-size: 16px;
+  }
+
+  .tool-divider {
+    color: var(--border);
+    font-size: 18px;
+  }
+
+  /* ── WEEK SECTION ── */
+  .week-section {
+    margin-bottom: 56px;
+  }
+
+  .week-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .week-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 1;
+    opacity: 0.12;
+    position: absolute;
+    left: -8px;
+    top: -12px;
+    letter-spacing: -4px;
+  }
+
+  .week-info {
+    padding-left: 60px;
+  }
+
+  .week-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .week-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+
+  .week-theme {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  .week-accent-line {
+    height: 3px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    margin-left: 60px;
+    width: 60px;
+  }
+
+  /* ── SESSION CARD ── */
+  .sessions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 640px) {
+    .sessions-grid { grid-template-columns: 1fr; }
+    .hero h1 { letter-spacing: -1px; }
+  }
+
+  .session-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .session-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  .session-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .session-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .session-num::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .session-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+
+  .session-section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    margin-top: 12px;
+  }
+
+  .session-text {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .activity-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 12px;
+  }
+
+  .activity-box .activity-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .activity-box .activity-text {
+    font-size: 12.5px;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  /* Week color theming */
+  .w1 .session-card::before,
+  .w1 .week-accent-line { background: var(--w1); }
+  .w1 .week-label,
+  .w1 .session-num { color: var(--w1); }
+  .w1 .activity-box .activity-label { color: var(--w1); }
+  .w1 .week-number { color: var(--w1); opacity: 0.15; }
+
+  .w2 .session-card::before,
+  .w2 .week-accent-line { background: var(--w2); }
+  .w2 .week-label,
+  .w2 .session-num { color: var(--w2); }
+  .w2 .activity-box .activity-label { color: var(--w2); }
+  .w2 .week-number { color: var(--w2); opacity: 0.15; }
+
+  .w3 .session-card::before,
+  .w3 .week-accent-line { background: var(--w3); }
+  .w3 .week-label,
+  .w3 .session-num { color: var(--w3); }
+  .w3 .activity-box .activity-label { color: var(--w3); }
+  .w3 .week-number { color: var(--w3); opacity: 0.15; }
+
+  .w4 .session-card::before,
+  .w4 .week-accent-line { background: var(--w4); }
+  .w4 .week-label,
+  .w4 .session-num { color: var(--w4); }
+  .w4 .activity-box .activity-label { color: var(--w4); }
+  .w4 .week-number { color: var(--w4); opacity: 0.15; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 0 56px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 48px 0;
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+    margin-bottom: 36px;
+  }
+
+  .footer-stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+
+  .footer-stat .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .footer-stat .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .footer-note {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  /* Fade-in animation */
+  .week-section {
+    animation: fadeUp 0.5s ease both;
+  }
+  .week-section:nth-child(2) { animation-delay: 0.1s; }
+  .week-section:nth-child(3) { animation-delay: 0.2s; }
+  .week-section:nth-child(4) { animation-delay: 0.3s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="container">
+  <div class="hero">
+    <div class="hero-tag">📘 O & A Level · Ages 14–19</div>
+    <h1>AI & <span>Digital Literacy</span><br>Course Syllabus</h1>
+    <p class="hero-sub">A 4-week hands-on programme designed to equip students with real AI skills, professional digital tools, and confident creative thinking.</p>
+    <div class="hero-meta">
+      <div class="meta-pill"><span class="dot" style="background:#7c6dfa"></span> 4 Weeks</div>
+      <div class="meta-pill"><span class="dot" style="background:#fa6d9a"></span> 8 Sessions</div>
+      <div class="meta-pill"><span class="dot" style="background:#6dfacc"></span> Project-Based Learning</div>
+      <div class="meta-pill"><span class="dot" style="background:#facc6d"></span> No Prior Experience Needed</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS STRIP -->
+<div class="tools-strip">
+  <div class="container">
+    <div class="tools-inner">
+      <div class="tool-badge"><span class="ico">🤖</span> Claude AI</div>
+      <span class="tool-divider">·</span>
+      <div class="tool-badge"><span class="ico">🎨</span> Canva</div>
+      <span class="tool-divider">·</span>
+      <div class="tool-badge"><span class="ico">📁</span> Google Workspace</div>
+      <span class="tool-divider">·</span>
+      <div class="tool-badge"><span class="ico">🖼️</span> AI Image Generators</div>
+      <span class="tool-divider">·</span>
+      <div class="tool-badge"><span class="ico">🔍</span> Ethical AI Use</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ══ WEEK 1 ══ -->
+  <div class="week-section w1">
+    <div class="week-header">
+      <div class="week-number">01</div>
+      <div class="week-info">
+        <div class="week-label">Week One</div>
+        <div class="week-title">Welcome to the Digital World 🌐</div>
+        <div class="week-theme">Foundations · Computer Basics · Digital Mindset</div>
+      </div>
+    </div>
+    <div class="week-accent-line"></div>
+
+    <div class="sessions-grid">
+
+      <div class="session-card">
+        <div class="session-num">Session 01</div>
+        <div class="session-title">Navigating Your Digital Workspace</div>
+        <div class="session-section-label" style="color:#7c6dfa">🎯 Learning Objective</div>
+        <p class="session-text">Students will confidently use file management systems, understand folder structures, and master keyboard shortcuts that save time every day.</p>
+        <div class="activity-box">
+          <div class="activity-label">⚡ Hands-On Activity</div>
+          <div class="activity-text"><strong>"Digital Desk Makeover"</strong> — Organise a messy mock folder system on Google Drive using a naming convention you design yourself. Race to find a hidden file the fastest!</div>
+        </div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-num">Session 02</div>
+        <div class="session-title">Google Workspace — Your New Best Friend</div>
+        <div class="session-section-label" style="color:#7c6dfa">🎯 Learning Objective</div>
+        <p class="session-text">Students will use Google Docs, Sheets, and Drive collaboratively — understanding real-time editing, sharing permissions, and comment features.</p>
+        <div class="activity-box">
+          <div class="activity-label">⚡ Hands-On Activity</div>
+          <div class="activity-text"><strong>"Class Wiki"</strong> — In teams, build a shared Google Doc with tips for new students. Each person edits simultaneously — watch the magic of live collaboration happen!</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══ WEEK 2 ══ -->
+  <div class="week-section w2">
+    <div class="week-header">
+      <div class="week-number">02</div>
+      <div class="week-info">
+        <div class="week-label">Week Two</div>
+        <div class="week-title">Meet Your AI Assistant 🤖</div>
+        <div class="week-theme">Claude AI · Prompt Engineering · Smart Searching</div>
+      </div>
+    </div>
+    <div class="week-accent-line"></div>
+
+    <div class="sessions-grid">
+
+      <div class="session-card">
+        <div class="session-num">Session 03</div>
+        <div class="session-title">Talking to AI — The Art of the Perfect Prompt</div>
+        <div class="session-section-label" style="color:#fa6d9a">🎯 Learning Objective</div>
+        <p class="session-text">Students will understand how large language models work, write effective prompts using the Context–Task–Format framework, and evaluate AI responses critically.</p>
+        <div class="activity-box">
+          <div class="activity-label">⚡ Hands-On Activity</div>
+          <div class="activity-text"><strong>"Prompt Battle"</strong> — Given the same goal (e.g. "plan a study schedule"), each student writes a different prompt for Claude. Compare results and vote on the most useful output. Discuss: why did some prompts win?</div>
+        </div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-num">Session 04</div>
+        <div class="session-title">AI Ethics — Power, Bias & Responsibility</div>
+        <div class="session-section-label" style="color:#fa6d9a">🎯 Learning Objective</div>
+        <p class="session-text">Students will identify risks of AI misuse (misinformation, plagiarism, bias), understand academic integrity, and form personal guidelines for responsible AI use.</p>
+        <div class="activity-box">
+          <div class="activity-label">⚡ Hands-On Activity</div>
+          <div class="activity-text"><strong>"Spot the Fake"</strong> — Analyse 5 pieces of AI-generated content (text, images, headlines). Which is real? Which is fabricated? Build a class "AI Red Flags" checklist together.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══ WEEK 3 ══ -->
+  <div class="week-section w3">
+    <div class="week-header">
+      <div class="week-number">03</div>
+      <div class="week-info">
+        <div class="week-label">Week Three</div>
+        <div class="week-title">Design That Speaks 🎨</div>
+        <div class="week-theme">Canva · Visual Storytelling · AI Image Generation</div>
+      </div>
+    </div>
+    <div class="week-accent-line"></div>
+
+    <div class="sessions-grid">
+
+      <div class="session-card">
+        <div class="session-num">Session 05</div>
+        <div class="session-title">Canva Mastery — From Blank to Beautiful</div>
+        <div class="session-section-label" style="color:#6dfacc">🎯 Learning Objective</div>
+        <p class="session-text">Students will apply design principles (alignment, contrast, hierarchy, white space) to create polished, professional visuals using Canva's tools and templates.</p>
+        <div class="activity-box">
+          <div class="activity-label">⚡ Hands-On Activity</div>
+          <div class="activity-text"><strong>"Rebrand a School Club"</strong> — Choose any school club and design a poster, social media post, and banner in Canva using a consistent brand palette. Present your identity system to the class.</div>
+        </div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-num">Session 06</div>
+        <div class="session-title">AI Image Generation — Imagination Meets Technology</div>
+        <div class="session-section-label" style="color:#6dfacc">🎯 Learning Objective</div>
+        <p class="session-text">Students will use AI image tools (Adobe Firefly, Canva AI, or DALL·E) to generate images with descriptive prompts and discuss copyright, ownership, and attribution.</p>
+        <div class="activity-box">
+          <div class="activity-label">⚡ Hands-On Activity</div>
+          <div class="activity-text"><strong>"Illustrated Story Cover"</strong> — Write a 3-sentence story premise, then generate a book cover using an AI image tool. Refine your prompt at least 3 times. Final covers go in a class digital gallery!</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ══ WEEK 4 ══ -->
+  <div class="week-section w4">
+    <div class="week-header">
+      <div class="week-number">04</div>
+      <div class="week-info">
+        <div class="week-label">Week Four</div>
+        <div class="week-title">Present Like a Pro — Final Project 🚀</div>
+        <div class="week-theme">PowerPoint · Presentation Skills · Capstone Showcase</div>
+      </div>
+    </div>
+    <div class="week-accent-line"></div>
+
+    <div class="sessions-grid">
+
+      <div class="session-card">
+        <div class="session-num">Session 07</div>
+        <div class="session-title">Slides That Win — Professional Presentation Design</div>
+        <div class="session-section-label" style="color:#facc6d">🎯 Learning Objective</div>
+        <p class="session-text">Students will design slide decks using the "one idea per slide" rule, slide hierarchy, data visualisation, and speaker notes — turning raw information into compelling narratives.</p>
+        <div class="activity-box">
+          <div class="activity-label">⚡ Hands-On Activity</div>
+          <div class="activity-text"><strong>"The Makeover Challenge"</strong> — Each student receives a deliberately ugly, text-heavy slide deck. Using Canva or Google Slides, redesign it in 30 minutes. Before/after reveals are shared with the class.</div>
+        </div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-num">Session 08</div>
+        <div class="session-title">Capstone Showcase — You're the Expert Now!</div>
+        <div class="session-section-label" style="color:#facc6d">🎯 Learning Objective</div>
+        <p class="session-text">Students will demonstrate their combined skills by delivering a 5-minute presentation on a topic of their choice, using AI tools, professional slides, and original visuals.</p>
+        <div class="activity-box">
+          <div class="activity-label">⚡ Hands-On Activity</div>
+          <div class="activity-text"><strong>"Digital Future Pitch"</strong> — Each student presents: "How will AI change [my chosen field] in the next 10 years?" Judged on slide design, research quality, AI tool use, and delivery. Certificates awarded! 🏆</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER STATS -->
+  <div class="footer">
+    <div class="footer-grid">
+      <div class="footer-stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Weeks</div>
+      </div>
+      <div class="footer-stat">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Live Sessions</div>
+      </div>
+      <div class="footer-stat">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Tools Covered</div>
+      </div>
+      <div class="footer-stat">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Capstone Project</div>
+      </div>
+    </div>
+    <p class="footer-note">Designed for O & A Level students · Ages 14–19 · No prior experience required · All activities are device-agnostic and browser-based.</p>
+  </div>
+
+</div>
+</body>
+</html>
