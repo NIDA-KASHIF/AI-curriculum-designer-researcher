@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>علوم الحدیث - مکمل کورس</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Serif+Arabic:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1a0e;
+    --parchment: #f5ede0;
+    --parchment-dark: #e8d9c0;
+    --gold: #c8922a;
+    --gold-light: #e8b84b;
+    --gold-pale: #f5e6c0;
+    --emerald: #1a4a2e;
+    --emerald-mid: #2d6b45;
+    --emerald-light: #3d8a5a;
+    --ruby: #8b1a1a;
+    --cream: #faf5ec;
+    --text-dark: #1a1208;
+    --text-mid: #3d2e10;
+    --border-gold: #c8922a55;
+    --shadow-gold: rgba(200,146,42,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Nastaliq Urdu', serif;
+    background-color: var(--ink);
+    color: var(--parchment);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 2.2;
+    font-size: 17px;
+  }
+
+  /* ===== GEOMETRIC BACKGROUND ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(200,146,42,0.03) 40px, rgba(200,146,42,0.03) 41px),
+      repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(200,146,42,0.03) 40px, rgba(200,146,42,0.03) 41px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ===== TOP BANNER ===== */
+  .top-ribbon {
+    background: linear-gradient(90deg, var(--emerald) 0%, #0a2a18 50%, var(--emerald) 100%);
+    border-bottom: 2px solid var(--gold);
+    text-align: center;
+    padding: 8px 20px;
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 14px;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 10;
+  }
+  .top-ribbon::before, .top-ribbon::after {
+    content: '✦';
+    margin: 0 12px;
+    color: var(--gold);
+  }
+
+  /* ===== HERO HEADER ===== */
+  .hero {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 60px 20px 50px;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(45,107,69,0.35) 0%, transparent 70%);
+    border-bottom: 1px solid var(--border-gold);
+  }
+
+  .hero-ornament {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 20px rgba(200,146,42,0.5));
+    animation: glow 3s ease-in-out infinite;
+  }
+  @keyframes glow {
+    0%,100% { filter: drop-shadow(0 0 15px rgba(200,146,42,0.4)); }
+    50% { filter: drop-shadow(0 0 30px rgba(200,146,42,0.8)); }
+  }
+
+  .hero-arabic {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin: 10px 0 5px;
+    letter-spacing: 2px;
+  }
+
+  .hero-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 20px rgba(200,146,42,0.4);
+    line-height: 1.4;
+    margin: 10px 0;
+  }
+
+  .hero-subtitle {
+    font-size: 20px;
+    color: var(--gold-light);
+    margin: 8px 0 20px;
+    opacity: 0.9;
+  }
+
+  .hero-badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+  .hero-badge {
+    background: linear-gradient(135deg, var(--emerald), var(--emerald-mid));
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: 'Noto Nastaliq Urdu', serif;
+  }
+
+  /* ===== NAV ===== */
+  .course-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(180deg, #0a1a0a 0%, #0f1a0e 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .course-nav::-webkit-scrollbar { display: none; }
+  .nav-inner {
+    display: flex;
+    min-width: max-content;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .nav-btn {
+    background: none;
+    border: none;
+    color: var(--parchment-dark);
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: 14px;
+    padding: 14px 18px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    white-space: nowrap;
+    position: relative;
+  }
+  .nav-btn:hover { color: var(--gold-light); background: rgba(200,146,42,0.08); }
+  .nav-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+    background: rgba(200,146,42,0.1);
+    font-weight: 600;
+  }
+
+  /* ===== MAIN CONTENT ===== */
+  .main-content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 50px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== SECTION ===== */
+  .section {
+    display: none;
+    animation: fadeSlide 0.5s ease forwards;
+  }
+  .section.active { display: block; }
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SECTION HEADER ===== */
+  .sec-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+  }
+  .sec-num {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: rgba(200,146,42,0.12);
+    position: absolute;
+    top: -10px;
+    right: 50%;
+    transform: translateX(50%);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .sec-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+    display: block;
+    filter: drop-shadow(0 0 12px rgba(200,146,42,0.5));
+  }
+  .sec-title {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .sec-urdu {
+    font-size: 22px;
+    color: var(--parchment-dark);
+    opacity: 0.85;
+  }
+  .sec-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px auto;
+    max-width: 400px;
+    justify-content: center;
+  }
+  .sec-divider span { width: 60px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .sec-divider em { color: var(--gold); font-style: normal; font-size: 18px; }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: linear-gradient(135deg, rgba(26,74,46,0.25) 0%, rgba(15,26,14,0.7) 100%);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px var(--shadow-gold);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--gold), transparent);
+  }
+
+  .card-title {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-title .badge {
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-family: 'Noto Nastaliq Urdu', serif;
+  }
+  .card p {
+    color: var(--parchment-dark);
+    font-size: 16px;
+    line-height: 2.3;
+    text-align: justify;
+  }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(200,146,42,0.15), rgba(200,146,42,0.05));
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    padding: 22px 28px;
+    margin: 24px 0;
+    text-align: center;
+  }
+  .highlight-box .arabic-text {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 26px;
+    color: var(--gold-light);
+    font-weight: 600;
+    line-height: 1.8;
+  }
+  .highlight-box .urdu-trans {
+    font-size: 15px;
+    color: var(--parchment-dark);
+    margin-top: 10px;
+    opacity: 0.85;
+  }
+  .highlight-box .ref {
+    font-size: 13px;
+    color: var(--gold);
+    margin-top: 6px;
+    opacity: 0.75;
+  }
+
+  /* ===== TYPE GRID ===== */
+  .type-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+  }
+  .type-card {
+    background: linear-gradient(160deg, rgba(26,74,46,0.3), rgba(15,26,14,0.8));
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .type-card:hover {
+    border-color: var(--gold);
+    background: linear-gradient(160deg, rgba(26,74,46,0.5), rgba(15,26,14,0.9));
+    transform: scale(1.02);
+  }
+  .type-card .tc-num {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: rgba(200,146,42,0.15);
+    position: absolute;
+    top: 5px;
+    left: 16px;
+    line-height: 1;
+  }
+  .type-card h3 {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .type-card .def {
+    font-size: 14px;
+    color: var(--parchment-dark);
+    line-height: 2.1;
+    text-align: justify;
+  }
+  .type-card .tag {
+    display: inline-block;
+    background: rgba(200,146,42,0.2);
+    border: 1px solid rgba(200,146,42,0.4);
+    color: var(--gold-light);
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* ===== CHAIN / SANAD ===== */
+  .sanad-chain {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 30px 0;
+    position: relative;
+  }
+  .sanad-chain::before {
+    content: '';
+    position: absolute;
+    right: 27px;
+    top: 30px;
+    bottom: 30px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+  }
+  .chain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 20px;
+    background: rgba(26,74,46,0.2);
+    border: 1px solid var(--border-gold);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .chain-item:hover { background: rgba(26,74,46,0.4); border-color: var(--gold); }
+  .chain-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--emerald-mid), var(--emerald));
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .chain-content h4 {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 17px;
+    color: var(--gold-light);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .chain-content p { font-size: 14px; color: var(--parchment-dark); line-height: 2; }
+
+  /* ===== SCHOLARS TABLE ===== */
+  .scholars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+  }
+  .scholar-card {
+    background: linear-gradient(145deg, rgba(139,26,26,0.15), rgba(15,26,14,0.8));
+    border: 1px solid rgba(139,26,26,0.4);
+    border-top: 3px solid var(--ruby);
+    border-radius: 10px;
+    padding: 24px 22px;
+    transition: all 0.3s;
+  }
+  .scholar-card:hover {
+    border-color: var(--ruby);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(139,26,26,0.25);
+  }
+  .scholar-name {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 20px;
+    color: #e88888;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .scholar-dates {
+    font-size: 12px;
+    color: rgba(200,146,42,0.7);
+    margin-bottom: 10px;
+  }
+  .scholar-work {
+    font-size: 14px;
+    color: var(--parchment-dark);
+    line-height: 2.1;
+  }
+  .scholar-kitab {
+    display: inline-block;
+    background: rgba(139,26,26,0.25);
+    border: 1px solid rgba(139,26,26,0.5);
+    color: #e88888;
+    font-size: 12px;
+    padding: 2px 12px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-family: 'Noto Serif Arabic', serif;
+  }
+
+  /* ===== KUTUB SITTA ===== */
+  .kutub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+  }
+  .kitab-card {
+    background: linear-gradient(160deg, rgba(200,146,42,0.12), rgba(15,26,14,0.9));
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 26px 22px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .kitab-card:hover {
+    background: linear-gradient(160deg, rgba(200,146,42,0.22), rgba(15,26,14,0.95));
+    transform: translateY(-4px);
+    box-shadow: 0 10px 35px var(--shadow-gold);
+  }
+  .kitab-num {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: rgba(200,146,42,0.2);
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    line-height: 1;
+  }
+  .kitab-name {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .kitab-urdu { font-size: 14px; color: var(--parchment-dark); margin-bottom: 8px; }
+  .kitab-author {
+    font-size: 13px;
+    color: var(--gold-light);
+    opacity: 0.8;
+    font-family: 'Noto Serif Arabic', serif;
+  }
+  .kitab-hadith { font-size: 12px; color: var(--parchment-dark); opacity: 0.7; margin-top: 6px; }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    position: relative;
+    padding: 20px 0;
+    margin: 30px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+  }
+  .tl-item {
+    padding: 0 70px 35px 20px;
+    position: relative;
+  }
+  .tl-dot {
+    position: absolute;
+    right: 11px;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid var(--ink);
+    box-shadow: 0 0 10px var(--shadow-gold);
+  }
+  .tl-year {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .tl-event {
+    background: rgba(26,74,46,0.2);
+    border: 1px solid var(--border-gold);
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+  .tl-event h4 {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 17px;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .tl-event p { font-size: 14px; color: var(--parchment-dark); line-height: 2.1; }
+
+  /* ===== ULOOM LIST ===== */
+  .uloom-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin: 30px 0;
+  }
+  .uloom-item {
+    background: linear-gradient(135deg, rgba(26,74,46,0.25), rgba(15,26,14,0.8));
+    border-right: 4px solid var(--emerald-light);
+    border-top: 1px solid var(--border-gold);
+    border-bottom: 1px solid var(--border-gold);
+    border-left: 1px solid var(--border-gold);
+    border-radius: 8px;
+    padding: 20px 20px 20px 16px;
+    transition: all 0.3s;
+  }
+  .uloom-item:hover {
+    border-right-color: var(--gold);
+    background: linear-gradient(135deg, rgba(26,74,46,0.4), rgba(15,26,14,0.9));
+  }
+  .uloom-item h4 {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 18px;
+    color: var(--gold-light);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .uloom-item p { font-size: 14px; color: var(--parchment-dark); line-height: 2.1; }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress-bar {
+    background: rgba(200,146,42,0.1);
+    border: 1px solid var(--border-gold);
+    border-radius: 30px;
+    height: 8px;
+    margin: 10px 0;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 30px;
+    background: linear-gradient(90deg, var(--emerald-light), var(--gold));
+    animation: grow 1.5s ease forwards;
+    transform-origin: right;
+  }
+  @keyframes grow { from { width: 0; } }
+
+  /* ===== LEVEL BADGES ===== */
+  .level-section {
+    background: linear-gradient(135deg, rgba(200,146,42,0.08), rgba(15,26,14,0.9));
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    padding: 28px;
+    margin: 20px 0;
+  }
+  .level-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .level-badge {
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Noto Nastaliq Urdu', serif;
+  }
+  .level-badge.beginner { background: rgba(45,107,69,0.4); border: 1px solid var(--emerald-light); color: #7ecfa0; }
+  .level-badge.intermediate { background: rgba(200,146,42,0.25); border: 1px solid var(--gold); color: var(--gold-light); }
+  .level-badge.advanced { background: rgba(139,26,26,0.3); border: 1px solid var(--ruby); color: #e88888; }
+  .level-title { font-family: 'Noto Serif Arabic', serif; font-size: 20px; color: var(--parchment); font-weight: 700; }
+  .level-topics { list-style: none; padding: 0; }
+  .level-topics li {
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(200,146,42,0.1);
+    color: var(--parchment-dark);
+    font-size: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .level-topics li:last-child { border-bottom: none; }
+  .level-topics li::before { content: '◈'; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+
+  /* ===== QUOTE BOX ===== */
+  .quote-box {
+    border: 1px solid var(--border-gold);
+    background: linear-gradient(135deg, rgba(200,146,42,0.08), transparent);
+    border-radius: 10px;
+    padding: 24px 30px;
+    margin: 28px 0;
+    position: relative;
+  }
+  .quote-box::before {
+    content: '❝';
+    position: absolute;
+    top: -14px;
+    right: 24px;
+    font-size: 36px;
+    color: var(--gold);
+    background: var(--ink);
+    padding: 0 6px;
+    line-height: 1;
+  }
+  .quote-text {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 20px;
+    color: var(--parchment);
+    line-height: 2;
+    font-style: italic;
+  }
+  .quote-attr { font-size: 13px; color: var(--gold); margin-top: 10px; text-align: left; }
+
+  /* ===== INFO BOX ===== */
+  .info-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .info-box {
+    background: rgba(26,74,46,0.25);
+    border: 1px solid var(--border-gold);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .info-box .num {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1.2;
+  }
+  .info-box .label { font-size: 13px; color: var(--parchment-dark); margin-top: 4px; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.6));
+    border-top: 1px solid var(--border-gold);
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--parchment-dark);
+    font-size: 14px;
+    line-height: 2.2;
+    position: relative;
+    z-index: 1;
+  }
+  .footer .footer-arabic {
+    font-family: 'Noto Serif Arabic', serif;
+    font-size: 24px;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+  }
+
+  /* ===== SCROLL TO TOP ===== */
+  .scroll-top {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 44px;
+    height: 44px;
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px var(--shadow-gold);
+    z-index: 200;
+    transition: all 0.3s;
+  }
+  .scroll-top:hover { background: var(--gold-light); transform: translateY(-3px); }
+  .scroll-top.show { display: flex; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .hero-title { font-size: 30px; }
+    .sec-title { font-size: 26px; }
+    .card { padding: 20px; }
+    .nav-btn { font-size: 12px; padding: 12px 12px; }
+    .type-grid, .scholars-grid, .kutub-grid, .uloom-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Ribbon -->
+<div class="top-ribbon">
+  بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ ✦ رَسُوْلُ اللهِ ﷺ کی سنت — امت کی رہنمائی
+</div>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-ornament">☽✦☾</div>
+  <div class="hero-arabic">عُلُوْمُ الْحَدِيْث</div>
+  <h1 class="hero-title">علوم الحدیث — مکمل کورس</h1>
+  <p class="hero-subtitle">ابتداء سے انتہا تک — بیگنرز سے ایڈوانس تک</p>
+  <div class="hero-badge-row">
+    <span class="hero-badge">🔰 ابتدائی سطح</span>
+    <span class="hero-badge">📖 درمیانی سطح</span>
+    <span class="hero-badge">🏆 اعلیٰ سطح</span>
+    <span class="hero-badge">⏱️ ۱۲ ہفتے</span>
+    <span class="hero-badge">💡 اردو میڈیم</span>
+  </div>
+</header>
+
+<!-- Navigation -->
+<nav class="course-nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('intro')">تعارف حدیث</button>
+    <button class="nav-btn" onclick="showSection('importance')">اہمیت و ضرورت</button>
+    <button class="nav-btn" onclick="showSection('types')">اقسام حدیث</button>
+    <button class="nav-btn" onclick="showSection('sanad')">سند و تحقیق</button>
+    <button class="nav-btn" onclick="showSection('compilation')">تدوین حدیث</button>
+    <button class="nav-btn" onclick="showSection('uloom')">علوم الحدیث</button>
+    <button class="nav-btn" onclick="showSection('muhaddiseen')">محدثین کی خدمات</button>
+    <button class="nav-btn" onclick="showSection('curriculum')">کورس نصاب</button>
+  </div>
+</nav>
+
+<!-- Main -->
+<main class="main-content">
+
+  <!-- ===== SECTION 1: INTRO ===== -->
+  <section id="intro" class="section active">
+    <div class="sec-header">
+      <span class="sec-num">۱</span>
+      <span class="sec-icon">📜</span>
+      <h2 class="sec-title">تعارفِ حدیث</h2>
+      <p class="sec-urdu">Introduction to Hadith</p>
+      <div class="sec-divider"><span></span><em>✦</em><span></span></div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="arabic-text">وَمَا يَنطِقُ عَنِ الْهَوَىٰ ❖ إِنْ هُوَ إِلَّا وَحْيٌ يُوحَىٰ</div>
+      <p class="urdu-trans">اور وہ اپنی خواہش سے نہیں بولتے — یہ تو وحی ہے جو اُن پر نازل کی جاتی ہے۔</p>
+      <p class="ref">— سورۃ النجم: ۳-۴</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔤 حدیث کی لغوی تعریف</div>
+      <p>لغت میں <strong style="color:var(--gold-light)">«حدیث»</strong> کا مطلب ہے: نئی بات، خبر، یا بیان۔ اس کی جمع «احادیث» ہے۔ قرآن پاک میں بھی یہ لفظ متعدد مقامات پر «کلام» اور «خبر» کے معنوں میں آیا ہے۔</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📚 حدیث کی اصطلاحی تعریف</div>
+      <p>اصطلاحِ شریعت میں حدیث سے مراد ہے: <strong style="color:var(--gold-light)">نبی کریم ﷺ کا وہ قول، فعل، تقریر یا صفت جو صحابہ کرام رضی اللہ عنہم نے روایت کی ہو۔</strong> یعنی رسول اللہ ﷺ نے جو کچھ فرمایا، جو عمل کیا، یا جو کسی کے عمل پر خاموش رہے — یہ سب «حدیث» کے دائرے میں آتا ہے۔</p>
+    </div>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <div class="tc-num">۱</div>
+        <span class="tag">قولی</span>
+        <h3>حدیثِ قولی</h3>
+        <p class="def">نبی ﷺ کا وہ فرمان جو آپ ﷺ نے اپنی زبانِ مبارک سے ارشاد فرمایا۔ جیسے: «إنما الأعمال بالنيات»</p>
+      </div>
+      <div class="type-card">
+        <div class="tc-num">۲</div>
+        <span class="tag">فعلی</span>
+        <h3>حدیثِ فعلی</h3>
+        <p class="def">آپ ﷺ کا کوئی عمل جو صحابہ نے دیکھا اور آگے نقل کیا، جیسے نماز کا طریقہ، وضو کا طریقہ وغیرہ۔</p>
+      </div>
+      <div class="type-card">
+        <div class="tc-num">۳</div>
+        <span class="tag">تقریری</span>
+        <h3>حدیثِ تقریری</h3>
+        <p class="def">کسی صحابی نے آپ ﷺ کے سامنے کوئی کام کیا اور آپ ﷺ نے اسے منع نہیں فرمایا — یہ تقریر یعنی خاموش رضامندی ہے۔</p>
+      </div>
+      <div class="type-card">
+        <div class="tc-num">۴</div>
+        <span class="tag">وصفی</span>
+        <h3>حدیثِ وصفی</h3>
+        <p class="def">آپ ﷺ کی صورت، اخلاق، عادات اور شخصیت کا بیان، جیسے شمائل ترمذی میں روایات ہیں۔</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔍 حدیث اور سنت میں فرق</div>
+      <p><strong style="color:var(--gold-light)">سنت</strong> اور <strong style="color:var(--gold-light)">حدیث</strong> کو اکثر ایک ہی سمجھا جاتا ہے مگر ان میں باریک فرق ہے۔ سنت سے مراد نبی ﷺ کا وہ مستقل اور معمول کا طریقہ ہے جو عمل میں رہا۔ جبکہ حدیث ایک وسیع تر اصطلاح ہے جس میں قول، فعل، تقریر اور وصف سب شامل ہیں۔ فقہاء نے سنت کو عمومی رہنمائی کے لیے استعمال کیا، جبکہ محدثین نے حدیث کا لفظ زیادہ استعمال کیا۔</p>
+    </div>
+
+    <div class="info-row">
+      <div class="info-box"><div class="num">۱۰۰۰+</div><div class="label">صحابہ کرام راوی</div></div>
+      <div class="info-box"><div class="num">۶ لاکھ+</div><div class="label">احادیث امام بخاری نے جانچیں</div></div>
+      <div class="info-box"><div class="num">۱۴۰۰+</div><div class="label">سال سے محفوظ علم</div></div>
+      <div class="info-box"><div class="num">۲۳</div><div class="label">سال مدتِ وحی</div></div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 2: IMPORTANCE ===== -->
+  <section id="importance" class="section">
+    <div class="sec-header">
+      <span class="sec-num">۲</span>
+      <span class="sec-icon">⭐</span>
+      <h2 class="sec-title">حدیث و سنت کی اہمیت</h2>
+      <p class="sec-urdu">Importance of Hadith & Sunnah</p>
+      <div class="sec-divider"><span></span><em>✦</em><span></span></div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="arabic-text">وَأَطِيعُوا اللَّهَ وَأَطِيعُوا الرَّسُولَ</div>
+      <p class="urdu-trans">اللہ کی اطاعت کرو اور رسول کی اطاعت کرو۔</p>
+      <p class="ref">— سورۃ المائدہ: ۹۲</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📖 قرآن کریم میں اطاعتِ رسول کا حکم</div>
+      <p>قرآن پاک میں متعدد مقامات پر اللہ تعالیٰ نے اپنی اطاعت کے ساتھ رسول اللہ ﷺ کی اطاعت کو بھی لازم قرار دیا ہے۔ آیتِ کریمہ «مَنْ يُطِعِ الرَّسُوْلَ فَقَدْ أَطَاعَ اللّٰه» بتاتی ہے کہ رسول کی اطاعت درحقیقت اللہ کی اطاعت ہے۔ اسی لیے حدیث کو شریعت کا دوسرا بنیادی ماخذ تسلیم کیا گیا ہے۔</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🌟 قرآن کی تفسیر کا ذریعہ</div>
+      <p>قرآنِ کریم بہت سے احکام اجمالی انداز میں بیان کرتا ہے — جیسے «نماز قائم کرو»، «زکوۃ دو»، «حج کرو»۔ ان احکام کی تفصیل، طریقہ، وقت اور مقدار — یہ سب کچھ سنتِ نبوی ﷺ نے بیان کیا۔ بغیر حدیث کے قرآن پر عمل ممکن ہی نہیں۔</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚖️ حدیث — شریعت کا دوسرا ماخذ</div>
+      <p>چار بڑے ماخذِ شریعت یعنی قرآن، سنت، اجماع، قیاس میں سے حدیث و سنت دوسرا اہم ترین ماخذ ہے۔ رسول اللہ ﷺ نے ارشاد فرمایا: <strong style="color:var(--gold-light)">«تَرَكْتُ فِيْكُمْ أَمْرَيْنِ لَنْ تَضِلُّوْا مَا تَمَسَّكْتُمْ بِهِمَا: كِتَابَ اللّٰهِ وَسُنَّتِي»</strong> — میں تم میں دو چیزیں چھوڑ جا رہا ہوں، جب تک انہیں تھامے رہو گے گمراہ نہ ہو گے: اللہ کی کتاب اور میری سنت۔</p>
+    </div>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <h3>🔮 عقائد کی بنیاد</h3>
+        <p class="def">ایمان کے بہت سے ارکان کی تفصیل جیسے عذابِ قبر، قیامت کی نشانیاں — حدیث سے معلوم ہوتی ہے۔</p>
+      </div>
+      <div class="type-card">
+        <h3>🕌 عبادات کا طریقہ</h3>
+        <p class="def">نماز، روزہ، حج، زکوۃ — سب کا طریقہ اور ترتیب احادیث نبوی ﷺ سے ثابت ہے۔</p>
+      </div>
+      <div class="type-card">
+        <h3>⚖️ معاملات و اخلاق</h3>
+        <p class="def">تجارت، نکاح، طلاق، میراث اور سماجی اخلاق کا مکمل نظام احادیث پر مبنی ہے۔</p>
+      </div>
+      <div class="type-card">
+        <h3>🌸 سیرت و اسوہ</h3>
+        <p class="def">نبی ﷺ کی زندگی کو اسوۂ حسنہ قرار دیا گیا — احادیث میں آپ ﷺ کی مکمل سیرت محفوظ ہے۔</p>
+      </div>
+    </div>
+
+    <div class="quote-box">
+      <p class="quote-text">امام شافعی رحمہ اللہ نے فرمایا: جس نے حدیث کو رد کیا اس نے گویا ایک ایسی عمارت بنائی جس کی بنیاد ہی نہیں۔</p>
+      <p class="quote-attr">— امام محمد بن ادریس الشافعی رحمہ اللہ (م ۲۰۴ ھ)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔗 حدیث اور سنت — باہمی تعلق اور ضرورت</div>
+      <p>حدیث اور سنت ایک دوسرے کی تکمیل کرتے ہیں۔ سنت عمل ہے اور حدیث اس عمل کا تحریری بیان۔ جس طرح روح اور جسم ایک ہوتے ہیں، اسی طرح قرآن اور حدیث مل کر مکمل دین کی تصویر پیش کرتے ہیں۔ کوئی بھی ایک کے بغیر دوسرے سے مکمل رہنمائی نہیں لے سکتا۔</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3: TYPES ===== -->
+  <section id="types" class="section">
+    <div class="sec-header">
+      <span class="sec-num">۳</span>
+      <span class="sec-icon">📂</span>
+      <h2 class="sec-title">اقسامِ حدیث</h2>
+      <p class="sec-urdu">Types of Hadith</p>
+      <div class="sec-divider"><span></span><em>✦</em><span></span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔢 سند کی تعداد کے لحاظ سے اقسام</div>
+    </div>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <div class="tc-num">۱</div>
+        <span class="tag">متواتر</span>
+        <h3>حدیثِ متواتر</h3>
+        <p class="def">وہ حدیث جسے ہر دور میں اتنے راویوں کی ایک بڑی تعداد نے روایت کیا ہو کہ ان کا جھوٹ پر اکٹھا ہونا ناممکن ہو۔ یہ یقینی علم دیتی ہے۔ مثال: «مَنْ كَذَبَ عَلَيَّ مُتَعَمِّدًا...»</p>
+      </div>
+      <div class="type-card">
+        <div class="tc-num">۲</div>
+        <span class="tag">مشہور</span>
+        <h3>حدیثِ مشہور</h3>
+        <p class="def">وہ حدیث جو پہلی صدی میں کم راویوں نے روایت کی لیکن بعد کے ادوار میں بہت مشہور ہوئی اور وسیع پیمانے پر پھیل گئی۔</p>
+      </div>
+      <div class="type-card">
+        <div class="tc-num">۳</div>
+        <span class="tag">آحاد</span>
+        <h3>حدیثِ آحاد</h3>
+        <p class="def">وہ حدیث جو متواتر کی حد تک نہ پہنچے۔ اس کی مزید اقسام ہیں: عزیز (دو راوی)، غریب (ایک راوی)۔ یہ ظنی علم دیتی ہے مگر قابلِ عمل ہے۔</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✅ قبولیت و رد کے لحاظ سے اقسام</div>
+    </div>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <div class="tc-num">۱</div>
+        <span class="tag">صحیح</span>
+        <h3>حدیثِ صحیح</h3>
+        <p class="def">جس کی سند متصل ہو، ہر راوی ثقہ و عادل ہو، ضبط (حافظہ) کامل ہو، شذوذ اور علت سے پاک ہو۔ یہ حجت ہے۔</p>
+      </div>
+      <div class="type-card">
+        <div class="tc-num">۲</div>
+        <span class="tag">حسن</span>
+        <h3>حدیثِ حسن</h3>
+        <p class="def">صحیح جیسی تمام شرائط پوری ہوں مگر راوی کا ضبط (حافظہ) صحیح راوی سے قدرے کم ہو۔ یہ بھی حجت ہے۔</p>
+      </div>
+      <div class="type-card">
+        <div class="tc-num">۳</div>
+        <span class="tag">ضعیف</span>
+        <h3>حدیثِ ضعیف</h3>
+        <p class="def">صحیح یا حسن کی شرائط پوری نہ ہوں۔ فضائل میں بعض علماء نے احتیاط کے ساتھ استعمال کی اجازت دی، احکام میں نہیں۔</p>
+      </div>
+      <div class="type-card">
+        <div class="tc-num">۴</div>
+        <span class="tag">موضوع</span>
+        <h3>حدیثِ موضوع</h3>
+        <p class="def">وہ روایت جو جھوٹ گھڑ کر نبی ﷺ کی طرف منسوب کی گئی ہو۔ یہ قطعاً مردود ہے اور اسے حدیث کہنا جائز نہیں۔</p>
+      </div>
+      <div class="type-card">
+        <div class="tc-num">۵</div>
+        <span class="tag">مرفوع</span>
+        <h3>حدیثِ مرفوع</h3>
+        <p class="def">وہ حدیث جو براہ راست نبی ﷺ سے منسوب ہو — چاہے سند متصل ہو یا نہیں۔</p>
+      </div>
+      <div class="type-card">
+        <div class="tc-num">۶</div>
+        <span class="tag">موقوف</span>
+        <h3>حدیثِ موقوف</h3>
+        <p class="def">وہ روایت جو صحابی پر رک جائے یعنی صحابی کا قول یا فعل ہو، نبی ﷺ تک نہ پہنچے۔</p>
+      </div>
+      <div class="type-card">
+        <div class="tc-num">۷</div>
+        <span class="tag">مقطوع</span>
+        <h3>حدیثِ مقطوع</h3>
+        <p class="def">وہ روایت جو تابعی پر رک جائے یعنی تابعی کا قول یا فعل ہو۔</p>
+      </div>
+      <div class="type-card">
+        <div class="tc-num">۸</div>
+        <span class="tag">مرسل</span>
+        <h3>حدیثِ مرسل</h3>
+        <p class="def">تابعی نے سیدھے نبی ﷺ سے روایت کی ہو بغیر صحابی کا نام لیے — درمیان سے صحابی کا نام غائب ہو۔</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔗 سند کے انقطاع کے اعتبار سے مزید اقسام</div>
+      <p>سند میں انقطاع (کٹاؤ) کے لحاظ سے مزید اقسام ہیں: <strong style="color:var(--gold-light)">منقطع</strong> (درمیان سے ایک راوی غائب)، <strong style="color:var(--gold-light)">معضل</strong> (دو یا زیادہ راوی غائب)، <strong style="color:var(--gold-light)">معلق</strong> (ابتداء سند سے راوی غائب)، <strong style="color:var(--gold-light)">مدلس</strong> (عیب چھپا کر روایت)، <strong style="color:var(--gold-light)">شاذ</strong> (ثقہ راوی نے زیادہ ثقہ کی مخالفت کی)، <strong style="color:var(--gold-light)">منکر</strong> (ضعیف راوی کی ثقہ کے خلاف روایت)۔</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 4: SANAD ===== -->
+  <section id="sanad" class="section">
+    <div class="sec-header">
+      <span class="sec-num">۴</span>
+      <span class="sec-icon">🔗</span>
+      <h2 class="sec-title">سند اور اس کی تحقیق</h2>
+      <p class="sec-urdu">Sanad Authentication</p>
+      <div class="sec-divider"><span></span><em>✦</em><span></span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📌 سند کیا ہے؟</div>
+      <p><strong style="color:var(--gold-light)">سند</strong> (یا اسناد) وہ راویوں کا سلسلہ ہے جن کے ذریعے حدیث نبی ﷺ تک پہنچتی ہے۔ امام عبداللہ بن المبارک رحمہ اللہ نے فرمایا: «الإسناد من الدين — سند دین کا حصہ ہے»۔ سند کے بغیر کوئی بھی شخص جو چاہے نبی ﷺ سے منسوب کر سکتا تھا۔ یہ اسلام کی منفرد خصوصیت ہے۔</p>
+    </div>
+
+    <div class="sanad-chain">
+      <div class="chain-item">
+        <div class="chain-dot">۱</div>
+        <div class="chain-content">
+          <h4>نبی کریم ﷺ</h4>
+          <p>سلسلۂ سند کا آغاز — اصل ماخذ</p>
+        </div>
+      </div>
+      <div class="chain-item">
+        <div class="chain-dot">۲</div>
+        <div class="chain-content">
+          <h4>صحابیِ کرام رضی اللہ عنہم</h4>
+          <p>جنہوں نے براہِ راست نبی ﷺ سے سنا یا دیکھا</p>
+        </div>
+      </div>
+      <div class="chain-item">
+        <div class="chain-dot">۳</div>
+        <div class="chain-content">
+          <h4>تابعین رحمہم اللہ</h4>
+          <p>جنہوں نے صحابہ سے روایت لی</p>
+        </div>
+      </div>
+      <div class="chain-item">
+        <div class="chain-dot">۴</div>
+        <div class="chain-content">
+          <h4>تبعِ تابعین</h4>
+          <p>جنہوں نے تابعین سے روایت کی</p>
+        </div>
+      </div>
+      <div class="chain-item">
+        <div class="chain-dot">۵</div>
+        <div class="chain-content">
+          <h4>محدثین — راویانِ حدیث</h4>
+          <p>جنہوں نے سند کو کتابوں میں محفوظ کیا</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🎯 راوی کی قبولیت کی شرائط (جرح و تعدیل)</div>
+      <p>ہر راوی کو قبول کرنے سے پہلے محدثین کرام اس کے بارے میں یہ باتیں دیکھتے تھے:</p>
+      <div class="type-grid" style="margin-top:16px;">
+        <div class="type-card"><h3>⚡ عدالت</h3><p class="def">راوی مسلمان، بالغ، عاقل، فاسق نہ ہو اور کبائر سے بچتا ہو۔</p></div>
+        <div class="type-card"><h3>🧠 ضبط</h3><p class="def">راوی کا حافظہ مضبوط ہو یا کتاب محفوظ رہی ہو، روایت میں غلطی نہ کرتا ہو۔</p></div>
+        <div class="type-card"><h3>🔗 اتصالِ سند</h3><p class="def">سلسلۂ سند میں کوئی کٹاؤ نہ ہو، ہر راوی نے اپنے استاد سے خود سنا ہو۔</p></div>
+        <div class="type-card"><h3>🚫 عدمِ شذوذ</h3><p class="def">ثقہ راوی نے زیادہ ثقہ کی مخالفت نہ کی ہو۔</p></div>
+        <div class="type-card"><h3>🔍 عدمِ علت</h3><p class="def">سند یا متن میں کوئی پوشیدہ خامی نہ ہو جو بظاہر نظر نہ آتی ہو۔</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⚖️ جرح و تعدیل — راویوں کی پرکھ کا علم</div>
+      <p><strong style="color:var(--gold-light)">جرح</strong> کا مطلب ہے راوی میں کوئی عیب بیان کرنا جو روایت کو کمزور کرے۔ <strong style="color:var(--gold-light)">تعدیل</strong> کا مطلب ہے راوی کی ثقاہت اور قابلِ اعتماد ہونے کی گواہی دینا۔ محدثین نے جرح و تعدیل کے لیے مخصوص الفاظ مقرر کیے جن کے الگ الگ درجات ہیں، جیسے «ثقۃ»، «صدوق»، «لا بأس به»، «ضعیف»، «متروك»، «کذاب» وغیرہ۔</p>
+    </div>
+
+    <div class="highlight-box">
+      <div class="arabic-text">الإسناد من الدِّين، ولولا الإسناد لقال من شاء ما شاء</div>
+      <p class="urdu-trans">سند دین کا حصہ ہے — اگر سند نہ ہوتی تو ہر شخص جو چاہتا کہہ دیتا۔</p>
+      <p class="ref">— امام عبداللہ بن المبارک رحمہ اللہ</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 5: COMPILATION ===== -->
+  <section id="compilation" class="section">
+    <div class="sec-header">
+      <span class="sec-num">۵</span>
+      <span class="sec-icon">📚</span>
+      <h2 class="sec-title">تدوینِ حدیث</h2>
+      <p class="sec-urdu">Compilation of Hadith</p>
+      <div class="sec-divider"><span></span><em>✦</em><span></span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📜 تدوین کا آغاز</div>
+      <p>بعض صحابہ کرام نے نبی ﷺ کی اجازت سے احادیث کو تحریری صورت میں محفوظ کیا۔ <strong style="color:var(--gold-light)">حضرت عبداللہ بن عمرو بن العاص رضی اللہ عنہ</strong> کا صحیفہ «الصادقہ» اور <strong style="color:var(--gold-light)">حضرت علی رضی اللہ عنہ</strong> کا صحیفہ قدیم ترین تحریری مجموعے ہیں۔ حضرت انس بن مالک رضی اللہ عنہ کے پاس بھی ایک صحیفہ تھا۔</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">عہدِ نبوت ﷺ (۱ تا ۱۱ ھ)</div>
+        <div class="tl-event">
+          <h4>زبانی روایت اور انفرادی تحریر</h4>
+          <p>صحابہ کرام نے زبانی طور پر احادیث یاد کیں۔ بعض نے انفرادی صحیفے لکھے۔ نبی ﷺ نے شروع میں عام کتابت سے روکا لیکن بعد میں خاص افراد کو اجازت دی۔</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">عہدِ صحابہ (۱۱ تا ۱۰۰ ھ)</div>
+        <div class="tl-event">
+          <h4>سینہ سینہ روایت اور احتیاط</h4>
+          <p>حضرت ابوبکر و عمر رضی اللہ عنہما نے روایت میں انتہائی احتیاط کی۔ بڑے صحابہ نے پوری دنیا میں پھیل کر احادیث کا علم پھیلایا۔ صحیفۂ ہمام بن منبہ (م ۱۰۱ ھ) ایک اہم مجموعہ ہے۔</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">پہلی سرکاری تدوین (۱۰۰ ھ)</div>
+        <div class="tl-event">
+          <h4>خلیفہ عمر بن عبدالعزیز رحمہ اللہ</h4>
+          <p>خلیفہ عمر بن عبدالعزیز رحمہ اللہ نے سرکاری حکم جاری کیا کہ احادیث کو باقاعدہ تحریری صورت میں جمع کیا جائے۔ امام ابن شہاب الزہری رحمہ اللہ نے پہلی باضابطہ تدوین کی۔</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">موطأ اور مسانید (۱۵۰-۲۰۰ ھ)</div>
+        <div class="tl-event">
+          <h4>امام مالک، امام احمد اور دیگر</h4>
+          <p>امام مالک رحمہ اللہ نے «موطأ» مرتب کی۔ امام احمد بن حنبل رحمہ اللہ نے «المسند» لکھا جس میں ۲۷ ہزار سے زیادہ احادیث ہیں۔</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">صحاحِ ستہ (۲۰۰-۲۷۵ ھ)</div>
+        <div class="tl-event">
+          <h4>سنہری دور — کتبِ ستہ کی تصنیف</h4>
+          <p>تیسری صدی ہجری میں محدثین کرام نے احادیث کی چھانٹی اور پرکھ کر معتبر ترین مجموعے مرتب کیے جو آج تک علمِ حدیث کا مرکز ہیں: صحیح بخاری، صحیح مسلم، سنن ابی داؤد، جامع ترمذی، سنن نسائی، سنن ابن ماجہ۔</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">بعد کی صدیاں (۳۰۰ ھ تا آج)</div>
+        <div class="tl-event">
+          <h4>شروح اور تحقیق کا عہد</h4>
+          <p>بعد کے علماء نے ان کتابوں کی شرحیں لکھیں، رجال کے کتب تصنیف کیں، اور علومِ حدیث کو مزید وسعت دی۔ آج یہ علم انٹرنیٹ اور ڈیجیٹل ذرائع سے بھی پھیل رہا ہے۔</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📕 کتبِ ستہ — صحاح ستہ</div>
+    </div>
+    <div class="kutub-grid">
+      <div class="kitab-card">
+        <div class="kitab-num">۱</div>
+        <div class="kitab-name">صحیح البخاری</div>
+        <div class="kitab-urdu">سب سے معتبر کتابِ حدیث</div>
+        <div class="kitab-author">امام محمد بن اسماعیل البخاری (م ۲۵۶ ھ)</div>
+        <div class="kitab-hadith">📊 ۷,۲۷۵ احادیث (تکرار کے ساتھ)</div>
+      </div>
+      <div class="kitab-card">
+        <div class="kitab-num">۲</div>
+        <div class="kitab-name">صحیح مسلم</div>
+        <div class="kitab-urdu">دوسری اہم ترین کتاب</div>
+        <div class="kitab-author">امام مسلم بن الحجاج (م ۲۶۱ ھ)</div>
+        <div class="kitab-hadith">📊 ۱۲,۰۰۰ احادیث (تکرار کے ساتھ)</div>
+      </div>
+      <div class="kitab-card">
+        <div class="kitab-num">۳</div>
+        <div class="kitab-name">سنن أبي داؤد</div>
+        <div class="kitab-urdu">فقہی احادیث کا خزینہ</div>
+        <div class="kitab-author">امام ابوداؤد سلیمان (م ۲۷۵ ھ)</div>
+        <div class="kitab-hadith">📊 ۵,۲۷۴ احادیث</div>
+      </div>
+      <div class="kitab-card">
+        <div class="kitab-num">۴</div>
+        <div class="kitab-name">جامع الترمذي</div>
+        <div class="kitab-urdu">فقہ اور علل کا امتزاج</div>
+        <div class="kitab-author">امام ترمذی (م ۲۷۹ ھ)</div>
+        <div class="kitab-hadith">📊 ۳,۹۵۶ احادیث</div>
+      </div>
+      <div class="kitab-card">
+        <div class="kitab-num">۵</div>
+        <div class="kitab-name">سنن النسائي</div>
+        <div class="kitab-urdu">جرح پر سخت ترین معیار</div>
+        <div class="kitab-author">امام نسائی (م ۳۰۳ ھ)</div>
+        <div class="kitab-hadith">📊 ۵,۷۶۱ احادیث</div>
+      </div>
+      <div class="kitab-card">
+        <div class="kitab-num">۶</div>
+        <div class="kitab-name">سنن ابن ماجه</div>
+        <div class="kitab-urdu">نادر روایات کا مجموعہ</div>
+        <div class="kitab-author">امام ابن ماجہ (م ۲۷۳ ھ)</div>
+        <div class="kitab-hadith">📊 ۴,۳۴۱ احادیث</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 6: ULOOM ===== -->
+  <section id="uloom" class="section">
+    <div class="sec-header">
+      <span class="sec-num">۶</span>
+      <span class="sec-icon">🌟</span>
+      <h2 class="sec-title">علوم الحدیث</h2>
+      <p class="sec-urdu">Uloom al-Hadith — Sciences of Hadith</p>
+      <div class="sec-divider"><span></span><em>✦</em><span></span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🎓 علوم الحدیث کیا ہے؟</div>
+      <p><strong style="color:var(--gold-light)">علوم الحدیث</strong> (جسے «مصطلح الحدیث» یا «اصولِ حدیث» بھی کہتے ہیں) وہ علم ہے جس میں احادیث کی سند اور متن کی جانچ پڑتال کے اصول و قواعد بیان کیے جاتے ہیں۔ اس علم کے ذریعے معلوم ہوتا ہے کہ کون سی روایت قابلِ قبول ہے اور کون سی مردود۔ امام حاکم نیشاپوری رحمہ اللہ نے اسے «معرفۃ علوم الحدیث» میں باقاعدہ مدوّن کیا۔</p>
+    </div>
+
+    <div class="uloom-list">
+      <div class="uloom-item">
+        <h4>علمِ روایۃ</h4>
+        <p>احادیث کے الفاظ، سند اور متن کو اصل صورت میں نقل کرنے کا علم۔</p>
+      </div>
+      <div class="uloom-item">
+        <h4>علمِ درایۃ</h4>
+        <p>احادیث کی چھانٹی، جانچ اور اصول و قواعد سے پرکھ کا علم۔ یہی اصلِ مصطلح الحدیث ہے۔</p>
+      </div>
+      <div class="uloom-item">
+        <h4>علمِ رجال</h4>
+        <p>راویانِ حدیث کے حالاتِ زندگی، ثقاہت یا ضعف کا علم — یہ علمِ جرح و تعدیل کی بنیاد ہے۔</p>
+      </div>
+      <div class="uloom-item">
+        <h4>علمِ جرح و تعدیل</h4>
+        <p>راویوں کی خوبیوں اور خامیوں کا بیان — یہ حدیث کی صحت کا اہم ترین پیمانہ ہے۔</p>
+      </div>
+      <div class="uloom-item">
+        <h4>علمِ ناسخ و منسوخ</h4>
+        <p>وہ احادیث جن کا حکم بعد کی حدیث نے منسوخ کر دیا — ان کی پہچان کا علم۔</p>
+      </div>
+      <div class="uloom-item">
+        <h4>علمِ مختلف الحدیث</h4>
+        <p>بظاہر متعارض لگنے والی احادیث کو جمع و تطبیق دینے کا علم۔</p>
+      </div>
+      <div class="uloom-item">
+        <h4>علمِ غریب الحدیث</h4>
+        <p>حدیث میں آنے والے مشکل اور نادر الفاظ کی شرح و وضاحت کا علم۔</p>
+      </div>
+      <div class="uloom-item">
+        <h4>علمِ اسباب الورود</h4>
+        <p>حدیث کے پس منظر — یعنی کس موقع پر وہ حدیث ارشاد ہوئی — کا علم۔</p>
+      </div>
+      <div class="uloom-item">
+        <h4>علمِ تخریج</h4>
+        <p>کسی حدیث کو اس کی اصل کتاب میں تلاش کر کے اس کی سند کا جائزہ لینے کا فن۔</p>
+      </div>
+      <div class="uloom-item">
+        <h4>علمِ طبقات الرواۃ</h4>
+        <p>راویوں کو ان کے زمانے اور نسل کے اعتبار سے طبقات میں تقسیم کرنا۔</p>
+      </div>
+      <div class="uloom-item">
+        <h4>علمِ علل الحدیث</h4>
+        <p>حدیث کی سند یا متن میں پوشیدہ خامیوں کی نشاندہی کا نہایت مشکل علم۔</p>
+      </div>
+      <div class="uloom-item">
+        <h4>علمِ مشہور الاحادیث</h4>
+        <p>مشہور اور مستفیض احادیث کی پہچان — جھوٹی مشہور روایات سے آگاہی۔</p>
+      </div>
+    </div>
+
+    <div class="quote-box">
+      <p class="quote-text">علومِ حدیث میں سب سے مشکل «علمِ علل» ہے جس میں راویوں کی پوشیدہ خامیاں بیان کی جاتی ہیں — یہ صرف وہی جانتا ہے جسے اللہ نے فہم دیا ہو۔</p>
+      <p class="quote-attr">— امام احمد بن حنبل رحمہ اللہ</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📖 مصطلح الحدیث کی اہم کتب</div>
+      <p>اس فن کی بنیادی کتب میں شامل ہیں: امام حاکم کی <strong style="color:var(--gold-light)">«معرفۃ علوم الحدیث»</strong>، امام خطیب بغدادی کی <strong style="color:var(--gold-light)">«الکفایہ»</strong>، ابن صلاح الشہرزوری کی <strong style="color:var(--gold-light)">«مقدمہ ابن صلاح»</strong>، حافظ ابن حجر کی <strong style="color:var(--gold-light)">«نخبۃ الفکر»</strong>، اور امام نووی کی <strong style="color:var(--gold-light)">«الإرشاد»</strong> وغیرہ۔</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 7: MUHADDISEEN ===== -->
+  <section id="muhaddiseen" class="section">
+    <div class="sec-header">
+      <span class="sec-num">۷</span>
+      <span class="sec-icon">🏅</span>
+      <h2 class="sec-title">محدثین کی خدمات</h2>
+      <p class="sec-urdu">The Great Muhaddiseen & Their Works</p>
+      <div class="sec-divider"><span></span><em>✦</em><span></span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">💪 محدثین کرام کی محنت و قربانیاں</div>
+      <p>محدثین کرام رحمہم اللہ نے حدیثِ نبوی ﷺ کی حفاظت کے لیے وہ محنت کی جس کی مثال دنیا کی تاریخ میں نہیں ملتی۔ انہوں نے ہزاروں میل کا سفر کیا، عمریں صرف کر دیں، لاکھوں احادیث جمع کیں اور پھر ان میں سے صحیح کو ضعیف سے الگ کیا۔ امام بخاری رحمہ اللہ نے ۶ لاکھ احادیث جانچ کر صرف ۷۲۷۵ کو اپنی صحیح میں رکھا۔</p>
+    </div>
+
+    <div class="info-row">
+      <div class="info-box"><div class="num">۱۰۰۰+</div><div class="label">شہر شہر سفر</div></div>
+      <div class="info-box"><div class="num">۶ لاکھ</div><div class="label">احادیث جانچیں امام بخاری نے</div></div>
+      <div class="info-box"><div class="num">۷۰+</div><div class="label">سال محنت امام احمد کی</div></div>
+      <div class="info-box"><div class="num">ہزاروں</div><div class="label">محدثین نے خدمت کی</div></div>
+    </div>
+
+    <div class="scholars-grid">
+      <div class="scholar-card">
+        <div class="scholar-name">امام بخاری رحمہ اللہ</div>
+        <div class="scholar-dates">۱۹۴ ھ — ۲۵۶ ھ | بخارا، ازبکستان</div>
+        <p class="scholar-work">امیرالمؤمنین فی الحدیث۔ ۱۶ سال کی مسافرت کی۔ ۶ لاکھ احادیث حفظ تھیں۔ ہر حدیث لکھنے سے پہلے غسل کر کے نماز پڑھتے تھے۔</p>
+        <span class="scholar-kitab">الجامع الصحيح</span>
+      </div>
+      <div class="scholar-card">
+        <div class="scholar-name">امام مسلم رحمہ اللہ</div>
+        <div class="scholar-dates">۲۰۴ ھ — ۲۶۱ ھ | نیشاپور</div>
+        <p class="scholar-work">صحیح مسلم کے مصنف۔ اپنی صحیح ۱۵ سال میں مکمل کی۔ ۳ لاکھ احادیث سے ۱۲ ہزار منتخب کیں۔ ترتیب و تبویب میں بے مثال ہیں۔</p>
+        <span class="scholar-kitab">صحيح مسلم</span>
+      </div>
+      <div class="scholar-card">
+        <div class="scholar-name">امام احمد بن حنبل رحمہ اللہ</div>
+        <div class="scholar-dates">۱۶۴ ھ — ۲۴۱ ھ | بغداد</div>
+        <p class="scholar-work">امام اہل السنۃ۔ خلقِ قرآن کے مسئلے پر کوڑے کھائے مگر حق نہ چھوڑا۔ المسند میں ۲۷ ہزار سے زائد احادیث ہیں۔</p>
+        <span class="scholar-kitab">مسند احمد</span>
+      </div>
+      <div class="scholar-card">
+        <div class="scholar-name">امام ابوداؤد رحمہ اللہ</div>
+        <div class="scholar-dates">۲۰۲ ھ — ۲۷۵ ھ | سجستان</div>
+        <p class="scholar-work">فقہی حدیث کے امام۔ ۵ لاکھ احادیث سے ۵۲۷۴ منتخب کیں۔ سنن ابی داؤد فقہاء کی پسندیدہ کتاب ہے۔</p>
+        <span class="scholar-kitab">سنن أبي داؤد</span>
+      </div>
+      <div class="scholar-card">
+        <div class="scholar-name">امام ترمذی رحمہ اللہ</div>
+        <div class="scholar-dates">۲۰۹ ھ — ۲۷۹ ھ | ترمذ</div>
+        <p class="scholar-work">امام بخاری کے شاگرد۔ جامع ترمذی میں ہر حدیث کے بعد فقہی اختلاف اور درجہ صحت بیان کیا — یہ انکا منفرد اسلوب ہے۔</p>
+        <span class="scholar-kitab">جامع الترمذي</span>
+      </div>
+      <div class="scholar-card">
+        <div class="scholar-name">امام نسائی رحمہ اللہ</div>
+        <div class="scholar-dates">۲۱۵ ھ — ۳۰۳ ھ | خراسان</div>
+        <p class="scholar-work">جرح میں سب سے سخت۔ سنن نسائی میں بہت کم ضعیف روایات ہیں۔ دمشق میں رافضیوں کے ہاتھوں شہید ہوئے۔</p>
+        <span class="scholar-kitab">سنن النسائي</span>
+      </div>
+      <div class="scholar-card">
+        <div class="scholar-name">امام ابن ماجہ رحمہ اللہ</div>
+        <div class="scholar-dates">۲۰۹ ھ — ۲۷۳ ھ | قزوین</div>
+        <p class="scholar-work">سنن ابن ماجہ میں نادر روایات ہیں جو دیگر کتب میں نہیں ملتیں۔ یہ کتاب صحاحِ ستہ میں سے آخری ہے۔</p>
+        <span class="scholar-kitab">سنن ابن ماجه</span>
+      </div>
+      <div class="scholar-card">
+        <div class="scholar-name">امام مالک رحمہ اللہ</div>
+        <div class="scholar-dates">۹۳ ھ — ۱۷۹ ھ | مدینہ منورہ</div>
+        <p class="scholar-work">امامِ دارالہجرہ۔ موطأ — پہلی باقاعدہ حدیث کی کتاب — ۴۰ سال تک مسلسل ترمیم کرتے رہے۔ ۷۰ علماء سے سند لینے کے بعد کتاب جاری کی۔</p>
+        <span class="scholar-kitab">الموطأ</span>
+      </div>
+      <div class="scholar-card">
+        <div class="scholar-name">حافظ ابن حجر عسقلانی رحمہ اللہ</div>
+        <div class="scholar-dates">۷۷۳ ھ — ۸۵۲ ھ | مصر</div>
+        <p class="scholar-work">«امیرالمؤمنین فی الحدیث» کا خطاب۔ فتح الباری شرح بخاری ۲۳ سال میں مکمل کی۔ تقریب التہذیب میں ۸۷۰۰ سے زائد راویوں کے حالات ہیں۔</p>
+        <span class="scholar-kitab">فتح الباري</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🌍 محدثین کا سفر — رحلۃ فی طلب الحدیث</div>
+      <p>محدثین کرام نے ایک حدیث کی تصدیق کے لیے مہینوں اور سالوں کے سفر کیے۔ امام بخاری رحمہ اللہ نے خراسان، عراق، شام، مصر اور حجاز کا سفر کیا۔ یہ رحلت ان کی خدا ترسی، علمی دیانت اور حدیثِ نبوی ﷺ سے محبت کی عکاس ہے۔ انہوں نے اپنی تمام زندگی، صحت اور راحت اس مقدس علم کی خدمت میں قربان کر دی۔</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 8: CURRICULUM ===== -->
+  <section id="curriculum" class="section">
+    <div class="sec-header">
+      <span class="sec-num">۸</span>
+      <span class="sec-icon">🎓</span>
+      <h2 class="sec-title">کورس کا مکمل نصاب</h2>
+      <p class="sec-urdu">Complete Course Curriculum — Beginner to Advanced</p>
+      <div class="sec-divider"><span></span><em>✦</em><span></span></div>
+    </div>
+
+    <!-- Beginner -->
+    <div class="level-section">
+      <div class="level-header">
+        <span class="level-badge beginner">🔰 ابتدائی سطح</span>
+        <span class="level-title">Beginner Level — ہفتہ ۱ تا ۴</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:100%;"></div></div>
+      <ul class="level-topics">
+        <li>حدیث کا تعارف — لغوی اور اصطلاحی تعریف</li>
+        <li>حدیثِ قولی، فعلی، تقریری اور وصفی کا مفہوم</li>
+        <li>سنت اور حدیث میں فرق</li>
+        <li>حدیث کی قرآنِ کریم میں اہمیت — آیات کی روشنی میں</li>
+        <li>صحابہ کرام کی حدیث میں خدمات</li>
+        <li>حدیثِ صحیح، حسن اور ضعیف کا ابتدائی تعارف</li>
+        <li>مشہور محدثین کا مختصر تعارف</li>
+        <li>صحاحِ ستہ کا تعارف اور ان کی خصوصیات</li>
+      </ul>
+      <div style="margin-top:14px; color:var(--parchment-dark); font-size:14px;">
+        📚 تجویز کردہ کتب: نزہۃ النظر (حافظ ابن حجر) — اردو ترجمہ | مختصر علوم الحدیث
+      </div>
+    </div>
+
+    <!-- Intermediate -->
+    <div class="level-section">
+      <div class="level-header">
+        <span class="level-badge intermediate">📖 درمیانی سطح</span>
+        <span class="level-title">Intermediate Level — ہفتہ ۵ تا ۸</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:100%;"></div></div>
+      <ul class="level-topics">
+        <li>اقسامِ حدیث — تفصیل کے ساتھ (متواتر، آحاد، مشہور)</li>
+        <li>سند کی اہمیت اور سلسلۂ روایت کا طریقہ</li>
+        <li>راوی کی شرائط — عدالت، ضبط، اتصالِ سند</li>
+        <li>جرح و تعدیل کے الفاظ اور درجات</li>
+        <li>علمِ رجال کا تعارف — کتبِ رجال</li>
+        <li>حدیثِ مرسل، منقطع، معضل، معلق کی تفصیل</li>
+        <li>حدیثِ موضوع — اسباب اور پہچان</li>
+        <li>تدوینِ حدیث کا تاریخی ارتقاء</li>
+        <li>امام بخاری اور مسلم کی صحیحین کا مطالعہ</li>
+      </ul>
+      <div style="margin-top:14px; color:var(--parchment-dark); font-size:14px;">
+        📚 تجویز کردہ کتب: علوم الحدیث (ابن صلاح) | مقدمۃ ابن صلاح (اردو) | تدریب الراوی
+      </div>
+    </div>
+
+    <!-- Advanced -->
+    <div class="level-section">
+      <div class="level-header">
+        <span class="level-badge advanced">🏆 اعلیٰ سطح</span>
+        <span class="level-title">Advanced Level — ہفتہ ۹ تا ۱۲</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:100%;"></div></div>
+      <ul class="level-topics">
+        <li>علمِ علل الحدیث — پوشیدہ خامیوں کی تحقیق</li>
+        <li>علمِ ناسخ و منسوخ — حدیث میں اطلاق</li>
+        <li>مختلف الحدیث — متعارض روایات کا حل</li>
+        <li>غریب الحدیث — مشکل الفاظ کی شرح</li>
+        <li>فقہ الحدیث — احادیث سے احکام کا استخراج</li>
+        <li>علمِ تخریج — حدیث کی تلاش اور تحقیق</li>
+        <li>المستدرک، مسند احمد اور دیگر مجامع کا مطالعہ</li>
+        <li>معاصر دور میں علومِ حدیث کا استعمال</li>
+        <li>ڈیجیٹل حدیث کے ذرائع — dorar.net، sunnah.com</li>
+        <li>مستشرقین کے اعتراضات اور جوابات</li>
+      </ul>
+      <div style="margin-top:14px; color:var(--parchment-dark); font-size:14px;">
+        📚 تجویز کردہ کتب: فتح الباری | شرح نخبۃ الفکر | الکفایہ للخطیب
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 ہفتہ وار منصوبہ</div>
+      <div class="type-grid">
+        <div class="type-card"><h3>🗓️ ہفتے کے ابتدائی دن</h3><p class="def">نئے موضوع کا تعارف — لیکچر اور تعریفات کا مطالعہ۔</p></div>
+        <div class="type-card"><h3>📖 درمیانی دن</h3><p class="def">متعلقہ حدیث کی مثالیں پڑھنا اور سمجھنا — سوالات و جوابات۔</p></div>
+        <div class="type-card"><h3>✍️ آخری دن</h3><p class="def">مشق، مراجعہ اور اگلے ہفتے کی تیاری — خود جانچ۔</p></div>
+        <div class="type-card"><h3>📝 ہر ہفتے کا نتیجہ</h3><p class="def">مختصر تحریری سوالنامہ — تاکہ سیکھا ہوا یاد رہے۔</p></div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:36px;">
+      <div class="arabic-text">مَنْ يُرِدِ اللّٰهُ بِهٖ خَيْرًا يُفَقِّهْهُ فِي الدِّيْن</div>
+      <p class="urdu-trans">جس کے ساتھ اللہ بھلائی کا ارادہ فرمائے، اسے دین کی سمجھ عطا فرما دیتا ہے۔</p>
+      <p class="ref">— صحیح بخاری</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-arabic">اللهم علمنا ما ينفعنا وانفعنا بما علمتنا</div>
+  <p>علوم الحدیث کورس — اردو میں ابتداء سے اعلیٰ سطح تک</p>
+  <p style="color:var(--gold); margin-top:6px;">♥ حدیثِ نبوی ﷺ کی خدمت ہمارا شرف ہے</p>
+</footer>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('scrollTop');
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+
+  // Animate progress bars when visible
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.progress-fill').forEach(bar => {
+          bar.style.animationPlayState = 'running';
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.level-section').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
